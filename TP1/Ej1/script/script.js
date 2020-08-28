@@ -58,4 +58,15 @@ function incisoB(){
 }
 incisoB(matriz);
 
+function incisoC(){
+    let arreglo = [];
+    for (let i=0;i< row;i++){
+        arreglo[i]=0;
+        for (let j=0;j< row ;j++){
+            arreglo[i]+=matriz[i][j];
+        }
+    }
+    console.log(arreglo);   
+}
 
+incisoC(matriz);
