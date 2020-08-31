@@ -12,21 +12,16 @@ let b = 255;
 let a = 255;
 
 function drawRect(imageData, r , g, b, a){
-    
-    for (let x = 0; x < width; x++){
+    for (let y = 0; y < heigth; y++){
+        for (let x = 0; x < width; x++){
         if (x <= width/2) {
-            let coeficiente = 255 / (width / 2);
-            r = x * coeficiente;
-            g = x * coeficiente;
-            b = 0;
+            r = Math.round(255/(width/2)*(x+1));
+            g  = r;
         }else{
-            let coeficiente2 = 255 / width;
-            r = 255;
-            g = 255 - (x * coeficiente2);
-            b = 0;
+            g = Math.round((-255 /(width/2)*(x+1)+510));
         }
-        for (let y = 0; y < heigth; y++){
-            setPixel(imageData, x, y, r, g, b, a);
+        
+            setPixel(imageData, x, y, r, g, 0, 255);
         }
     }
 }
