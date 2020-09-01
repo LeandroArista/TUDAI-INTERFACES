@@ -1,46 +1,49 @@
-"use strict"
-let canvas = document.querySelector("#canvas");
-let ctx = canvas.getContext("2d");
 
-let canvas2 = document.querySelector("#canvas2");
-let ctxgrey = canvas.getContext("2d");
-//Pintar una región rectangular de un color utilizando la estructura de ImageData. 
+    let canvas = document.querySelector('#canvas'),
+        context = canvas.getContext( '2d' );
+    let canvas2 = document.querySelector('#canvas2'),
+        context2 = canvas2.getContext( '2d' );
 
-let width= document.querySelector("#canvas").width;
-let height= document.querySelector("#canvas").height;
+    function loadPicture (source) {
+        let imageObj = new Image();
+        imageObj.src = source;
+        imageObj.onload = function () {
+            context.drawImage( imageObj, 0, 0 );
+        }    
+    };
+    function loadPicture2 (source) {
+        let imageObj = new Image();
+        imageObj.src = source;
+        //imageObj.crossOrigin = "Anonymous";
+        imageObj.onload = function () {
+            context2.drawImage( imageObj, 0, 0 );
+            filtersbw(context2,canvas2,imageObj.width,imageObj.height);
+
+        }    
+    };
+
+    function filtersbw (contexto,canvas,width,height) {
+        let imageData = contexto.getImageData( 0, 0, width, height ),
+            pixels = imageData.data,
+            numPixels = imageData.width * imageData.height;
+
+        for ( let i = 0; i < numPixels; i++ ) {
+            let r = pixels[ i * 4 ];
+            let g = pixels[ i * 4 + 1 ];
+            let b = pixels[ i * 4 + 2 ];
+
+            let grey = ( r + g + b ) / 3;
+
+            pixels[ i * 4 ] = grey;
+            pixels[ i * 4 + 1 ] = grey;
+            pixels[ i * 4 + 2 ] = grey;
+        }
+        contexto.putImageData( imageData, 0, 0 );
+    };
 
 
-let image1= new Image();
-image1.src = "imagen.jpg";
+//https://www.etnassoft.com/2016/11/08/manipulacion-de-imagenes-con-javascript-parte-2/ INTERESANTE
 
-
-image1.onload = function (){ 
-    myDrawImageMethod(this); 
-    myDrawImageMethodgrey (this);
-}
-
-
-function myDrawImageMethod (image){
-    ctx.drawImage(image,0,0);
-}
-
-function myDrawImageMethodgrey (image){
-    ctxgrey.drawImage(image,0,0);
-    getGreyscale(ctxgrey);
-}
-
-
-// ctx.myDrawImageMethod(image1);
-// ctx.putImageData(image1, 0, 0);
-
-function getGreyscale(contexto){
-    let imgData = contexto.getImageData(0, 0, width, height);
-    let pixels = imgData.data;
-    for (let i=0 , n = pixels.length;i < n;i+=4){
-        let greyscale = pixels[i] * .3 + pixels[i+1]*.59 + pixels[i+2]* .11;
-        imageData.data[index + 0]= greyscale;
-        imageData.data[index + 1]= greyscale;
-        imageData.data[index + 2]= greyscale;
-    }
-    contexto.putImageData(imgData,0,0)
-}
+loadPicture("space.jpg");        
+//document.querySelector('body').innerHTML+='<input type="button" href="filtersbw()" value="grises" ></input>';
+loadPicture2("space.jpg");
