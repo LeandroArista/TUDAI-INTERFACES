@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint</title>
     <link rel="stylesheet" href="./css/styles.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -14,7 +14,9 @@
                 <li><p>Archivo</p>
                     <ul>
                         <li><a href="" onclick="borrarCanvas()">Nuevo</a></li>
-                        <li><input type="file" id="carga" accept="image/*" onchange="cargarImagen()" label="Cargar" ></li>
+                        <li><a href="">Cargar
+                            <i class="fa fa-upload" aria-hidden="true"></i> <input type="file" id="carga-imagen" accept="image/*" onchange="cargarImagen()">
+                        </a></li>
                         <li><a id="download" download="myImage.jpg" href="" onclick="descargarImagen(this);">Guardar</a></li>
                     </ul>
                 </li>
@@ -23,6 +25,12 @@
                         <li><a href="">Blanco y Negro</a></li>
                         <li><a href="">Sepia</a></li>
                         <li><a href="">Invertir</a></li>
+                    </ul>
+                </li>
+                <li><p>Herramienta</p>
+                    <ul>
+                        <li><a href="" onclick="lapiz()">Lapiz</a></li>
+                        <li><a href="">Goma</a></li>
                     </ul>
                 </li>
             </ul>
