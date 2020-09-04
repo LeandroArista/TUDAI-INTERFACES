@@ -6,6 +6,7 @@
 * {
     margin:0px;
     padding:0px;
+    background-color: grey;
 }
 
 #header {
@@ -65,3 +66,6 @@ ul, ol {
     clear: both;
 }
 
+/* #carga-imagen{
+    visibility: hidden;
+} */
