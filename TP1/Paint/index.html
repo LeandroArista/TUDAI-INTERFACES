@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    
+</head>
+<body>
+    <header>
+        <div id="header">
+            <ul class="nav">
+                <li><p>Archivo</p>
+                    <ul>
+                        <li><a href="" onclick="borrarCanvas()">Nuevo</a></li>
+                        <li><input type="file" id="carga" accept="image/*" onchange="cargarImagen()" label="Cargar" ></li>
+                        <li><a id="download" download="myImage.jpg" href="" onclick="descargarImagen(this);">Guardar</a></li>
+                    </ul>
+                </li>
+                <li><p>Filtro</p>
+                    <ul>
+                        <li><a href="">Blanco y Negro</a></li>
+                        <li><a href="">Sepia</a></li>
+                        <li><a href="">Invertir</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </div>
+    </header>
+    <main class="limpiar">
+        <canvas id="canvas"></canvas>
+    </main>
+    <script src="./script/script.js"></script>
+</body>
+</html>
