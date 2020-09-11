@@ -13,36 +13,31 @@
             <ul class="nav">
                 <li><p>Archivo</p>
                     <ul>
-                        <li><a href="" onclick="borrarCanvas()">Nuevo</a></li>
-                        <li><a href="">Cargar
-                            <i class="fa fa-upload" aria-hidden="true"></i> <input type="file" id="carga-imagen" accept="image/*" onchange="cargarImagen()">
-                        </a></li>
-                        <li><a id="download" download="myImage.jpg" href="" onclick="descargarImagen(this);">Guardar</a></li>
+                        <li><button onclick="borrarCanvas();">Nuevo</button></li>
+                        <li><button onclick="document.querySelector('#carga-imagen').click();">Cargar
+                            <i class="fa fa-upload" aria-hidden="true"></i> >
+                        </button></li>
+                        <li><button id="download" download="myImage.jpg"  onclick="descargarImagen(this);">Guardar</button></li>
                     </ul>
                 </li>
                 <li><p>Filtro</p>
                     <ul>
-<<<<<<< Updated upstream
-                        <li><a href="">Negativo</a></li>
-                        <li><a href="">Brillo</a></li>
+                        <li><button onclick="aplicarFiltro('bn');">Blanco y Negro</button></li>
+                        <li><button onclick="aplicarFiltro('sepia');">Sepia</button></li>
+                        <li><button onclick="aplicarFiltro('invertir');">Invertir</button></li>
+                        <li><button onclick="aplicarFiltro('brillo','50');">Brillo</button></li>
                         <li><a href="">Binarizacion</a></li>
-						<li><a href="">Sepia</a></li>
 						<li><a href="">----</a></li>
 						<li><a href="">Saturacion</a></li>
 						<li><a href="">Suavizado</a></li>
 						<li><a href="">Deteccion de bordes</a></li>
 						<li><a href="">Blur</a></li>
-=======
-                        <li><button onclick="aplicarFiltro('bn')">Blanco y Negro</button></li>
-                        <li><a href="">Sepia</a></li>
-                        <li><a href="">Invertir</a></li>
->>>>>>> Stashed changes
                     </ul>
                 </li>
                 <li><p>Herramienta</p>
                     <ul>
-                        <li><a href="" onclick="lapiz()">Lapiz</a></li>
-                        <li><a href="">Goma</a></li>
+                        <li><button onclick="Pintar()">Lapiz</button></li>
+                        <li><button onclick="Borrar()">Goma</button></li>
                     </ul>
                 </li>
             </ul>
@@ -51,6 +46,7 @@
     </header>
     <main class="limpiar">
         <canvas id="canvas"></canvas>
+        <input type="file" id="carga-imagen" accept="image/*" onchange="cargarImagen()" ></input>
     </main>
     <script src="./script/script.js"></script>
     <script src="./script/filtros.js"></script>

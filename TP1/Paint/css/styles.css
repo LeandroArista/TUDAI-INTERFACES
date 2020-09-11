@@ -1,18 +1,19 @@
 #canvas {
     width: 500px;
     height: 500px;
-    background-color: #0D0909;
+    background-color: #fff;
 }
 * {
     margin:0px;
     padding:0px;
-    background-color: grey;
+    background-color:black;
 }
 
 #header {
     margin:auto;
     width:500px;
     font-family:Arial, Helvetica, sans-serif;
+    float: left;
 }
 
 ul, ol {
@@ -28,15 +29,28 @@ ul, ol {
     color:#fff;
     text-decoration:none;
     padding:10px 12px;
+    text-align: center;
     display:block;
 }
 
 .nav li p  {
-    background-color: grey;
+    background-color: #000;
     color:#fff;
     text-decoration:none;
     padding:10px 12px;
     display:block;
+}
+.nav li button  {
+    background-color:transparent;
+    border: 0px solid;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 12px;
+    width: 100%;
+    display:block;
+}
+.nav li button:hover  {
+    background-color:#434343;
 }
 
 .nav li a:hover {
@@ -66,6 +80,6 @@ ul, ol {
     clear: both;
 }
 
-/* #carga-imagen{
-    visibility: hidden;
-} */
+#carga-imagen{
+    display: none;
+} 
