@@ -79,6 +79,10 @@ function filtroInvertir(imageData){
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
             let b=getB(imageData,x,y);
+
+            r = 255 - r;
+            g = 255 - g;
+            b = 255 - b;
             
             setPixel(imageData,x,y,r,g,b,255); 
         }
@@ -92,15 +96,12 @@ function filtroSepia(imageData){
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
             let b=getB(imageData,x,y);
-            
-            r = 255 - r;
-            g = 255 - g;
-            b = 255 - b;
 
-            r = (r * .393)+(g * .769)+(b * .189);
-            g = (r * .349)+(g * .686)+(b * .168);
-            b = (r * .272)+(g * .534)+(b * .131);
-                   
+            let luminosidad = .3 * r + .6 * g + .1 * b;
+            r = Math.min(luminosidad + 40, 255); // rojo
+            g = Math.min(luminosidad + 15, 255); // verde	
+            b = luminosidad; // azul									
+            
             setPixel(imageData,x,y,r,g,b,255); 
         }
     }

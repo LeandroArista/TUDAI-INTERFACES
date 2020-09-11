@@ -70,25 +70,28 @@ function borrarCanvas(){
 
 input.onchange = e =>{
     borrarCanvas();
- 
-    let file = e.target.files[0];
+    if (input.value != ""){
+        let file = e.target.files[0];
 
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-  
-    reader.onload = readerEvent =>{
-        let content =readerEvent.target.result;
-        let image = new Image();
-        image.src = content;
-        image.onload= function (){
-            let imageAspectRatio = (1.0 * this.height)/this.width;
-            let imagescaledwidth = canvas.width;
-            let imagescaledheight = canvas.width * imageAspectRatio;
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+    
+        reader.onload = readerEvent =>{
+            let content =readerEvent.target.result;
+            let image = new Image();
+            image.src = content;
+            image.onload= function (){
+                let imageAspectRatio = (1.0 * this.height)/this.width;
+                let imagescaledwidth = canvas.width;
+                let imagescaledheight = canvas.width * imageAspectRatio;
 
-            ctx.drawImage(this,0,0,imagescaledwidth,imagescaledheight);
-        
+                ctx.drawImage(this,0,0,imagescaledwidth,imagescaledheight);
+            
+            }
         }
+        input.value="";
     }
+    
     
 }
 
