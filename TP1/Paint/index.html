@@ -17,7 +17,7 @@
                         <li><button onclick="document.querySelector('#carga-imagen').click();">Cargar
                             <i class="fa fa-upload" aria-hidden="true"></i> >
                         </button></li>
-                        <li><button id="download" download="myImage.jpg"  onclick="descargarImagen(this);">Guardar</button></li>
+                        <li><button id="download" onclick="descargarImagen();">Guardar</button></li>
                     </ul>
                 </li>
                 <li><p>Filtro</p>
@@ -25,13 +25,13 @@
                         <li><button onclick="aplicarFiltro('bn');">Blanco y Negro</button></li>
                         <li><button onclick="aplicarFiltro('sepia');">Sepia</button></li>
                         <li><button onclick="aplicarFiltro('invertir');">Invertir</button></li>
-                        <li><button onclick="aplicarFiltro('brillo','50');">Brillo</button></li>
+                        <li><button onclick="aplicarFiltro('brillo','10');">Brillo</button></li>
                         <li><a href="">Binarizacion</a></li>
 						<li><a href="">----</a></li>
-						<li><a href="">Saturacion</a></li>
-						<li><a href="">Suavizado</a></li>
+						<li><button onclick="aplicarFiltro('saturacion','50');">Saturacion</button></li>
+						<li><button onclick="aplicarFiltro('suavizado');">Suavizado</button></li>
 						<li><a href="">Deteccion de bordes</a></li>
-						<li><a href="">Blur</a></li>
+						<li><button onclick="aplicarFiltro('blur');">Blur</button></li>
                     </ul>
                 </li>
                 <li><p>Herramienta</p>
