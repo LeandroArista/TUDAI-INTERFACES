@@ -60,6 +60,14 @@ function aplicarFiltro(filtro,valor){
                     gaussian(imageData);
                 }
                 break;
+                case 'detecbordes':{
+                    filtroDetecBordes(imageData);
+                }
+                break;
+                case 'binarizacion':{
+                    filtroBinarizacion(imageData);
+                }
+                break;
                 default:
 
                 break;
@@ -277,4 +285,13 @@ function bigGaussian (imageData) {
       2 / divider,
     ];
     convolution(imageData, operator);
+}
+
+// 
+function filtroDetecBordes(imageData){
+
+}
+
+function filtroBinarizacion(imageData){
+
 }
