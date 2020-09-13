@@ -58,7 +58,7 @@ function aplicarFiltro(filtro,valor){
                 break;
                 //desenfoque
                 case 'suavizado':{
-                    gaussian(imageData);
+                   // gaussian(imageData);
                 }
                 break;
                 case 'detecbordes':{
@@ -66,7 +66,7 @@ function aplicarFiltro(filtro,valor){
                 }
                 break;
                 case 'binarizacion':{
-                    filtroBinarizacion(imageData);
+                    filtroBinarizacion(imageData,valor);
                 }
                 break;
                 default:
@@ -151,8 +151,7 @@ function filtroBrillo(imageData,brillo = 0){
             r = limitar(r + factor);
             g = limitar(g + factor);
             b = limitar (b + factor);
-            
-            console.log("RGB = (",r,",",g,",",b,")");
+        
             setPixel(imageData,x,y,r,g,b,255); 
         }
     }
@@ -202,7 +201,7 @@ let RW = 0.3086,
 }
 
 
-function convolution(imageData, operador) {
+/* function convolution(imageData, operador) {
     let lado = Math.round(Math.sqrt(operador.length)),
       mitad = Math.floor(lado / 2),
     //   src = imageData.data,
@@ -286,7 +285,7 @@ function bigGaussian (imageData) {
       2 / divider,
     ];
     convolution(imageData, operator); 
-}
+} */
 function Blur (imageData)
 {
     tempCanvas = document.createElement('canvas'),
@@ -314,11 +313,26 @@ function Blur (imageData)
     ctx.putImageData(tempData,0,0);
    
 }
+//binarizacion
+ function filtroBinarizacion(imageData, tope) {
+    for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+            let r = getR(imageData,x,y);
+            let g = getG(imageData,x,y);
+            let b = getB(imageData,x,y);
+            let valor=0.2126*r + 0.7152*g + 0.0722*b;
+            //console.log(valor);
+            if (valor >= tope ){
+                valor=255;
+            }else{
+                valor=0;
+            } 
+            setPixel(imageData,x,y,valor,valor,valor,255);
+        }
+    }
+    ctx.putImageData(imageData,0,0);
+}
 // 
 function filtroDetecBordes(imageData){
-
-}
-
-function filtroBinarizacion(imageData){
 
 }

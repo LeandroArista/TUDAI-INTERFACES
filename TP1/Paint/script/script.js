@@ -1,7 +1,10 @@
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 
-
+let paiting = document.querySelector('.limpiar');
+let paintStyle=getComputedStyle(paiting);
+canvas.width=parseInt(paintStyle.getPropertyValue("width"));
+canvas.height=parseInt(paintStyle.getPropertyValue("height"));
 let input = document.querySelector('#carga-imagen');
 
 let pintarLinea = false;
