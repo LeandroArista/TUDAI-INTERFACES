@@ -53,9 +53,10 @@ function aplicarFiltro(filtro,valor){
                 }
                 break;
                 case 'blur':{
-                    bigGaussian(imageData);
+                    Blur(imageData);
                 }
                 break;
+                //desenfoque
                 case 'suavizado':{
                     gaussian(imageData);
                 }
@@ -284,9 +285,33 @@ function bigGaussian (imageData) {
       4 / divider,
       2 / divider,
     ];
-    convolution(imageData, operator);
+    convolution(imageData, operator); 
 }
+function Blur (imageData)
+{
+    tempCanvas = document.createElement('canvas'),
+    tempCtx = tempCanvas.getContext('2d'),
+    tempData = tempCtx.createImageData(canvas.width, canvas.height);
 
+   
+    for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+            let r=0, g=0, b=0;
+            if  (x < 1 || y < 1 || (x + 1) == canvas.width || (y + 1) == canvas.height) {
+                
+                r = getR(imageData,x-1,y+1) + getR(imageData,x - 1, y + 1) + getR(imageData,x, y + 1) +  getR(imageData,x + 1, y + 1) + getR(imageData,x - 1, y)+getR(imageData,x, y)+ getR(imageData,x+1, y) + getR(imageData,x-1, y-1) + getR(imageData,x, y-1) +getR(imageData,x+1, y-1);
+                g = getG(imageData,x-1,y+1) + getG(imageData,x - 1, y + 1) + getG(imageData,x, y + 1) +  getG(imageData,x + 1, y + 1) + getG(imageData,x - 1, y)+  
+                getG(imageData,x, y)+ getG(imageData,x+1, y) + getG(imageData,x-1, y-1) + getG(imageData,x, y-1) +getG(imageData,x+1, y-1);
+                b = getB(imageData,x-1,y+1) + getB(imageData,x - 1, y + 1) + getB(imageData,x, y + 1) +  getB(imageData,x + 1, y + 1) + getB(imageData,x - 1, y)+  
+                getB(imageData,x, y)+ getB(imageData,x+1, y) + getB(imageData,x-1, y-1) + getB(imageData,x, y-1) +getB(imageData,x+1, y-1);
+                setPixel(tempData,x, y,r/9,g/9,b/9,255);
+            }
+        }
+    }
+    console.log(tempData);
+    ctx.putImageData(tempData,0,0);
+   
+}
 // 
 function filtroDetecBordes(imageData){
 
