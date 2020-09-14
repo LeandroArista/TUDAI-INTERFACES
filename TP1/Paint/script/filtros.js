@@ -32,16 +32,16 @@ function aplicarFiltro(filtro,valor){
                 break;
                 case 'brillo':filtroBrillo(imageData,valor);
                 break;
+                case 'binarizacion':filtroBinarizacion(imageData,valor);
+                break;
                 case 'saturacion':filtroSaturacion(imageData,valor);
                 break;
                 case 'blur':Blur(imageData);
                 break;
-                case 'suavizado':filtroSuavizado(imageData);
+               /*  case 'suavizado':filtroSuavizado(imageData);
                 break;
                 case 'detecbordes':filtroDetecBordes(imageData);
-                break;
-                case 'binarizacion':filtroBinarizacion(imageData,valor);
-                break;
+                break; */
               }
         }
 }
@@ -53,6 +53,8 @@ function setPixel(imageData, x, y, r, g, b, a){
     imageData.data[index + 2]= b;
     imageData.data[index + 3]= a;
 }
+
+//filtros Simples
 
 //filtro blanco y negro
 function filtroBN(imageData){
@@ -95,9 +97,9 @@ function filtroSepia(imageData){
             let b=getB(imageData,x,y);
 
             let luminosidad = .3 * r + .59 * g + .11 * b;
-            r = luminosidad + 40; // rojo
-            g = luminosidad + 20; // verde	
-            b = luminosidad - 20; // azul									
+            r = luminosidad + 40;
+            g = luminosidad + 20; 
+            b = luminosidad - 20; 									
             
             setPixel(imageData,x,y,r,g,b,255); 
         }
@@ -123,18 +125,34 @@ function filtroBrillo(imageData,brillo = 0){
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
             let b=getB(imageData,x,y);
-        
             r = limitar(r + factor);
             g = limitar(g + factor);
             b = limitar (b + factor);
-            //console.log("R",r,"G",g,"B",b);
-        
             setPixel(imageData,x,y,r,g,b,255); 
         }
     }
     ctx.putImageData(imageData,0,0);
 }
+//binarizacion
+function filtroBinarizacion(imageData, tope) {
+    for (let y = 0; y < canvas.height; y++) {
+        for (let x = 0; x < canvas.width; x++) {
+            let r = getR(imageData,x,y);
+            let g = getG(imageData,x,y);
+            let b = getB(imageData,x,y);
+            let valor=0.2126*r + 0.7152*g + 0.0722*b;
+            if (valor >= tope ){
+                valor=255;
+            }else{
+                valor=0;
+            } 
+            setPixel(imageData,x,y,valor,valor,valor,255);
+        }
+    }
+    ctx.putImageData(imageData,0,0);
+}
 
+//Filtros Complejos
 //saturacion
 function filtroSaturacion (imageData,nivel = 2.9) {
 let RW = 0.3086,
@@ -155,24 +173,19 @@ let RW = 0.3086,
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
             let b=getB(imageData,x,y);
-
             r = RW0 * r + RG0 * g + RB0 * b;
             g = RW1 * r + RG1 * g + RB1 * b;
             b = RW2 * r + RG2 * g + RB2 * b;
-            
             setPixel(imageData,x,y,r,g,b,255); 
     }
     ctx.putImageData(imageData,0,0);
   }
 }
-
-function Blur (imageData)
-{
+//box-blur
+function Blur (imageData){
     tempCanvas = document.createElement('canvas'),
     tempCtx = tempCanvas.getContext('2d'),
     tempData = tempCtx.createImageData(canvas.width, canvas.height);
-
-   
     for (let y = 0; y < canvas.height; y++) {
         for (let x = 0; x < canvas.width; x++) {
             let r=0, g=0, b=0;
@@ -181,8 +194,7 @@ function Blur (imageData)
                 g = getG(imageData,x-1,y+1) + getG(imageData,x - 1, y + 1) + getG(imageData,x, y + 1) +  getG(imageData,x + 1, y + 1) + getG(imageData,x - 1, y)+getG(imageData,x, y)+ getG(imageData,x+1, y) + getG(imageData,x-1, y-1) + getG(imageData,x, y-1) +getG(imageData,x+1, y-1);
                 b = getB(imageData,x-1,y+1) + getB(imageData,x - 1, y + 1) + getB(imageData,x, y + 1) +  getB(imageData,x + 1, y + 1) + getB(imageData,x - 1, y)+getB(imageData,x, y)+ getB(imageData,x+1, y) + getB(imageData,x-1, y-1) + getB(imageData,x, y-1) +getB(imageData,x+1, y-1);
                 setPixel(tempData,x, y,r/9,g/9,b/9,255);
-            }
-            else{
+            }else{
                 r = getR(imageData,x,y);
                 g = getG(imageData,x,y);
                 b = getB(imageData,x,y);
@@ -191,26 +203,8 @@ function Blur (imageData)
         }
     }
     ctx.putImageData(tempData,0,0);
-   
 }
-//binarizacion
- function filtroBinarizacion(imageData, tope) {
-    for (let y = 0; y < canvas.height; y++) {
-        for (let x = 0; x < canvas.width; x++) {
-            let r = getR(imageData,x,y);
-            let g = getG(imageData,x,y);
-            let b = getB(imageData,x,y);
-            let valor=0.2126*r + 0.7152*g + 0.0722*b;
-            if (valor >= tope ){
-                valor=255;
-            }else{
-                valor=0;
-            } 
-            setPixel(imageData,x,y,valor,valor,valor,255);
-        }
-    }
-    ctx.putImageData(imageData,0,0);
-}
+
 // 
 function filtroDetecBordes(imageData){
 

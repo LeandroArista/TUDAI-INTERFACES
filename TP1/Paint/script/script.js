@@ -3,20 +3,18 @@ let ctx = canvas.getContext('2d');
 
 let paiting = document.querySelector('#lienzo');
 let paintStyle=getComputedStyle(paiting);
-console.log(paintStyle.getPropertyValue("height"));
+
 canvas.width=parseInt(paintStyle.getPropertyValue("height"));
 canvas.height=parseInt(paintStyle.getPropertyValue("height"));
 let input = document.querySelector('#carga-imagen');
-
+let selectorColor = document.querySelector('#favcolor');
 let pintarLinea = false;
+let goma = false;
 let tipoLinea = 'round';
 let color = '#000';
 let ancho = 5;
-  
-window.onmousemove = function (){
-    let x = window.event.clientX;
-    let y = window.event.clientY;
-}
+
+
 function getMousePos(canvas, evt) {
     let rect = canvas.getBoundingClientRect();
     return {
@@ -25,24 +23,43 @@ function getMousePos(canvas, evt) {
     };
   }
 
+//aumentar tamaño 
+function masTamaño(){
+    ancho+=5;    
+}
+
+function menosTamaño(){
+    if ((ancho-5)>0)
+        ancho-=5;    
+}
+
+ //seleccionar color lapiz
+ function asignarColor(valor){
+     if (!goma)
+        color=valor;
+ } 
+
+//goma
 function Borrar(){
     tipoLinea = 'square';
     color = '#fff';
     ancho = 5;
+    goma= true;
     document.addEventListener('mousedown',pulsaRaton,false);
 	document.addEventListener('mousemove',mueveRaton,false);
 	document.addEventListener('mouseup',levantaRaton,false);
 }
-
+//comenzar a pintar
 function Pintar(){
     tipoLinea = 'round';
-    color = '#000';
+    color =selectorColor.value;
     ancho = 5;
+    goma= false;
 	document.addEventListener('mousedown',pulsaRaton,false);
 	document.addEventListener('mousemove',mueveRaton,false);
 	document.addEventListener('mouseup',levantaRaton,false);
 }
-
+//comenzar a dibujar
 function pulsaRaton(capturo){
     pintarLinea = true;
     let mousePos = getMousePos(canvas, capturo);
@@ -60,17 +77,17 @@ function mueveRaton(capturo){
 		ctx.stroke();
 	}
 }
-
+//dejar de dibujar
 function levantaRaton(capturo){
 	ctx.closePath();
 	pintarLinea = false;
 }
-
+//borrar canvas
 function borrarCanvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-
+//carga imagen seleccionada
 input.onchange = e =>{
     borrarCanvas();
     if (input.value != ""){

@@ -22,16 +22,17 @@
                 </li>
                 <li><p>Filtro</p>
                     <ul>
+                        <li><p>--Simples--</p></li>
                         <li><button onclick="aplicarFiltro('bn');">Blanco y Negro</button></li>
                         <li><button onclick="aplicarFiltro('sepia');">Sepia</button></li>
                         <li><button onclick="aplicarFiltro('invertir');">Invertir</button></li>
                         <li><button onclick="aplicarFiltro('brillo','10');">Brillo</button></li>
                         <li><button onclick="aplicarFiltro('binarizacion','100');">Binarizacion</button></li>
-						<li><p>----</p></li>
+						<li><p>--Complejos--</p></li>
 						<li><button onclick="aplicarFiltro('saturacion');">Saturacion</button></li>
-						<li><button onclick="aplicarFiltro('suavizado');">Suavizado</button></li>
-						<li><button onclick="aplicarFiltro('detecbordes');">Deteccion de bordes</button></li>
-						<li><button onclick="aplicarFiltro('blur');">Blur</button></li>
+                        <li><button onclick="aplicarFiltro('blur');">Blur</button></li>
+                       <!--  <li><button onclick="aplicarFiltro('suavizado');">Suavizado</button></li>
+						<li><button onclick="aplicarFiltro('detecbordes');">Deteccion de bordes</button></li> -->
                     </ul>
                 </li>
                 <li><p>Herramienta</p>
@@ -47,6 +48,13 @@
     <main class="limpiar" id="main">
         <div id="lienzo">
             <canvas id="canvas"></canvas>
+        </div>
+        <div id="herramientas">
+            <label for="favcolor" id="textfavcolor">Seleccionar color</label>
+            <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="asignarColor(value)">
+            <button onclick="masTamaño();" id="mas"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></button>
+            <button onclick="menosTamaño();" id="menos"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></button>
+            
         </div>
         <input type="file" id="carga-imagen" accept="image/*" onchange="cargarImagen()" ></input>
     </main>
