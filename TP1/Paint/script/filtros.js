@@ -58,7 +58,7 @@ function aplicarFiltro(filtro,valor){
                 break;
                 //desenfoque
                 case 'suavizado':{
-                   // gaussian(imageData);
+                   // filtroSuavizado(imageData);
                 }
                 break;
                 case 'detecbordes':{
@@ -197,92 +197,6 @@ let RW = 0.3086,
   }
 }
 
-
-/* function convolution(imageData, operador) {
-    let lado = Math.round(Math.sqrt(operador.length)),
-      mitad = Math.floor(lado / 2),
-    //   src = imageData.data,
-      canvasWidth = imageData.width,
-      canvasHeight = imageData.height,
-      tempCanvas = document.createElement('canvas'),
-      tempCtx = tempCanvas.getContext('2d'),
-      tempData = tempCtx.createImageData(canvasWidth, canvasHeight);
-  
-    for (let y = 0; y < canvasHeight; y++) {
-      for (let x = 0; x < canvasWidth; x++) {
-          let r = 0,
-          g = 0,
-          b = 0;
-  
-        for (let y1 = 0; y1 < lado; y1++) {
-          for (let x1 = 0; x1 < lado; x1++) {
-            let actualY = y + y1 - mitad,
-              actualX = x + x1 - mitad;
-  
-            if (actualY >= 0 && actualY < canvasHeight && actualX >= 0 && actualX < canvasWidth) {
-              let item = operador[y1 * lado + x1];
-              r += getR(imageData,x1,y1) * item;
-              g += getG(imageData,x1,y1) * item;
-              b += getB(imageData,x1,y1) * item;
-            }
-          }
-        }
-        setPixel(tempData,x,y,r,g,b,255);
-      
-      }
-    }
-    ctx.putImageData(tempData,0,0);
-}
-
-//filtro desenfoque
-function gaussian (imageData) {
-    let divider = 16
-    let operator = [
-      1 / divider,
-      2 / divider,
-      1 / divider,
-      2 / divider,
-      4 / divider,
-      2 / divider,
-      1 / divider,
-      2 / divider,
-      1 / divider,
-    ];
-    convolution(imageData, operator);
-}
-
-///filtro blur
-function bigGaussian (imageData) {
-    let divider = 159
-    let operator = [
-      2 / divider,
-      4 / divider,
-      5 / divider,
-      4 / divider,
-      2 / divider,
-      4 / divider,
-      9 / divider,
-      12 / divider,
-      9 / divider,
-      4 / divider,
-      5 / divider,
-      12 / divider,
-      15 / divider,
-      12 / divider,
-      5 / divider,
-      4 / divider,
-      9 / divider,
-      12 / divider,
-      9 / divider,
-      4 / divider,
-      2 / divider,
-      4 / divider,
-      5 / divider,
-      4 / divider,
-      2 / divider,
-    ];
-    convolution(imageData, operator); 
-} */
 function Blur (imageData)
 {
     tempCanvas = document.createElement('canvas'),
