@@ -70,15 +70,6 @@ function borrarCanvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function inicializarCanvas(img){
-  // set size proportional to image
-  if (img != undefined){
-    canvas.height = canvas.width * (img.height / img.width);
-    oc.width = img.width * 0.5;
-    oc.height = img.height * 0.5;
-    octx.drawImage(img, 0, 0, oc.width, oc.height);
-  }
-}
 
 input.onchange = e =>{
     borrarCanvas();

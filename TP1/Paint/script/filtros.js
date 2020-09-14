@@ -1,5 +1,3 @@
-//let canvas = document.querySelector('#canvas');
-//let context = canvas.getContext("2d");
 
 function getR(imageData , x , y){
     index = (x + y * imageData.width)*4;
@@ -26,49 +24,28 @@ function aplicarFiltro(filtro,valor){
             let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
 
             switch (filtro) {
-                case 'bn':{
-                    filtroBN(imageData);
-                }
+                case 'bn':filtroBN(imageData);
                 break;
-                case 'sepia':{
-                    filtroSepia(imageData);
-                }
+                case 'sepia':filtroSepia(imageData);
                 break;
-                case 'invertir':{
-                    filtroInvertir(imageData);
-                }
+                case 'invertir':filtroInvertir(imageData);
                 break;
-                case 'brillo':{
-                    filtroBrillo(imageData,valor);
-                }
-                case 'saturacion':{
-                    filtroSaturacion(imageData,valor);
-                }
+                case 'brillo':filtroBrillo(imageData,valor);
                 break;
-                case 'blur':{
-                    Blur(imageData);
-                }
+                case 'saturacion':filtroSaturacion(imageData,valor);
                 break;
-                //desenfoque
-                case 'suavizado':{
-                   // filtroSuavizado(imageData);
-                }
+                case 'blur':Blur(imageData);
                 break;
-                case 'detecbordes':{
-                    filtroDetecBordes(imageData);
-                }
+                case 'suavizado':filtroSuavizado(imageData);
                 break;
-                case 'binarizacion':{
-                    filtroBinarizacion(imageData,valor);
-                }
+                case 'detecbordes':filtroDetecBordes(imageData);
                 break;
-                default:
-
+                case 'binarizacion':filtroBinarizacion(imageData,valor);
                 break;
               }
         }
 }
-
+//set pixel
 function setPixel(imageData, x, y, r, g, b, a){
     let index = (x + y * imageData.width) * 4;
     imageData.data[index + 0]= r;
@@ -111,8 +88,8 @@ function filtroInvertir(imageData){
 }
 //filtros Sepia
 function filtroSepia(imageData){
-    for( let y = 0; y < imageData.height; y++){
-        for ( let x = 0; x < imageData.width; x++){
+    for( let y = 0; y < canvas.height; y++){
+        for ( let x = 0; x < canvas.width; x++){
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
             let b=getB(imageData,x,y);
@@ -127,7 +104,7 @@ function filtroSepia(imageData){
     }
     ctx.putImageData(imageData,0,0);
 }
-
+// limitar rango de 0 a 255
 function limitar(sum) {
     if (sum < 0) {
       return 0;
@@ -140,8 +117,8 @@ function limitar(sum) {
 ///filtro brillo
 function filtroBrillo(imageData,brillo = 0){
     let factor = Math.floor(255 * (brillo / 100));
-    for( let y = 0; y < imageData.height; y++){
-        for ( let x = 0; x < imageData.width; x++){
+    for( let y = 0; y < canvas.height; y++){
+        for ( let x = 0; x < canvas.width; x++){
 
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
@@ -160,7 +137,6 @@ function filtroBrillo(imageData,brillo = 0){
 
 //saturacion
 function filtroSaturacion (imageData,nivel = 2.9) {
-
 let RW = 0.3086,
     RG = 0.6084,
     RB = 0.082,
@@ -174,8 +150,8 @@ let RW = 0.3086,
     RB1 = (1 - nivel) * RB,
     RB2 = (1 - nivel) * RB + nivel
 
-    for( let y = 0; y < imageData.height; y++){
-        for ( let x = 0; x < imageData.width; x++){
+    for( let y = 0; y < canvas.height; y++){
+        for ( let x = 0; x < canvas.width; x++){
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
             let b=getB(imageData,x,y);
@@ -225,7 +201,6 @@ function Blur (imageData)
             let g = getG(imageData,x,y);
             let b = getB(imageData,x,y);
             let valor=0.2126*r + 0.7152*g + 0.0722*b;
-            //console.log(valor);
             if (valor >= tope ){
                 valor=255;
             }else{
@@ -238,5 +213,8 @@ function Blur (imageData)
 }
 // 
 function filtroDetecBordes(imageData){
+
+}
+function filtroSuavizado(imageData){
 
 }
