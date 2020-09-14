@@ -39,23 +39,26 @@
                     <ul>
                         <li><button onclick="Pintar()">Lapiz</button></li>
                         <li><button onclick="Borrar()">Goma</button></li>
+                        <li><p>Color <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="asignarColor(value)"></p></li>
+                        <li><button onclick="masTamaño();" id="mas"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></button></li>
+                        <li><button onclick="menosTamaño();" id="menos"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></button></li>
                     </ul>
                 </li>
             </ul>
-            
+            <!-- <div id="herramientas">
+                <label for="favcolor" id="textfavcolor">Seleccionar color</label>
+                <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="asignarColor(value)">
+                <button onclick="masTamaño();" id="mas"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></button>
+                <button onclick="menosTamaño();" id="menos"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></button>
+                
+            </div> -->
         </div>
     </header>
     <main class="limpiar" id="main">
         <div id="lienzo">
             <canvas id="canvas"></canvas>
         </div>
-        <div id="herramientas">
-            <label for="favcolor" id="textfavcolor">Seleccionar color</label>
-            <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="asignarColor(value)">
-            <button onclick="masTamaño();" id="mas"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></button>
-            <button onclick="menosTamaño();" id="menos"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></button>
-            
-        </div>
+        
         <input type="file" id="carga-imagen" accept="image/*" onchange="cargarImagen()" ></input>
     </main>
     <script src="./script/script.js"></script>

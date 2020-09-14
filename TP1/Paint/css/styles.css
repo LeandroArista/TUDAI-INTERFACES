@@ -60,7 +60,9 @@ ul, ol {
 .nav li a:hover {
     background-color:#434343;
 }
-
+.nav li p:hover {
+    background-color:#434343;
+}
 .nav li ul {
     display:none;
     position:absolute;
@@ -90,18 +92,6 @@ ul, ol {
     display: none;
 } 
 
-#herramientas {
-    color:white;
-    background-color:#434343;
-    text-align: center;
-    margin: 10px;
-    width: 300px;
-    height: 40px;
-    text-align: center;
-}
-#favcolor,#textfavcolor,#mas,#menos{
-    color:white;
-    background-color:#434343;
-    margin: 5px;
-}
+
+
 
