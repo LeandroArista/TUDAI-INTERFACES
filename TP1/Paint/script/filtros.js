@@ -135,29 +135,6 @@ function filtroSepia(imageData){
     ctx.putImageData(imageData,0,0);
 }
 
-
-
-///filtro brillo
-function filtroBrillo(imageData,brillo = 0){
-  
-    let factor = Math.floor(255 * (brillo / 100));
-    console.log(factor);
-    for( let y = 0; y < imageData.height; y++){
-        for ( let x = 0; x < imageData.width; x++){
-            let r=getR(imageData,x,y);
-            let g=getG(imageData,x,y);
-            let b=getB(imageData,x,y);
-            
-            r = limitar(r + factor);
-            g = limitar(g + factor);
-            b = limitar (b + factor);
-        
-            setPixel(imageData,x,y,r,g,b,255); 
-        }
-    }
-    ctx.putImageData(imageData,0,0);
-}
-
 function limitar(sum) {
     if (sum < 0) {
       return 0;
@@ -166,6 +143,26 @@ function limitar(sum) {
     } else {
       return sum;
     }
+}
+///filtro brillo
+function filtroBrillo(imageData,brillo = 0){
+    let factor = Math.floor(255 * (brillo / 100));
+    for( let y = 0; y < imageData.height; y++){
+        for ( let x = 0; x < imageData.width; x++){
+
+            let r=getR(imageData,x,y);
+            let g=getG(imageData,x,y);
+            let b=getB(imageData,x,y);
+            
+            r = limitar(r + factor);
+            g = limitar(g + factor);
+            b = limitar (b + factor);
+            //console.log("R",r,"G",g,"B",b);
+        
+            setPixel(imageData,x,y,r,g,b,255); 
+        }
+    }
+    ctx.putImageData(imageData,0,0);
 }
 
 //saturacion
