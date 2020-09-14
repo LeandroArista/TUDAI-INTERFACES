@@ -123,7 +123,7 @@ function filtroBrillo(imageData,brillo = 0){
             let r=getR(imageData,x,y);
             let g=getG(imageData,x,y);
             let b=getB(imageData,x,y);
-            
+        
             r = limitar(r + factor);
             g = limitar(g + factor);
             b = limitar (b + factor);
