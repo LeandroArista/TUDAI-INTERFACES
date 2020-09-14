@@ -23,13 +23,6 @@ function aplicarFiltro(filtro,valor){
             canvas.setAttribute.width = image.width;
             canvas.setAttribute.height = image.height;
            
-           /*  let imageAspectRatio = (1.0 * this.height)/this.width;
-            let imageScaledWidth = canvas.width;
-            let imageScaledHeight = canvas.width * imageAspectRatio;
-
-            ctx.drawImage(this,0,0,imageScaledWidth,imageScaledHeight);
-            let imageData = ctx.getImageData(0,0,imageScaledWidth,imageScaledHeight); */
-            //ctx.drawImage(this,0,0);
             let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
 
             switch (filtro) {

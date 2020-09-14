@@ -27,7 +27,7 @@
                         <li><button onclick="aplicarFiltro('invertir');">Invertir</button></li>
                         <li><button onclick="aplicarFiltro('brillo','10');">Brillo</button></li>
                         <li><button onclick="aplicarFiltro('binarizacion','100');">Binarizacion</button></li>
-						<li><a href="">----</a></li>
+						<li><p>----</p></li>
 						<li><button onclick="aplicarFiltro('saturacion','50');">Saturacion</button></li>
 						<li><button onclick="aplicarFiltro('suavizado');">Suavizado</button></li>
 						<li><button onclick="aplicarFiltro('detecbordes');">Deteccion de bordes</button></li>
@@ -44,8 +44,10 @@
             
         </div>
     </header>
-    <main class="limpiar">
-        <canvas id="canvas"></canvas>
+    <main class="limpiar" id="main">
+        <div id="lienzo">
+            <canvas id="canvas"></canvas>
+        </div>
         <input type="file" id="carga-imagen" accept="image/*" onchange="cargarImagen()" ></input>
     </main>
     <script src="./script/script.js"></script>

@@ -1,9 +1,10 @@
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 
-let paiting = document.querySelector('.limpiar');
+let paiting = document.querySelector('#lienzo');
 let paintStyle=getComputedStyle(paiting);
-canvas.width=parseInt(paintStyle.getPropertyValue("width"));
+console.log(paintStyle.getPropertyValue("height"));
+canvas.width=parseInt(paintStyle.getPropertyValue("height"));
 canvas.height=parseInt(paintStyle.getPropertyValue("height"));
 let input = document.querySelector('#carga-imagen');
 
@@ -55,8 +56,6 @@ function mueveRaton(capturo){
         ctx.lineJoin = ctx.lineCap = tipoLinea;
         ctx.strokeStyle = color;
         ctx.lineWidth = ancho;
-        let message = 'pintar position: ' + mousePos.x + ',' + mousePos.y;
-        console.log(message);
 		ctx.lineTo(mousePos.x,mousePos.y);
 		ctx.stroke();
 	}
