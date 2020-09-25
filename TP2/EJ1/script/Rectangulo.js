@@ -1,7 +1,6 @@
 class Rectangulo extends Figure{
     constructor (posX, posY, fill, context, width, height){
         super(posX,posY,fill,context);
-        this.radius=radius;
         this.width = width;
         this.height = height;
     }

@@ -11,8 +11,8 @@ const NUM_FIGURES = 4;
 
 
 function drawFigures(){
-    clearCanvas();
-    for (let i =0;i<figures.length;i++){
+    clearCanvas("#FFF",canvas.width,canvas.height);
+    for (let i =0;i<figuras.length;i++){
         figuras[i].draw(context);
     }
 }
@@ -22,7 +22,7 @@ function addRectangulo(){
     let posY = Math.round(Math.random()*canvasHeight);
     let color = randomRGBA();
     let rect = new Rectangulo(posX,posY,20,20,color,context);
-    figures.push(rect);
+    figuras.push(rect);
 }
 
 function addCircle(){
@@ -30,12 +30,12 @@ function addCircle(){
     let posY = Math.round(Math.random()*canvasHeight);
     let color = randomRGBA();
     let circle = new Circle(posX,posY,FIGURE_SIZE/2,color,context);
-    figures.push(circle);
+    figuras.push(circle);
 }
 /* //Evento temporal para agregar figuras
 function addFigures(){
     addFigure();
-    if (figures.length < 30){
+    if (figuras.length < 30){
         setTimeout(addFigures,333);
     }
 }
@@ -48,7 +48,7 @@ setTimeout(() => {
 
 function findClickedFigure(x,y){
     for (index = 0; index < NUM_FIGURES;index++){
-        const element = figures[index];
+        const element = figuras[index];
         if(element.isPointInside(x,y)){
             return element;
         }
@@ -63,10 +63,12 @@ function initExample() {
         }else
             addCircle();
     }
+    console.log(figuras);
+    drawFigures();
 }
 
 
-drawFigures();
+
 //inicializar listeners
 canvas.addEventListener('click', event =>{
     if (lastClickedFigure != null){

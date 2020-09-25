@@ -6,7 +6,7 @@ function randomRGBA(){
     return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
-function clearCanvas(color,canvas){
+function clearCanvas(color,width,height){
     context.fillStyle = color;
-    context.fillRect(0,0,canvas.width,canvas.height);
+    context.fillRect(0,0,width,height);
 }
