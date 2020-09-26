@@ -4,7 +4,7 @@ let canvasWidth = canvas.width;
 let canvasHeight=canvas.height;
 
 let figuras = [];
-
+let fichas = [];
 let tablero = new Tablero(6,7,4,((6*3)+3),context);
 
 function clearCanvas(color,width,height){
@@ -12,35 +12,33 @@ function clearCanvas(color,width,height){
     context.fillRect(0,0,width,height);
 }
 
-
+function aleatorio(a,b) {
+    return Math.round(Math.random()*(b-a)+parseInt(a));
+}
 
 function drawTablero(){
     let ancho = canvasWidth/100 * 50; // ancho del tablero
     let alto = canvasHeight;
     let blanco = canvasWidth/100 * 25; // 25 porciento de cada lado para acomodar fichas
-    clearCanvas('#FFF',canvas.width,canvas.height);
     tablero.dibujarTablero(blanco,0,ancho,alto);
 }
 
 function drawFichas(){
-    let blanco = canvasWidth/100 * 25; // 25 porciento de cada lado para acomodar fichas
     let cant = tablero.getCantFichas();
-    let fichas = [];
     let posX=0;
     let posY=0;
     let radio = tablero.getRadio();
    
     for (let i = 0; i < cant;i++ ){
-        let posX = Math.round(Math.random()* blanco/2 + radio);
-        let posY= Math.round(Math.random()* canvasHeight/2+radio);
+        posX =aleatorio(radio*2,(canvasWidth/100 * 25) - (radio*2));
+        posY= aleatorio(radio*2,canvasHeight/2);
         let circulo = new Circle(posX,posY,radio,"red",context);
         fichas.push(circulo);
     }
-    let ancho = canvasWidth/100 * 50; // ancho del tablero
-    let alto = canvasHeight;
+   
     for (let i = 0; i < cant;i++ ){
-        let posX = Math.round(Math.random()* blanco/2 + radio); // falta arreglar esto
-        let posY= Math.round(Math.random()* canvasHeight/2+radio);
+        posX = aleatorio(canvasWidth/100 * 75+radio*2,canvasWidth-radio*2); 
+        posY= aleatorio(radio*2,canvasHeight/2);
         let circulo = new Circle(posX,posY,radio,"blue",context);
         fichas.push(circulo);
     }
@@ -50,5 +48,39 @@ function drawFichas(){
     }
 
 }
-drawTablero();
-drawFichas();
+
+function drawFigures(){
+    clearCanvas('#FFFFFF',canvasWidth,canvasHeight);
+    drawTablero();
+    drawFichas();
+}
+
+function findClickedFigure(x,y){
+    for (index = 0; index < figuras.length;index++){
+        const element = figuras[index];
+        if(element.isPointInside(x,y)){
+            return element;
+        }
+    }
+}
+
+
+let lastClickedFigure = null;
+//inicializar listeners
+function iniciarjuego(){
+    drawFigures();
+    canvas.addEventListener('click', event =>{
+        if (lastClickedFigure != null){
+            lastClickedFigure.setHighlighted(false);
+            lastClickedFigure=null;
+        }
+        let clickedFigure = findClickedFigure(event.layerX,event.layerY);
+        if(clickedFigure != null){
+            clickedFigure.setHighlighted(true);
+            lastClickedFigure = clickedFigure;
+        }
+        drawFigures();
+    });
+}
+iniciarjuego();
+

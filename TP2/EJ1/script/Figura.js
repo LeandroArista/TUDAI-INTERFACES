@@ -1,9 +1,10 @@
 class Figure {
-    constructor (posX, posY, fill, context){
+    constructor (posX, posY, fill, context,isDraggin = false){
         this.posX = posX;
         this.posY = posY;
         this.fill = fill;
         this.context = context;
+        this.isDraggin = isDraggin;
         this.highlighted = false;
         this.highlightedStyle = 'red';
     }
@@ -26,6 +27,12 @@ class Figure {
     }
     getFill(){
         return this.fill;
+    }
+    isDraggin(){
+        return this.isDraggin;
+    }
+    setDraggin(value){
+        this.isDraggin=value;
     }
 
     setHighlighted(value){

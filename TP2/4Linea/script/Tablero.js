@@ -1,45 +1,16 @@
-/* function cargarImgFicha(ubicacion){
 
-    let reader = new FileReader();
-    reader.readAsDataURL(ubicacion);
-
-    reader.onload = readerEvent =>{
-        let content =readerEvent.target.result;
-        let image = new Image();
-        image.src = content;
-        image.onload= function (){
-            return image;
-        }
-    }
-}
-
-function calcularTamañoFicha(width,height){
-    let tam = 10;
-    return tam;
-}
- */
 class Tablero{
     constructor (filas,columnas,lineas=4,cantFichas,context){
         this.filas=filas;
         this.columnas=columnas;
         this.cantFichas = cantFichas;
         this.context = context;
-     /*    let imgj1= "./img/ficharoja.png";
-        let imgj2 ="./img/fichaazul.png"; */
+    
         this.lineas =lineas;//cantidad de fichas para ganar
         this.arreglo = [];
         this.figuras = [];
         this.radio= 0;
 
-        //this.fichas = [];
-    /*     let posx = 10;
-        let posy = 10;
-        let lado=calcularTamañoFicha(10,10);
-
-        for (let cant =0 ; cant< cantFichas;cant++){
-            this.fichas.push(new Ficha(false,posx,posy,'#fff',context,lado,cargarImgFicha(imgj1)));
-
-        } */
         for (let i =0; i < filas;i++){
             this.arreglo[i] = [];
             for ( let j=0; j < columnas;j++){
@@ -163,7 +134,7 @@ class Tablero{
     dibujarTablero(x,y,ancho,alto){
        
         this.figuras = [];
-        //dibujar fondo todo
+        //genero fondo todo
         let casillaancho=ancho/this.columnas;
         let casillaalto=alto/this.filas;
         let centroX =  casillaancho/2;
@@ -177,7 +148,7 @@ class Tablero{
         let rect = new Rectangulo(x,y,ancho,alto,color,this.context);
         this.figuras.push(rect);
      
-        // dibujo las casillas
+        // genero las casillas
         let posX =x;
         let posY =y;
         for (let i =0; i < this.filas;i++){
