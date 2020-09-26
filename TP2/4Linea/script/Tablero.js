@@ -1,4 +1,4 @@
-function cargarImgFicha(ubicacion){
+/* function cargarImgFicha(ubicacion){
 
     let reader = new FileReader();
     reader.readAsDataURL(ubicacion);
@@ -17,32 +17,33 @@ function calcularTamañoFicha(width,height){
     let tam = 10;
     return tam;
 }
-
+ */
 class Tablero{
     constructor (filas,columnas,lineas=4,cantFichas,context){
         this.filas=filas;
         this.columnas=columnas;
         this.cantFichas = cantFichas;
         this.context = context;
-        let imgj1= "./img/ficharoja.png";
-        let imgj2 ="./img/fichaazul.png";
+     /*    let imgj1= "./img/ficharoja.png";
+        let imgj2 ="./img/fichaazul.png"; */
         this.lineas =lineas;//cantidad de fichas para ganar
         this.arreglo = [];
+        this.figuras = [];
+        this.radio= 0;
 
-        this.fichas = [];
-        let posx = 10;
+        //this.fichas = [];
+    /*     let posx = 10;
         let posy = 10;
         let lado=calcularTamañoFicha(10,10);
 
         for (let cant =0 ; cant< cantFichas;cant++){
             this.fichas.push(new Ficha(false,posx,posy,'#fff',context,lado,cargarImgFicha(imgj1)));
 
-        }
+        } */
         for (let i =0; i < filas;i++){
             this.arreglo[i] = [];
             for ( let j=0; j < columnas;j++){
-                let ficha = new Ficha(true,i,j,'#fff',context,40,null);
-                this.arreglo[i][j]= ficha;
+                this.arreglo[i][j]= 0;
             }
         }
     }
@@ -60,14 +61,20 @@ class Tablero{
     setPosition(x,y,value){
         this.arreglo[x][y] = value;
     }
+    getCantFichas(){
+        return this.cantFichas;
+    }
+    getRadio(){
+        return this.radio;
+    }
 
     isGanador(x,y){
-        let centro = this.arreglo[x][y].getColor();
+        let centro = this.arreglo[x][y];
         let count=0;
         //izquierda
         let i = x; 
         while (i> x-this.lineas && i>=0 ){
-            if (this.arreglo[i][y].getColor() == centro ){
+            if (this.arreglo[i][y] == centro ){
                 count++;
             }else
             break;
@@ -79,7 +86,7 @@ class Tablero{
         let count2 = 0;
         i = x;
         while ( i> x+this.lineas && i>columnas){
-            if (this.arreglo[i][y].getColor() == centro){
+            if (this.arreglo[i][y] == centro){
                 count2++;
             }else
             break;
@@ -91,7 +98,7 @@ class Tablero{
         count=0;
         let c = y;
         while (c > y-this.lineas && c <= 0){
-            if (this.arreglo[x][i].getColor() == centro){
+            if (this.arreglo[x][i] == centro){
                 count++;
             }else
                 break;
@@ -153,17 +160,45 @@ class Tablero{
         return false;
     }
 
-    dibujarTablero(){
-        let ancho = this.context.width/100 * 80; // ancho del tablero
-        let alto = this.context.height;
-        let blanco = this.context.width/100 * 10; // 10 porciento de cada lado para acomodar fichas
-
+    dibujarTablero(x,y,ancho,alto){
+       
+        this.figuras = [];
         //dibujar fondo todo
-        this.context.fillStyle = "#9c9c9c";
-        this.context.fillRect(blanco,0,ancho,alto);
-        // setear las posiciones de las fichas 
-        // dibujar fichas vacias
-
-
+        let casillaancho=ancho/this.columnas;
+        let casillaalto=alto/this.filas;
+        let centroX =  casillaancho/2;
+        let centroY =  casillaalto/2;
+        let radio=centroY;
+        if (centroX<centroY)
+            radio=centroX;
+        radio--;
+        this.radio=radio;
+        let color = "#9c9c9c";
+        let rect = new Rectangulo(x,y,ancho,alto,color,this.context);
+        this.figuras.push(rect);
+     
+        // dibujo las casillas
+        let posX =x;
+        let posY =y;
+        for (let i =0; i < this.filas;i++){
+            posX=x;
+            for ( let j=0; j < this.columnas;j++){
+                color="white";
+                if(this.arreglo[i][j]==1)
+                    color="red";
+                if(this.arreglo[i][j]==2)
+                    color="blue";
+                let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context);
+                posX +=casillaancho;
+                this.figuras.push(circulo);
+            }
+            posY+=casillaalto;
+        }
+        
+        
+        // dibujar el tablero
+            for (let i =0;i<this.figuras.length;i++){
+                this.figuras[i].draw(this.context);
+    }
     }
 }
