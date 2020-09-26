@@ -3,7 +3,6 @@ let context = canvas.getContext('2d');
 let canvasWidth = canvas.width;
 let canvasHeight=canvas.height;
 
-let figuras = [];
 let fichas = [];
 let tablero = new Tablero(6,7,4,((6*3)+3),context);
 
@@ -22,8 +21,7 @@ function drawTablero(){
     let blanco = canvasWidth/100 * 25; // 25 porciento de cada lado para acomodar fichas
     tablero.dibujarTablero(blanco,0,ancho,alto);
 }
-
-function drawFichas(){
+function generarfichas(){
     let cant = tablero.getCantFichas();
     let posX=0;
     let posY=0;
@@ -42,11 +40,13 @@ function drawFichas(){
         let circulo = new Circle(posX,posY,radio,"blue",context);
         fichas.push(circulo);
     }
+}
 
+function drawFichas(){
+    console.log(fichas);
     for (let i = 0; i < fichas.length;i++ ){
         fichas[i].draw(context);
     }
-
 }
 
 function drawFigures(){
@@ -56,8 +56,8 @@ function drawFigures(){
 }
 
 function findClickedFigure(x,y){
-    for (index = 0; index < figuras.length;index++){
-        const element = figuras[index];
+    for (index = 0; index < fichas.length;index++){
+        const element = fichas[index];
         if(element.isPointInside(x,y)){
             return element;
         }
@@ -68,19 +68,23 @@ function findClickedFigure(x,y){
 let lastClickedFigure = null;
 //inicializar listeners
 function iniciarjuego(){
+    fichas = [];
+    generarfichas();
     drawFigures();
-    canvas.addEventListener('click', event =>{
-        if (lastClickedFigure != null){
-            lastClickedFigure.setHighlighted(false);
-            lastClickedFigure=null;
-        }
-        let clickedFigure = findClickedFigure(event.layerX,event.layerY);
-        if(clickedFigure != null){
-            clickedFigure.setHighlighted(true);
-            lastClickedFigure = clickedFigure;
-        }
-        drawFigures();
-    });
+    
+   
 }
 iniciarjuego();
 
+canvas.addEventListener('click', event =>{
+    if (lastClickedFigure != null){
+        lastClickedFigure.setHighlighted(false);
+        lastClickedFigure=null;
+    }
+    let clickedFigure = findClickedFigure(event.layerX,event.layerY);
+    if(clickedFigure != null){
+        clickedFigure.setHighlighted(true);
+        lastClickedFigure = clickedFigure;
+    }
+    drawFigures();
+});
