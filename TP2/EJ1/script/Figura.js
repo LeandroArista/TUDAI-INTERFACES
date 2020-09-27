@@ -16,7 +16,7 @@ class Figure {
     getPosition(){
         return {
             x : this.getPosX(),
-            y : this.getComputedStyle()
+            y : this.getPosY()
         };
     }
     getPosX(){

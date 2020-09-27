@@ -12,10 +12,10 @@ class Figure {
         this.fill=fill;
     }
 
-    getPosition(){
+    getPosicion(){
         return {
             x : this.getPosX(),
-            y : this.getComputedStyle()
+            y : this.getPosY()
         };
     }
     getPosX(){

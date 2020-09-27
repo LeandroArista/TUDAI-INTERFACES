@@ -169,7 +169,7 @@ class Tablero{
         
         // dibujar el tablero
             for (let i =0;i<this.figuras.length;i++){
-                this.figuras[i].draw(this.context);
+                this.figuras[i].draw();
     }
     }
 }
