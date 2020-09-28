@@ -34,7 +34,8 @@ class Tablero{
             for (let i=1;i< this.figuras.length;i++){
                 if(this.figuras[i].isPoinInside(posx,posy)){
                     let num= i;
-                    num = num/this.filas;///continuar
+                    x = Math.floor(num/this.columnas); // calculo la fila en la que estoy
+                    y = Math.floor(num/this.columnas);///  calculo la columna
                     return {x:x,y:y};
                 }
             }
