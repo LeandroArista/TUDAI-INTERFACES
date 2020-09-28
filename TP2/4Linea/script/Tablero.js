@@ -188,7 +188,7 @@ class Tablero{
             radio=centroX;
         radio--;
         this.radio=radio;
-        let color = "#9c9c9c";
+        let color = "#000080";
         let rect = new Rectangulo(x,y,ancho,alto,color,this.context);
         this.figuras.push(rect);
      
@@ -202,7 +202,7 @@ class Tablero{
                 if(this.arreglo[i][j] == 1)
                     color="red";
                 if(this.arreglo[i][j] == 2 )
-                    color="blue";
+                    color="yellow";
                 let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context);
                 this.figuras.push(circulo);
                 let rec=new Rectangulo(posX,posY,casillaancho,casillaalto,color,this.context);

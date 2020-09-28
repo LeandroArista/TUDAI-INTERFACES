@@ -35,7 +35,8 @@ function drawTablero(){
     let ancho = anchocanvas/100 * 50; // ancho del tablero
     let alto = altocanvas;
     let blanco = anchocanvas/100 * 25; // 25 porciento de cada lado para acomodar fichas
-    tablero.dibujarTablero(blanco,0,ancho,alto);
+    
+    tablero.dibujarTablero(blanco,80,ancho,alto-80);
 }
 
 function generarfichas(){
@@ -55,7 +56,7 @@ function generarfichas(){
     for (let i = 0; i < cant;i++ ){
         posX = aleatorio(anchocanvas/100 * 75+radio*2,anchocanvas-radio*2); 
         posY= aleatorio(radio*2,altocanvas/2);
-        let circulo = new Circle(posX,posY,radio,"blue",context);
+        let circulo = new Circle(posX,posY,radio,"yellow",context);
         fichas.push(circulo);
     }
 }
@@ -145,7 +146,7 @@ function handleMouseMove(e){
                 drawTablero();
                 drawFichas();
                 if(turno == "red")
-                    turno = "blue";
+                    turno = "yellow";
                 else
                     turno = "red";
                 if(tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y)==true){
