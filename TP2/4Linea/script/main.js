@@ -96,7 +96,7 @@ function selecciona(e){
     if(lastClickedFigure!=null)
         lastClickedFigure.setHighlighted(false);
     console.log(fichas);
-    for (let i=0; i< fichas.length;i++){
+    for (let i=fichas.length-1; i>=0;i--){//desde la ultima que se agrego
         ficha=fichas[i];
         if(fichas[i].isPointInside(x,y)){ ///optimizar
             lastClickedFigure=fichas[i];
