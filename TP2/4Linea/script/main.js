@@ -2,10 +2,10 @@ let canvas = document.querySelector('#canvas');
 let context = canvas.getContext('2d');
 let anchocanvas = 1200;
 let altocanvas = 500;
+canvas.height = altocanvas;
+canvas.width = anchocanvas;
 
-
-
-let fichas;
+let fichas=[];
 let tablero = new Tablero(6,7,4,((6*3)+3),context);
 
 function clearCanvas(color,width,height){
@@ -47,16 +47,11 @@ function generarfichas(){
 function drawFichas(){
     for (let i = 0; i < fichas.length;i++ ){
         //aca esta el problema no se xq no dibuja
-        console.log(fichas[i].getPosicion());
         fichas[i].draw();
     }
 }
 
-function drawFigures(){
-    clearCanvas('black',anchocanvas,altocanvas);
-    drawTablero();
-    drawFichas();
-}
+
 
 function findClickedFigure(x,y){
     for (index = 0; index < fichas.length;index++){
@@ -71,16 +66,17 @@ function findClickedFigure(x,y){
 let lastClickedFigure = null;
 //inicializar listeners
 function iniciarjuego(){
-    canvas.height = altocanvas;
-    canvas.width = anchocanvas;
-    fichas = [];
-    generarfichas();
-    drawFigures();
-    canvas.removeEventListener("click",iniciarjuego,false);
-    canvas.addEventListener("click",selecciona,false);
+    clearCanvas('black',anchocanvas,altocanvas);
     
-   
+    drawTablero();
+    generarfichas();
+    drawFichas();
+  
+    canvas.removeEventListener("onload",iniciarjuego,false);
+    canvas.addEventListener("click",selecciona,false);
+
 }
+
 window.onload = iniciarjuego;
 
 function ajusta(xx,yy){
@@ -101,7 +97,10 @@ function selecciona(e){
         ficha=fichas[i];
         if(ficha.isPointInside(x,y)){ ///optimizar
             lastClickedFigure=ficha;
+            console.log("seleccione ficha",ficha[i]);
+            ficha.setHighlightedStyle("pink");
             ficha.setHighlighted(true);
+
             break;
         }
     }
@@ -111,3 +110,8 @@ function selecciona(e){
         canvas.addEventListener("click",selecciona,false);
     }
 }
+
+
+
+let circulo = new Circle(10,10,50,"red",context);
+circulo.draw(); 

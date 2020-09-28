@@ -10,6 +10,9 @@ class Tablero{
         this.arreglo = [];
         this.figuras = [];
         this.radio= 0;
+        this.ancho=0;
+        this.alto=0;
+        this.posinic=0;
 
         for (let i =0; i < filas;i++){
             this.arreglo[i] = [];
@@ -23,6 +26,18 @@ class Tablero{
     }
     getColumnas(){
         return this.columnas;
+    }
+    getCanvasposicion(posx,posy){
+        let x;
+        let y;
+        if(figuras[o].isPoinInside(posx,posy))
+            for (let i=1;i< this.figuras.length;i++){
+                if(this.figuras[i].isPoinInside(posx,posy)){
+                    let num= i;
+                    num = num/this.filas;///continuar
+                    return {x:x,y:y};
+                }
+            }
     }
 
     getPosicion(x,y){
@@ -132,9 +147,11 @@ class Tablero{
     }
 
     dibujarTablero(x,y,ancho,alto){
-       
+       this.posinic=x;
         this.figuras = [];
         //genero fondo todo
+        this.ancho=ancho;
+        this.alto=alto;
         let casillaancho=ancho/this.columnas;
         let casillaalto=alto/this.filas;
         let centroX =  casillaancho/2;
