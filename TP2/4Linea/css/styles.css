@@ -1,5 +1,10 @@
 #canvas{
     width: 1200px;
     height: 500px;
-    background-color:black;
+    background-color:white;
+}
+
+#h1{
+    text-align: center;
+    width: 100%;
 }

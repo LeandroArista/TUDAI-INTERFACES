@@ -173,7 +173,7 @@ class Tablero{
     }
 
     dibujarTablero(x,y,ancho,alto){
-       this.posinic=x;
+        this.posinic=x;
         this.figuras = [];
         this.casillas= [];
         //genero fondo todo
@@ -211,11 +211,9 @@ class Tablero{
             }
             posY+=casillaalto;
         }
-        
-        
         // dibujar el tablero
-            for (let i =0;i<this.figuras.length;i++){
-                this.figuras[i].draw();
-    }
+        for (let i =0;i<this.figuras.length;i++){
+            this.figuras[i].draw();
+        }
     }
 }
