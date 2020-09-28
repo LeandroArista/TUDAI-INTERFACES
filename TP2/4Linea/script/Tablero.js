@@ -9,6 +9,7 @@ class Tablero{
         this.lineas =lineas;//cantidad de fichas para ganar
         this.arreglo = [];
         this.figuras = [];
+        this.casillas = [];
         this.radio= 0;
         this.ancho=0;
         this.alto=0;
@@ -28,17 +29,34 @@ class Tablero{
         return this.columnas;
     }
     getCanvasposicion(posx,posy){
-        let x;
-        let y;
-        if(figuras[o].isPoinInside(posx,posy))
-            for (let i=1;i< this.figuras.length;i++){
-                if(this.figuras[i].isPoinInside(posx,posy)){
-                    let num= i;
-                    x = Math.floor(num/this.columnas); // calculo la fila en la que estoy
-                    y = Math.floor(num/this.columnas);///  calculo la columna
-                    return {x:x,y:y};
+        let x = -1;
+        let y = -1;
+        if(this.figuras[0].isPointInside(posx,posy)){//esta dentro del tablero
+            for (let i=0;i<this.casillas.length;i++){
+                if (this.casillas[i].isPointInside(posx,posy)){
+                    x = Math.floor(i / this.columnas);
+                    y =Math.floor( i % this.columnas); 
                 }
             }
+        }
+        return {x:x,y:y};
+    }
+
+    agregarFicha(posx,posy,valor){
+        let pos=this.getCanvasposicion(posx,posy);
+        for (let f=this.filas-1;f>0;f--){
+            if(this.arreglo[f][pos.y]==0){
+                let color=0;
+                if (valor == "red")
+                    color = 1;
+                else
+                    color = 2;
+                this.arreglo[f][pos.y] = color;
+                return true;
+            }
+        }
+        return false;
+
     }
 
     getPosicion(x,y){
@@ -150,6 +168,7 @@ class Tablero{
     dibujarTablero(x,y,ancho,alto){
        this.posinic=x;
         this.figuras = [];
+        this.casillas= [];
         //genero fondo todo
         this.ancho=ancho;
         this.alto=alto;
@@ -173,13 +192,15 @@ class Tablero{
             posX=x;
             for ( let j=0; j < this.columnas;j++){
                 color="white";
-                if(this.arreglo[i][j]==1)
+                if(this.arreglo[i][j] == 1)
                     color="red";
-                if(this.arreglo[i][j]==2)
+                if(this.arreglo[i][j] == 2 )
                     color="blue";
                 let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context);
-                posX +=casillaancho;
                 this.figuras.push(circulo);
+                let rec=new Rectangulo(posX,posY,casillaancho,casillaalto,color,this.context);
+                this.casillas.push(rec);
+                posX +=casillaancho; 
             }
             posY+=casillaalto;
         }

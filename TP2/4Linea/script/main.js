@@ -143,8 +143,25 @@ function handleMouseMove(e){
   }
   function handleMouseUp(e){
     e.preventDefault();
+    if(arrastrar){
+        let pos = ajusta(e.clientX,e.clientY);
+        if(lastClickedFigure!=null){
+            let color=lastClickedFigure.getFill();
+            let result=tablero.agregarFicha(pos.x,pos.y,color);
+            if(result){
+                let index = fichas.indexOf(lastClickedFigure);
+                fichas.splice(index,1);
+               
+            }else{
+                lastClickedFigure.setPosX(lastpositionx);
+                lastClickedFigure.setPosY(lastpositiony);
+            }   
+        }
+    }
     arrastrar = false;
     lastClickedFigure=null;
-
+    clearCanvas('black',anchocanvas,altocanvas);
+    drawTablero();
+    drawFichas();
   }
 
