@@ -100,8 +100,8 @@ function selecciona(e){
         ficha=fichas[i];
         if(fichas[i].isPointInside(x,y)){ ///optimizar
             lastClickedFigure=fichas[i];
-            console.log(ficha[i]);
-            ficha.setHighlighted(true);
+            fichas[i].setHighlighted(true);
+            fichas[i].setPosX(500);//esto funciona 
             //drag esta ficha 
             clearCanvas('black',anchocanvas,altocanvas);
             drawTablero();

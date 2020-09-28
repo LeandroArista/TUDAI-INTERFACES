@@ -27,6 +27,12 @@ class Figure {
     getFill(){
         return this.fill;
     }
+    setPosX(x){
+        this.posX=x;
+    }
+    setPosY(y){
+        this.posY=y;
+    }
 
     setHighlighted(value){
         this.highlighted = value;
