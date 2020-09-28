@@ -4,6 +4,8 @@ let anchocanvas = 1200;
 let altocanvas = 500;
 canvas.height = altocanvas;
 canvas.width = anchocanvas;
+let resultado=document.querySelector('#resultado');
+let turno = "red";
 
 let fichas=[];
 let tablero = new Tablero(6,7,4,((6*3)+3),context);
@@ -95,19 +97,19 @@ function selecciona(e){
     let pos = ajusta(e.clientX,e.clientY);
     let x = pos.x;
     let y = pos.y;
-    let ficha;
     if(lastClickedFigure!=null)
         lastClickedFigure.setHighlighted(false);
     for (let i=fichas.length-1; i>=0;i--){//desde la ultima que se agrego
         ficha=fichas[i];
-        if(fichas[i].isPointInside(x,y)){ ///optimizar
-            lastClickedFigure=fichas[i];
-            lastpositionx=fichas[i].getPosX();
-            lastpositiony=fichas[i].getPosY();
-            arrastrar = true;
-            fichas[i].setHighlighted(true);
-    
-            break;
+        if(fichas[i].isPointInside(x,y)){
+            if(turno == fichas[i].getFill()){
+                lastClickedFigure=fichas[i];
+                lastpositionx=fichas[i].getPosX();
+                lastpositiony=fichas[i].getPosY();
+                arrastrar = true;
+                fichas[i].setHighlighted(true);  
+                break;
+            }
         }
     }
   
@@ -151,17 +153,27 @@ function handleMouseMove(e){
             if(result){
                 let index = fichas.indexOf(lastClickedFigure);
                 fichas.splice(index,1);
-               
+                clearCanvas('black',anchocanvas,altocanvas);
+                drawTablero();
+                drawFichas();
+                if(turno == "red")
+                    turno = "blue";
+                else
+                    turno = "red";
+                if(tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y)==true){
+                    alert("Termino el juego Ganador Jugador "+color);
+                }
             }else{
                 lastClickedFigure.setPosX(lastpositionx);
                 lastClickedFigure.setPosY(lastpositiony);
+                clearCanvas('black',anchocanvas,altocanvas);
+                drawTablero();
+                drawFichas();
             }   
         }
     }
     arrastrar = false;
     lastClickedFigure=null;
-    clearCanvas('black',anchocanvas,altocanvas);
-    drawTablero();
-    drawFichas();
+   
   }
 

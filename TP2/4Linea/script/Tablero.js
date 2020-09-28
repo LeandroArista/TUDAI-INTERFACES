@@ -14,6 +14,8 @@ class Tablero{
         this.ancho=0;
         this.alto=0;
         this.posinic=0;
+        this.lastMovex=-1;
+        this.lastMovey=-1;
 
         for (let i =0; i < filas;i++){
             this.arreglo[i] = [];
@@ -52,11 +54,16 @@ class Tablero{
                 else
                     color = 2;
                 this.arreglo[f][pos.y] = color;
+                this.lastMovex=f;
+                this.lastMovey=pos.y;
                 return true;
             }
         }
         return false;
 
+    }
+    getLastMove(){
+        return {x:this.lastMovex,y:this.lastMovey};
     }
 
     getPosicion(x,y){
@@ -77,44 +84,44 @@ class Tablero{
         let centro = this.arreglo[x][y];
         let count=0;
         //izquierda
-        let i = x; 
-        while (i> x-this.lineas && i>=0 ){
-            if (this.arreglo[i][y] == centro ){
+        let c = y; 
+        while ( c >= 0 ){
+            if (this.arreglo[x][c] == centro ){
                 count++;
             }else
             break;
-            i--;
+            c--;
         }
         if (count == this.lineas)
             return true;
         //derecha
         let count2 = 0;
-        i = x;
-        while ( i> x+this.lineas && i>columnas){
-            if (this.arreglo[i][y] == centro){
+        c = y;
+        while ( c < this.columnas){
+            if (this.arreglo[x][c] == centro){
                 count2++;
             }else
             break;
-            i++;
+            c++;
         }
         if (count == this.lineas || (count+count2-1) == this.lineas) //resto 1 xq cuento las dos veces el centro
             return true;
         //abajo
         count=0;
-        let c = y;
-        while (c > y-this.lineas && c <= 0){
-            if (this.arreglo[x][i] == centro){
+        let f = x;
+        while (f < this.filas){
+            if (this.arreglo[f][y] == centro){
                 count++;
             }else
                 break;
-            c++;
+            f++;
         }
         if (count == this.lineas)
             return true;
         //diagonal sup izq (-x,-y)
         count=0;
-        i = 0;
-        while ( i < this.lineas && x-this.lineas>= 0 && y-this.lineas>=0){
+        let i = 0;
+        while ( x-i>=0 && y-1>=0){
             if (this.arreglo[x-i][y-i] == centro){
                 count++;
             }else
@@ -126,7 +133,7 @@ class Tablero{
         //diagonal inf der (+x,+y)
         count2=0;
         i = 0;
-        while ( i < this.lineas && x+this.lineas<this.filas && y+this.lineas<this.columnas){
+        while ( i+x<this.filas && y+i<this.columnas){
             if (this.arreglo[x+i][y+i] == centro){
                 count2++;
             }else
@@ -139,7 +146,7 @@ class Tablero{
         //diagonal inf izq (+x,-y)
         count=0;
         i=0;
-        while ( i < this.lineas && x+this.lineas<this.filas && y-this.lineas>=0){
+        while ( x+i<this.filas && y-i>=0){
             if (this.arreglo[x+i][y-i] == centro){
                 count++;
             }
@@ -152,8 +159,8 @@ class Tablero{
         //diagonal sup der (-x,+y)
         count2=0;
         i = 0;
-        while ( i < this.lineas && x-this.lineas >= 0 && y+this.lineas<this.columnas){
-            if (this.arreglo[x+i][y+i] == centro){
+        while ( x-i >=0 && y+i<this.columnas){
+            if (this.arreglo[x-i][y+i] == centro){
                 count2++;
             }else
                 break;
