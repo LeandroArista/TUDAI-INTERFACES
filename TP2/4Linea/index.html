@@ -9,6 +9,21 @@
 <body>
     <header>
         <h1>Entregable 2: 4 en linea</h1>
+        <label for="cars">Choose a car:</label>
+
+        <select name="filas" id="filas">
+            <option value=6 selected>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+        </select>
+        <select name="columnas" id="columnas">
+            <option value=6>6</option>
+            <option value=7 selected>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+        </select>
+        <button onclick="cambiarTablero()">cambiar tablero</button>
     </header>
     <canvas id="canvas"></canvas>
     <label id="resultado"></label>

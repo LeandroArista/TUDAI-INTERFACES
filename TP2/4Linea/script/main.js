@@ -3,13 +3,17 @@
 let canvas = document.querySelector('#canvas');
 let context = canvas.getContext('2d');
 let resultado=document.querySelector('#resultado');
+let cantfilas= document.querySelector('#filas').value;
+let cantcolumnas = document.querySelector('#columnas').value;
 let anchocanvas = 1200;
 let altocanvas = 500;
 let turno = "red";
 let colorCanvas= "white";
-let nfilas = 6;
-let ncolumnas = 7;
-let nfichasgana=4;
+console.log(cantfilas);
+console.log(cantcolumnas);
+let nfilas = cantfilas;
+let ncolumnas = cantcolumnas;
+let nfichasgana= 4;
 let nfichasTablero = (nfilas * ncolumnas )/2;
 let lastClickedFigure = null;
 let lastpositionx=0;
@@ -21,6 +25,16 @@ canvas.height = altocanvas;
 canvas.width = anchocanvas;
 //genero el tablero
 let tablero = new Tablero(nfilas,ncolumnas,nfichasgana,nfichasTablero,context);
+
+function cambiarTablero(){
+    fichas =[];
+    tablero = new Tablero(nfilas,ncolumnas,nfichasgana,nfichasTablero,context);//problema
+    clearCanvas(colorCanvas,anchocanvas,altocanvas);
+    drawTablero();
+    generarfichas();
+    drawFichas();
+
+}
 
 function clearCanvas(color,width,height){
     context.fillStyle = color;
