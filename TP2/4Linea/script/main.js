@@ -93,14 +93,19 @@ function selecciona(e){
     let x = pos.x;
     let y = pos.y;
     let ficha;
+    if(lastClickedFigure!=null)
+        lastClickedFigure.setHighlighted(false);
+    console.log(fichas);
     for (let i=0; i< fichas.length;i++){
         ficha=fichas[i];
-        if(ficha.isPointInside(x,y)){ ///optimizar
-            lastClickedFigure=ficha;
-            console.log("seleccione ficha",ficha[i]);
-            ficha.setHighlightedStyle("pink");
+        if(fichas[i].isPointInside(x,y)){ ///optimizar
+            lastClickedFigure=fichas[i];
+            console.log(ficha[i]);
             ficha.setHighlighted(true);
-
+            //drag esta ficha 
+            clearCanvas('black',anchocanvas,altocanvas);
+            drawTablero();
+            drawFichas();
             break;
         }
     }
@@ -110,8 +115,3 @@ function selecciona(e){
         canvas.addEventListener("click",selecciona,false);
     }
 }
-
-
-
-let circulo = new Circle(10,10,50,"red",context);
-circulo.draw(); 
