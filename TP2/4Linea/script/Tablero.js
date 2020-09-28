@@ -5,7 +5,6 @@ class Tablero{
         this.columnas=columnas;
         this.cantFichas = cantFichas;
         this.context = context;
-    
         this.lineas =lineas;//cantidad de fichas para ganar
         this.arreglo = [];
         this.figuras = [];
@@ -17,6 +16,8 @@ class Tablero{
         this.lastMovex=-1;
         this.lastMovey=-1;
 
+        this.lugareslibres=filas*columnas;
+
         for (let i =0; i < filas;i++){
             this.arreglo[i] = [];
             for ( let j=0; j < columnas;j++){
@@ -24,6 +25,10 @@ class Tablero{
             }
         }
     }
+    getLugaresLibres(){
+        return this.lugareslibres;
+    }
+
     getFilas(){
         return this.filas;
     }
@@ -46,7 +51,7 @@ class Tablero{
 
     agregarFicha(posx,posy,valor){
         let pos=this.getCanvasposicion(posx,posy);
-        for (let f=this.filas-1;f>0;f--){
+        for (let f=this.filas-1;f>=0;f--){
             if(this.arreglo[f][pos.y]==0){
                 let color=0;
                 if (valor == "red")
@@ -54,6 +59,7 @@ class Tablero{
                 else
                     color = 2;
                 this.arreglo[f][pos.y] = color;
+                this.lugareslibres--;
                 this.lastMovex=f;
                 this.lastMovey=pos.y;
                 return true;

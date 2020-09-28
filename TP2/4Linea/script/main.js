@@ -138,27 +138,37 @@ function handleMouseMove(e){
         let pos = ajusta(e.clientX,e.clientY);
         if(lastClickedFigure!=null){
             let color=lastClickedFigure.getFill();
-            let result=tablero.agregarFicha(pos.x,pos.y,color);
-            if(result){
-                let index = fichas.indexOf(lastClickedFigure);
-                fichas.splice(index,1);
-                clearCanvas(colorCanvas,anchocanvas,altocanvas);
-                drawTablero();
-                drawFichas();
-                if(turno == "red")
-                    turno = "yellow";
-                else
-                    turno = "red";
-                if(tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y)==true){
-                    alert("Termino el juego Ganador Jugador "+color);
-                }
+            if (color == turno){
+                let result=tablero.agregarFicha(pos.x,pos.y,color);
+                if(result ){
+                    let index = fichas.indexOf(lastClickedFigure);
+                    fichas.splice(index,1);
+                    clearCanvas(colorCanvas,anchocanvas,altocanvas);
+                    drawTablero();
+                    drawFichas();
+                    if(turno == "red")
+                        turno = "yellow";
+                    else
+                        turno = "red";
+                    let resultado= tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y);
+                    if(resultado == true){
+                        alert("Termino el juego Ganador Jugador "+color);
+                    }else if(tablero.geTLugaresLibres()==0)
+                        alert("Termino el juego es un empate ");
+                }else{
+                    lastClickedFigure.setPosX(lastpositionx);
+                    lastClickedFigure.setPosY(lastpositiony);
+                    clearCanvas(colorCanvas,anchocanvas,altocanvas);
+                    drawTablero();
+                    drawFichas();
+                } 
             }else{
-                lastClickedFigure.setPosX(lastpositionx);
-                lastClickedFigure.setPosY(lastpositiony);
-                clearCanvas(colorCanvas,anchocanvas,altocanvas);
-                drawTablero();
-                drawFichas();
-            }   
+                    lastClickedFigure.setPosX(lastpositionx);
+                    lastClickedFigure.setPosY(lastpositiony);
+                    clearCanvas(colorCanvas,anchocanvas,altocanvas);
+                    drawTablero();
+                    drawFichas();
+            } 
         }
     }
     arrastrar = false;
