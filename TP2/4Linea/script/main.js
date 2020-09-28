@@ -46,7 +46,6 @@ function generarfichas(){
 
 function drawFichas(){
     for (let i = 0; i < fichas.length;i++ ){
-        //aca esta el problema no se xq no dibuja
         fichas[i].draw();
     }
 }
@@ -64,7 +63,10 @@ function findClickedFigure(x,y){
 
 
 let lastClickedFigure = null;
-//inicializar listeners
+let lastpositionx=0;
+let lastpositiony=0;
+let arrastrar=false;
+
 function iniciarjuego(){
     clearCanvas('black',anchocanvas,altocanvas);
     
@@ -73,7 +75,7 @@ function iniciarjuego(){
     drawFichas();
   
     canvas.removeEventListener("onload",iniciarjuego,false);
-    canvas.addEventListener("click",selecciona,false);
+    //canvas.addEventListener("click",selecciona,false);
 
 }
 
@@ -88,30 +90,61 @@ function ajusta(xx,yy){
 }
 
 function selecciona(e){
-    canvas.removeEventListener("click",selecciona,false);
+    
+    e.preventDefault();
     let pos = ajusta(e.clientX,e.clientY);
     let x = pos.x;
     let y = pos.y;
     let ficha;
     if(lastClickedFigure!=null)
         lastClickedFigure.setHighlighted(false);
-    console.log(fichas);
     for (let i=fichas.length-1; i>=0;i--){//desde la ultima que se agrego
         ficha=fichas[i];
         if(fichas[i].isPointInside(x,y)){ ///optimizar
             lastClickedFigure=fichas[i];
+            lastpositionx=fichas[i].getPosX();
+            lastpositiony=fichas[i].getPosY();
+            arrastrar = true;
             fichas[i].setHighlighted(true);
-            fichas[i].setPosX(500);//esto funciona 
-            //drag esta ficha 
-            clearCanvas('black',anchocanvas,altocanvas);
-            drawTablero();
-            drawFichas();
+    
             break;
         }
     }
-    console.log("no seleccione nada x:",x," ,y:",y);
+  
 
-    if(fichas.length>0){
-        canvas.addEventListener("click",selecciona,false);
-    }
+    
 }
+canvas.addEventListener('mousedown',function(e){handleMouseDown(e);},false);
+canvas.addEventListener('mousemove',function(e){handleMouseMove(e);},false);
+canvas.addEventListener('mouseup',function(e){handleMouseUp(e);},false);
+
+
+function handleMouseDown(e){
+   selecciona(e);
+}
+
+function handleMouseMove(e){
+    e.preventDefault();
+    if (lastClickedFigure== null){
+        return;
+    }
+    if(arrastrar){
+        let pos = ajusta(e.clientX,e.clientY);
+        let x = pos.x;
+        let y = pos.y;
+    
+        // Put your mousemove stuff here
+        lastClickedFigure.setPosX(x);
+        lastClickedFigure.setPosY(y);
+        clearCanvas('black',anchocanvas,altocanvas);
+        drawTablero();
+        drawFichas();
+    }
+  }
+  function handleMouseUp(e){
+    e.preventDefault();
+    arrastrar = false;
+    lastClickedFigure=null;
+
+  }
+
