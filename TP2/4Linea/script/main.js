@@ -2,12 +2,13 @@
 //declaracion variables
 let canvas = document.querySelector('#canvas');
 let context = canvas.getContext('2d');
-let resultado=document.querySelector('#resultado');
+let textoresultado=document.querySelector('#resultado');
+let textoTurno=document.querySelector('#turno');
 let cantfilas= document.querySelector('#filas').value;
 let cantcolumnas = document.querySelector('#columnas').value;
 let anchocanvas = 1200;
 let altocanvas = 500;
-let turno = "red";
+let turno = "Rojo";
 let colorCanvas= "white";
 let nfichasgana= 4;
 let nfichasTablero = (cantfilas * cantcolumnas )/2;
@@ -30,7 +31,7 @@ function cambiarTablero(){
     lastClickedFigure = null;
     lastpositionx=0;
     lastpositiony=0;
-    turno="red";
+    turno="Rojo";
     cantfilas= document.querySelector('#filas').value;
     cantcolumnas = document.querySelector('#columnas').value;
     tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);//problema
@@ -116,13 +117,16 @@ function selecciona(e){
     let pos = ajusta(e.clientX,e.clientY);
     let x = pos.x;
     let y = pos.y;
+    let color="red";
     if (estadojuego == "jugando"){
         if(lastClickedFigure!=null )
             lastClickedFigure.setHighlighted(false);
         for (let i=fichas.length-1; i>=0;i--){//desde la ultima que se agrego
             ficha=fichas[i];
             if(fichas[i].isPointInside(x,y)){
-                if(turno == fichas[i].getFill()){
+                if (turno != "Rojo")
+                    color = "yellow";
+                if(color == fichas[i].getFill()){
                     lastClickedFigure=fichas[i];
                     lastpositionx=fichas[i].getPosX();
                     lastpositiony=fichas[i].getPosY();
@@ -133,13 +137,6 @@ function selecciona(e){
             }
         } 
     }
-    else if(estadojuego=="terminado"){
-            if (turno == "red")    {
-                alert("gano el jugador yellow");
-            }else
-                alert("gano el jugador red");
-        }else
-            alert("es un empate");
 }
 
 function handleMouseDown(e){
@@ -162,11 +159,14 @@ function handleMouseMove(e){
   }
   function handleMouseUp(e){
     e.preventDefault();
+    let colorTurno="red";
     if(arrastrar){
         let pos = ajusta(e.clientX,e.clientY);
         if(lastClickedFigure!=null){
             let color=lastClickedFigure.getFill();
-            if (color == turno){
+            if(turno != "Rojo")
+                colorTurno="yellow";
+            if (color == colorTurno && estadojuego == "jugando"){
                 let result=tablero.agregarFicha(pos.x,pos.y,color);
                 if(result ){
                     let index = fichas.indexOf(lastClickedFigure);
@@ -174,16 +174,24 @@ function handleMouseMove(e){
                     clearCanvas(colorCanvas,anchocanvas,altocanvas);
                     drawTablero();
                     drawFichas();
-                    if(turno == "red")
-                        turno = "yellow";
-                    else
-                        turno = "red";
+                   
                     let resultado= tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y);
                     if(resultado == true){
-                        //alert("Termino el juego Ganador Jugador "+color);
                         estadojuego="terminado";
-                    }else if(tablero.getLugaresLibres()==0)
+                        textoresultado.innerHTML="El ganador del juego es el jugador "+turno;
+
+                    }else if(tablero.getLugaresLibres()==0){
                         estadojuego="empate";
+                        textoresultado.innerHTML="El juego termino en empate";
+                    }
+                    if(turno == "Rojo"){
+                            turno = "Amarillo";
+                           
+                    }else{
+                            turno = "Rojo";
+                         
+                    }
+                    textoTurno.innerHTML = "Turno del Jugador "+turno;
                 }else{
                     lastClickedFigure.setPosX(lastpositionx);
                     lastClickedFigure.setPosY(lastpositiony);
@@ -202,7 +210,10 @@ function handleMouseMove(e){
     }
     arrastrar = false;
     lastClickedFigure=null;
-   
+  }
+
+  function ReiniciarJuego(){
+      cambiarTablero();
   }
 
 window.onload = iniciarjuego;

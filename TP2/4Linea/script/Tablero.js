@@ -35,7 +35,7 @@ class Tablero{
     getColumnas(){
         return this.columnas;
     }
-    getCanvasposicion(posx,posy){
+    getPosicionTablero(posx,posy){
         let x = -1;
         let y = -1;
         if(this.figuras[0].isPointInside(posx,posy)){//esta dentro del tablero
@@ -48,9 +48,15 @@ class Tablero{
         }
         return {x:x,y:y};
     }
+    caidaficha(posx,post,x,y,fichas,indice){
+        let casilla=figuras[x*y+y];//casilla destino
+        for (let i=posx;i<casilla.getPosicion().x;i++)
+        fichas[indice].setPosition();
+
+    }
 
     agregarFicha(posx,posy,valor){
-        let pos=this.getCanvasposicion(posx,posy);
+        let pos=this.getPosicionTablero(posx,posy);
         for (let f=this.filas-1;f>=0;f--){
             if(this.arreglo[f][pos.y]==0){
                 let color=0;

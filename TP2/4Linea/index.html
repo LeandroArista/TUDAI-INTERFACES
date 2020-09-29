@@ -24,13 +24,21 @@
             <option value=9>9</option>
         </select>
         <button onclick="cambiarTablero()">cambiar tablero</button>
+        <button onclick="ReiniciarJuego()">Comenzar juego nuevo</button>
     </header>
-    <canvas id="canvas"></canvas>
-    <label id="resultado"></label>
+    <div class="contenedor">
+        <h2 id="turno">Turno del jugador Rojo</h2> 
+        <h3 id="resultado"></h3>   
+        <canvas id="canvas"></canvas>
+        
+    </div>
+    
+    
     <script src="./script/Figura.js"></script>
     <script src="./script/Rectangulo.js"></script>
     <script src="./script/Circulo.js"></script>
     <script src="./script/Tablero.js"></script>
     <script src="./script/main.js"></script>
 </body>
+<footer></footer>
 </html>
