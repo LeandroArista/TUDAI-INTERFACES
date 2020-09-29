@@ -9,14 +9,13 @@ let anchocanvas = 1200;
 let altocanvas = 500;
 let turno = "red";
 let colorCanvas= "white";
-console.log(cantfilas);
-console.log(cantcolumnas);
 let nfichasgana= 4;
 let nfichasTablero = (cantfilas * cantcolumnas )/2;
 let lastClickedFigure = null;
 let lastpositionx=0;
 let lastpositiony=0;
 let arrastrar=false;
+let estadojuego="jugando";
 let fichas=[];
 //
 canvas.height = altocanvas;
@@ -26,6 +25,12 @@ let tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,cont
 
 function cambiarTablero(){
     fichas =[];
+    estadojuego="jugando";
+    arrastrar=false;
+    lastClickedFigure = null;
+    lastpositionx=0;
+    lastpositiony=0;
+    turno="red";
     cantfilas= document.querySelector('#filas').value;
     cantcolumnas = document.querySelector('#columnas').value;
     tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);//problema
@@ -111,21 +116,30 @@ function selecciona(e){
     let pos = ajusta(e.clientX,e.clientY);
     let x = pos.x;
     let y = pos.y;
-    if(lastClickedFigure!=null)
-        lastClickedFigure.setHighlighted(false);
-    for (let i=fichas.length-1; i>=0;i--){//desde la ultima que se agrego
-        ficha=fichas[i];
-        if(fichas[i].isPointInside(x,y)){
-            if(turno == fichas[i].getFill()){
-                lastClickedFigure=fichas[i];
-                lastpositionx=fichas[i].getPosX();
-                lastpositiony=fichas[i].getPosY();
-                arrastrar = true;
-                fichas[i].setHighlighted(true);  
-                break;
+    if (estadojuego == "jugando"){
+        if(lastClickedFigure!=null )
+            lastClickedFigure.setHighlighted(false);
+        for (let i=fichas.length-1; i>=0;i--){//desde la ultima que se agrego
+            ficha=fichas[i];
+            if(fichas[i].isPointInside(x,y)){
+                if(turno == fichas[i].getFill()){
+                    lastClickedFigure=fichas[i];
+                    lastpositionx=fichas[i].getPosX();
+                    lastpositiony=fichas[i].getPosY();
+                    arrastrar = true;
+                    fichas[i].setHighlighted(true);  
+                    break;
+                }
             }
-        }
-    } 
+        } 
+    }
+    else if(estadojuego=="terminado"){
+            if (turno == "red")    {
+                alert("gano el jugador yellow");
+            }else
+                alert("gano el jugador red");
+        }else
+            alert("es un empate");
 }
 
 function handleMouseDown(e){
@@ -134,8 +148,8 @@ function handleMouseDown(e){
 
 function handleMouseMove(e){
     e.preventDefault();
-    if (lastClickedFigure== null){return;}
-    if(arrastrar){
+    if (lastClickedFigure== null ){return;}
+    if(arrastrar && estadojuego == "jugando"){
         let pos = ajusta(e.clientX,e.clientY);
         let x = pos.x;
         let y = pos.y;
@@ -166,9 +180,10 @@ function handleMouseMove(e){
                         turno = "red";
                     let resultado= tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y);
                     if(resultado == true){
-                        alert("Termino el juego Ganador Jugador "+color);
-                    }else if(tablero.geTLugaresLibres()==0)
-                        alert("Termino el juego es un empate ");
+                        //alert("Termino el juego Ganador Jugador "+color);
+                        estadojuego="terminado";
+                    }else if(tablero.getLugaresLibres()==0)
+                        estadojuego="empate";
                 }else{
                     lastClickedFigure.setPosX(lastpositionx);
                     lastClickedFigure.setPosY(lastpositiony);
