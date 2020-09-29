@@ -24,6 +24,7 @@ label{
 .contenedor{
     margin: 4px;
     text-align: center;
-   
-    
+}
+.hide{
+    display: none;
 }

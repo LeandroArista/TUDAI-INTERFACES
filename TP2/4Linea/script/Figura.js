@@ -1,10 +1,14 @@
 class Figure {
-    constructor (posX, posY, fill, context){
+    constructor (posX, posY, fill, context,img = null){
         this.posX = posX;
         this.posY = posY;
         this.fill = fill;
         this.context = context;
         this.highlighted = false;
+        this.img=img;
+    }
+    setImg(img){
+        this.img=img;
     }
 
     setFill(fill){
@@ -42,6 +46,9 @@ class Figure {
     }
     draw(){
         this.context.fillStyle = this.fill;
+    }
+    drawIMG(){
+
     }
     isPointInside(x,y){
 

@@ -23,11 +23,19 @@ let lastpositiony=0;
 let arrastrar=false;
 let estadojuego="jugando";
 let fichas=[];
+let loadimgj1 =false;
+let loadimgj2 =false;
+//
+let srcimgj1="./img/ficharoja.png";
+let srcimgj2="./img/fichaamarilla.png"; 
+
+let ficharoja=null;
+let fichaamarilla=null;
 //
 canvas.height = altocanvas;
 canvas.width = anchocanvas;
 //genero el tablero
-let tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);
+let tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context,fichaamarilla,ficharoja);
 
 
 //funciones de botones
@@ -41,7 +49,7 @@ function cambiarTablero(){
     turno=j1;
     cantfilas= document.querySelector('#filas').value;
     cantcolumnas = document.querySelector('#columnas').value;
-    tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);
+    tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context,fichaamarilla,ficharoja);
     clearCanvas(colorCanvas,anchocanvas,altocanvas);
     drawTablero();
     generarfichas();
@@ -102,21 +110,21 @@ function generarfichas(){
     for (let i = 0; i < cant;i++ ){
         posX =aleatorio(radio*2,(anchocanvas/100 * 25) - (radio*2));
         posY= aleatorio(radio*2,altocanvas/2);
-        let circulo = new Circle(posX,posY,radio,"red",context);
+        let circulo = new Circle(posX,posY,radio,"red",context,ficharoja);
         fichas.push(circulo);
     }
     //genero fichas derecha
     for (let i = 0; i < cant;i++ ){
         posX = aleatorio(anchocanvas/100 * 75+radio*2,anchocanvas-radio*2); 
         posY= aleatorio(radio*2,altocanvas/2);
-        let circulo = new Circle(posX,posY,radio,"yellow",context);
+        let circulo = new Circle(posX,posY,radio,"yellow",context,fichaamarilla);
         fichas.push(circulo);
     }
 }
 //dibujo fichas
 function drawFichas(){
     for (let i = 0; i < fichas.length;i++ ){
-        fichas[i].draw();
+            fichas[i].draw();
     }
 }
 //encuentra figura seleccionada
@@ -264,13 +272,36 @@ function handleMouseMove(e){
     lastClickedFigure=null;
   }
 
-  
+
+  function cargarImagenes(){
+    let imgj1 = new Image();
+    imgj1.src = srcimgj1;
+    imgj1.onload = function() {
+        imgj1.width = 2 * tablero.getRadio();
+        imgj1.height = 2 * tablero.getRadio();
+        ficharoja = imgj1;
+        loadimgj1=true;
+        generarfichas();
+        Redibujar();
+    
+    };
+    let imgj2 =new Image();
+    imgj2.src = srcimgj2;
+    imgj2.onload = function() {
+        imgj2.width = 2 * tablero.getRadio();
+        imgj2.height = 2 * tablero.getRadio();
+        fichaamarilla = imgj2;
+        loadimgj2=true;
+        generarfichas();
+        Redibujar();
+    }; 
+    
+}
 
 function iniciarjuego(){
     clearCanvas(colorCanvas,anchocanvas,altocanvas);
     drawTablero();
-    generarfichas();
-    drawFichas();
+    cargarImagenes();
     canvas.removeEventListener("onload",iniciarjuego,false);
 }
 
@@ -279,3 +310,4 @@ window.onload = iniciarjuego;
 canvas.addEventListener('mousedown',function(e){handleMouseDown(e);},false);
 canvas.addEventListener('mousemove',function(e){handleMouseMove(e);},false);
 canvas.addEventListener('mouseup',function(e){handleMouseUp(e);},false);
+
