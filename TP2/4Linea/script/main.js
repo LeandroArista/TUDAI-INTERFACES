@@ -25,13 +25,13 @@ let estadojuego="jugando";
 let fichas=[];
 let loadimgj1 =false;
 let loadimgj2 =false;
-//
+//ruta de imagenes
 let srcimgj1="./img/ficharoja.png";
 let srcimgj2="./img/fichaamarilla.png"; 
-
+//variables de fichas
 let ficharoja=null;
 let fichaamarilla=null;
-//
+//redefino canvas
 canvas.height = altocanvas;
 canvas.width = anchocanvas;
 //genero el tablero
@@ -58,7 +58,6 @@ function cambiarTablero(){
 }
 function ReiniciarJuego(){
     cambiarTablero();
-    
 }
 
 function CambiarNombre(jugador){
@@ -70,7 +69,6 @@ function CambiarNombre(jugador){
       turno=j2;
   }
   texto.innerHTML = "Turno del Jugador "+turno;
-
 }
 
 function ReiniciarPuntos(){
@@ -78,11 +76,9 @@ function ReiniciarPuntos(){
   puntosj1=0;
   pj1.innerHTML="Puntos: "+puntosj1;
   pj2.innerHTML="Puntos: "+puntosj2;
-
 }
 
 ///
-
 function clearCanvas(color,width,height){
     context.fillStyle = color;
     context.fillRect(0,0,width,height);
@@ -255,8 +251,7 @@ function handleMouseMove(e){
                         tablero.setPosition(f,movc,"white"); 
                         setTimeout(Redibujar,1000);
                     }
-
-                    tablero.setPosition(movf,movc,color);
+                    tablero.setPosition(movf,movc,color);//almaceno la ficha que cayo
                     Redibujar();
                     let resultado= tablero.isGanador(tablero.getLastMove().fila,tablero.getLastMove().columna);
                     resultadoJuego(resultado);
@@ -272,7 +267,7 @@ function handleMouseMove(e){
     lastClickedFigure=null;
   }
 
-
+//carga imagenes 
   function cargarImagenes(){
     let imgj1 = new Image();
     imgj1.src = srcimgj1;
@@ -304,10 +299,7 @@ function iniciarjuego(){
     cargarImagenes();
     canvas.removeEventListener("onload",iniciarjuego,false);
 }
-
-
 window.onload = iniciarjuego;
 canvas.addEventListener('mousedown',function(e){handleMouseDown(e);},false);
 canvas.addEventListener('mousemove',function(e){handleMouseMove(e);},false);
 canvas.addEventListener('mouseup',function(e){handleMouseUp(e);},false);
-

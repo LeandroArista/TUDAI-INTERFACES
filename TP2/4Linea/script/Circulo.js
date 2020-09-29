@@ -9,7 +9,7 @@ class Circle extends Figure{
         this.context.arc(this.posX,this.posY,this.radius,0,2*Math.PI);
         this.context.fill();
         if(this.img!=null)
-        this.context.drawImage(this.img, this.posX-this.radius, this.posY-this.radius, this.img.width, this.img.height);
+            this.context.drawImage(this.img, this.posX-this.radius, this.posY-this.radius, this.img.width, this.img.height);
         if (this.hifhtlighted === true){
             this.context.strokeStyle = this.highlightedStyle;
             this.context.lineWidth = 10;
