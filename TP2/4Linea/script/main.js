@@ -2,8 +2,7 @@
 //declaracion variables
 let canvas = document.querySelector('#canvas');
 let context = canvas.getContext('2d');
-let textoresultado=document.querySelector('#resultado');
-let textoTurno=document.querySelector('#turno');
+let texto=document.querySelector('#turno');
 let cantfilas= document.querySelector('#filas').value;
 let cantcolumnas = document.querySelector('#columnas').value;
 let anchocanvas = 1200;
@@ -178,20 +177,19 @@ function handleMouseMove(e){
                     let resultado= tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y);
                     if(resultado == true){
                         estadojuego="terminado";
-                        textoresultado.innerHTML="El ganador del juego es el jugador "+turno;
+                        texto.innerHTML="El ganador del juego es el jugador "+turno;
 
                     }else if(tablero.getLugaresLibres()==0){
                         estadojuego="empate";
-                        textoresultado.innerHTML="El juego termino en empate";
+                        texto.innerHTML="El juego termino en empate";
                     }
-                    if(turno == "Rojo"){
+                    if(estadojuego == "jugando"){
+                        if(turno == "Rojo")
                             turno = "Amarillo";
-                           
-                    }else{
+                        else
                             turno = "Rojo";
-                         
+                        texto.innerHTML = "Turno del Jugador "+turno;
                     }
-                    textoTurno.innerHTML = "Turno del Jugador "+turno;
                 }else{
                     lastClickedFigure.setPosX(lastpositionx);
                     lastClickedFigure.setPosY(lastpositiony);
