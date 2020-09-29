@@ -11,10 +11,8 @@ let turno = "red";
 let colorCanvas= "white";
 console.log(cantfilas);
 console.log(cantcolumnas);
-let nfilas = cantfilas;
-let ncolumnas = cantcolumnas;
 let nfichasgana= 4;
-let nfichasTablero = (nfilas * ncolumnas )/2;
+let nfichasTablero = (cantfilas * cantcolumnas )/2;
 let lastClickedFigure = null;
 let lastpositionx=0;
 let lastpositiony=0;
@@ -24,11 +22,13 @@ let fichas=[];
 canvas.height = altocanvas;
 canvas.width = anchocanvas;
 //genero el tablero
-let tablero = new Tablero(nfilas,ncolumnas,nfichasgana,nfichasTablero,context);
+let tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);
 
 function cambiarTablero(){
     fichas =[];
-    tablero = new Tablero(nfilas,ncolumnas,nfichasgana,nfichasTablero,context);//problema
+    cantfilas= document.querySelector('#filas').value;
+    cantcolumnas = document.querySelector('#columnas').value;
+    tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);//problema
     clearCanvas(colorCanvas,anchocanvas,altocanvas);
     drawTablero();
     generarfichas();
