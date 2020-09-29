@@ -7,12 +7,38 @@
    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    <label id="resultado"></label>
+    <header>
+        <h1>Entregable 2: 4 en linea</h1>
+        <label for="cars">Choose a car:</label>
+
+        <select name="filas" id="filas">
+            <option value=6 selected>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+        </select>
+        <select name="columnas" id="columnas">
+            <option value=6>6</option>
+            <option value=7 selected>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+        </select>
+        <button onclick="cambiarTablero()">cambiar tablero</button>
+        <button onclick="ReiniciarJuego()">Comenzar juego nuevo</button>
+    </header>
+    <div class="contenedor">
+        <h2 id="turno">Turno del jugador Rojo</h2> 
+        
+        <canvas id="canvas"></canvas>
+        
+    </div>
+    
+    
     <script src="./script/Figura.js"></script>
     <script src="./script/Rectangulo.js"></script>
     <script src="./script/Circulo.js"></script>
     <script src="./script/Tablero.js"></script>
     <script src="./script/main.js"></script>
 </body>
+<footer></footer>
 </html>

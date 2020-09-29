@@ -5,7 +5,6 @@ class Tablero{
         this.columnas=columnas;
         this.cantFichas = cantFichas;
         this.context = context;
-    
         this.lineas =lineas;//cantidad de fichas para ganar
         this.arreglo = [];
         this.figuras = [];
@@ -17,6 +16,8 @@ class Tablero{
         this.lastMovex=-1;
         this.lastMovey=-1;
 
+        this.lugareslibres=filas*columnas;
+
         for (let i =0; i < filas;i++){
             this.arreglo[i] = [];
             for ( let j=0; j < columnas;j++){
@@ -24,13 +25,17 @@ class Tablero{
             }
         }
     }
+    getLugaresLibres(){
+        return this.lugareslibres;
+    }
+
     getFilas(){
         return this.filas;
     }
     getColumnas(){
         return this.columnas;
     }
-    getCanvasposicion(posx,posy){
+    getPosicionTablero(posx,posy){
         let x = -1;
         let y = -1;
         if(this.figuras[0].isPointInside(posx,posy)){//esta dentro del tablero
@@ -43,10 +48,10 @@ class Tablero{
         }
         return {x:x,y:y};
     }
-
+ 
     agregarFicha(posx,posy,valor){
-        let pos=this.getCanvasposicion(posx,posy);
-        for (let f=this.filas-1;f>0;f--){
+        let pos=this.getPosicionTablero(posx,posy);
+        for (let f=this.filas-1;f>=0;f--){
             if(this.arreglo[f][pos.y]==0){
                 let color=0;
                 if (valor == "red")
@@ -54,6 +59,7 @@ class Tablero{
                 else
                     color = 2;
                 this.arreglo[f][pos.y] = color;
+                this.lugareslibres--;
                 this.lastMovex=f;
                 this.lastMovey=pos.y;
                 return true;
@@ -173,7 +179,7 @@ class Tablero{
     }
 
     dibujarTablero(x,y,ancho,alto){
-       this.posinic=x;
+        this.posinic=x;
         this.figuras = [];
         this.casillas= [];
         //genero fondo todo
@@ -188,7 +194,7 @@ class Tablero{
             radio=centroX;
         radio--;
         this.radio=radio;
-        let color = "#9c9c9c";
+        let color = "#000080";
         let rect = new Rectangulo(x,y,ancho,alto,color,this.context);
         this.figuras.push(rect);
      
@@ -202,7 +208,7 @@ class Tablero{
                 if(this.arreglo[i][j] == 1)
                     color="red";
                 if(this.arreglo[i][j] == 2 )
-                    color="blue";
+                    color="yellow";
                 let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context);
                 this.figuras.push(circulo);
                 let rec=new Rectangulo(posX,posY,casillaancho,casillaalto,color,this.context);
@@ -211,11 +217,9 @@ class Tablero{
             }
             posY+=casillaalto;
         }
-        
-        
         // dibujar el tablero
-            for (let i =0;i<this.figuras.length;i++){
-                this.figuras[i].draw();
-    }
+        for (let i =0;i<this.figuras.length;i++){
+            this.figuras[i].draw();
+        }
     }
 }
