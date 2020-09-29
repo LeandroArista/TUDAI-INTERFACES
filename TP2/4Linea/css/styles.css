@@ -19,16 +19,11 @@ header{
     margin: 0;
     padding: 10px;
 }
+label{
+    color:white;}
 .contenedor{
+    margin: 4px;
     text-align: center;
+   
     
-}
-footer{
-    
-    background-color: black;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 20px;
-  color: white;
 }

@@ -5,9 +5,15 @@ let context = canvas.getContext('2d');
 let texto=document.querySelector('#turno');
 let cantfilas= document.querySelector('#filas').value;
 let cantcolumnas = document.querySelector('#columnas').value;
+let j1=document.querySelector("#j1").value;
+let j2=document.querySelector("#j2").value;
+let pj1=document.querySelector("#pj1");
+let pj2=document.querySelector("#pj2");
+let puntosj1=0;
+let puntosj2=0;
 let anchocanvas = 1200;
 let altocanvas = 500;
-let turno = "Rojo";
+let turno = j1;
 let colorCanvas= "white";
 let nfichasgana= 4;
 let nfichasTablero = (cantfilas * cantcolumnas )/2;
@@ -23,6 +29,8 @@ canvas.width = anchocanvas;
 //genero el tablero
 let tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);
 
+
+//funciones de botones
 function cambiarTablero(){
     fichas =[];
     estadojuego="jugando";
@@ -30,24 +38,46 @@ function cambiarTablero(){
     lastClickedFigure = null;
     lastpositionx=0;
     lastpositiony=0;
-    turno="Rojo";
+    turno=j1;
     cantfilas= document.querySelector('#filas').value;
     cantcolumnas = document.querySelector('#columnas').value;
-    tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);//problema
+    tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context);
     clearCanvas(colorCanvas,anchocanvas,altocanvas);
     drawTablero();
     generarfichas();
     drawFichas();
+    texto.innerHTML = "Turno del Jugador "+turno;
+}
+function ReiniciarJuego(){
+    cambiarTablero();
+    
+}
+
+function CambiarNombre(jugador){
+  if (turno == j1 && jugador == "j1"){
+      j1=document.querySelector("#j1").value;
+      turno=j1;
+  }else{
+      j2=document.querySelector("#j2").value;
+      turno=j2;
+  }
+  texto.innerHTML = "Turno del Jugador "+turno;
 
 }
+
+function ReiniciarPuntos(){
+  puntosj2=0;
+  puntosj1=0;
+  pj1.innerHTML="Puntos: "+puntosj1;
+  pj2.innerHTML="Puntos: "+puntosj2;
+
+}
+
+///
 
 function clearCanvas(color,width,height){
     context.fillStyle = color;
     context.fillRect(0,0,width,height);
-}
-
-function aleatorio(a,b) {
-    return Math.round(Math.random()*(b-a)+parseInt(a));
 }
 
 function drawTablero(){
@@ -56,6 +86,10 @@ function drawTablero(){
     let blanco = anchocanvas/100 * 25; // 25 porciento de cada lado para acomodar fichas
     
     tablero.dibujarTablero(blanco,80,ancho,alto-80);
+}
+
+function aleatorio(a,b) {
+    return Math.round(Math.random()*(b-a)+parseInt(a));
 }
 
 function generarfichas(){
@@ -85,7 +119,7 @@ function drawFichas(){
         fichas[i].draw();
     }
 }
-
+//encuentra figura seleccionada
 function findClickedFigure(x,y){
     for (index = 0; index < fichas.length;index++){
         const element = fichas[index];
@@ -94,21 +128,12 @@ function findClickedFigure(x,y){
         }
     }
 }
-
-function iniciarjuego(){
-    clearCanvas(colorCanvas,anchocanvas,altocanvas);
-    drawTablero();
-    generarfichas();
-    drawFichas();
-    canvas.removeEventListener("onload",iniciarjuego,false);
-}
-
+//posicion en canvas
 function ajusta(xx,yy){
     let poscanvas= canvas.getBoundingClientRect();
     let x= xx-poscanvas.left;
     let y = yy-poscanvas.top;
     return {x:x,y:y};
-
 }
 
 function selecciona(e){
@@ -117,17 +142,17 @@ function selecciona(e){
     let x = pos.x;
     let y = pos.y;
     let color="red";
-    if (estadojuego == "jugando"){
+    if (estadojuego == "jugando" ){
         if(lastClickedFigure!=null )
             lastClickedFigure.setHighlighted(false);
-        for (let i=fichas.length-1; i>=0;i--){//desde la ultima que se agrego
+        for (let i=fichas.length-1; i>=0;i--){//desde la ultima figura que se agrego
             ficha=fichas[i];
             if(fichas[i].isPointInside(x,y)){
-                if (turno != "Rojo")
+                if (turno != j1)
                     color = "yellow";
-                if(color == fichas[i].getFill()){
+                if(color == fichas[i].getFill()){//si es del mismo color la del turno
                     lastClickedFigure=fichas[i];
-                    lastpositionx=fichas[i].getPosX();
+                    lastpositionx=fichas[i].getPosX();//guardo la posicion de donde se movio
                     lastpositiony=fichas[i].getPosY();
                     arrastrar = true;
                     fichas[i].setHighlighted(true);  
@@ -138,24 +163,68 @@ function selecciona(e){
     }
 }
 
-function handleMouseDown(e){
-   selecciona(e);
+function Redibujar(){
+    clearCanvas(colorCanvas,anchocanvas,altocanvas);
+    drawTablero()
+    drawFichas();
 }
+
+function noMover(){
+    lastClickedFigure.setPosX(lastpositionx);
+    lastClickedFigure.setPosY(lastpositiony);
+    Redibujar();
+}
+
+function puntuacion(){
+    if(estadojuego=="terminado")
+        if(turno == j1){
+            puntosj1++;
+        }
+        else
+            puntosj2++;
+    pj1.innerHTML="Puntos: "+puntosj1;
+    pj2.innerHTML="Puntos: "+puntosj2;
+}
+
+function resultadoJuego(resultado){
+    if(resultado == true){
+        estadojuego="terminado";
+        texto.innerHTML="El ganador del juego es el jugador "+turno;
+        puntuacion();
+    }else if(tablero.getLugaresLibres()==0){
+        estadojuego="empate";
+        texto.innerHTML="El juego termino en empate";
+    }
+    if(estadojuego == "jugando"){
+        if(turno == j1)
+            turno = j2;
+        else
+            turno = j1;
+        texto.innerHTML = "Turno del Jugador "+turno;
+    }
+}
+
+function eliminarFiguraSeleccionada(){
+    let index = fichas.indexOf(lastClickedFigure);
+    fichas.splice(index,1);
+}
+
+//eventos de mouse
+function handleMouseDown(e){
+    selecciona(e);
+ }
 
 function handleMouseMove(e){
     e.preventDefault();
     if (lastClickedFigure== null ){return;}
     if(arrastrar && estadojuego == "jugando"){
         let pos = ajusta(e.clientX,e.clientY);
-        let x = pos.x;
-        let y = pos.y;
-        lastClickedFigure.setPosX(x);
-        lastClickedFigure.setPosY(y);
-        clearCanvas(colorCanvas,anchocanvas,altocanvas);
-        drawTablero();
-        drawFichas();
+        lastClickedFigure.setPosX(pos.x);
+        lastClickedFigure.setPosY(pos.y);
+        Redibujar();
     }
-  }
+}
+
   function handleMouseUp(e){
     e.preventDefault();
     let colorTurno="red";
@@ -163,56 +232,48 @@ function handleMouseMove(e){
         let pos = ajusta(e.clientX,e.clientY);
         if(lastClickedFigure!=null){
             let color=lastClickedFigure.getFill();
-            if(turno != "Rojo")
+            if(turno != j1)
                 colorTurno="yellow";
             if (color == colorTurno && estadojuego == "jugando"){
-                let result=tablero.agregarFicha(pos.x,pos.y,color);
-                if(result ){
-                    let index = fichas.indexOf(lastClickedFigure);
-                    fichas.splice(index,1);
-                    clearCanvas(colorCanvas,anchocanvas,altocanvas);
-                    drawTablero();
-                    drawFichas();
-                   
-                    let resultado= tablero.isGanador(tablero.getLastMove().x,tablero.getLastMove().y);
-                    if(resultado == true){
-                        estadojuego="terminado";
-                        texto.innerHTML="El ganador del juego es el jugador "+turno;
 
-                    }else if(tablero.getLugaresLibres()==0){
-                        estadojuego="empate";
-                        texto.innerHTML="El juego termino en empate";
+                let result=tablero.agregarFicha(pos.x,pos.y,color,fichas,lastClickedFigure);
+                if(result ){
+                    eliminarFiguraSeleccionada();
+                    let movf=tablero.getLastMove().fila;
+                    let movc=tablero.getLastMove().columna;
+                    for (let f = 0; f < movf; f++) {
+                        tablero.setPosition(f,movc,color);
+                        setTimeout(Redibujar,1000);
+                        tablero.setPosition(f,movc,"white"); 
+                        setTimeout(Redibujar,1000);
                     }
-                    if(estadojuego == "jugando"){
-                        if(turno == "Rojo")
-                            turno = "Amarillo";
-                        else
-                            turno = "Rojo";
-                        texto.innerHTML = "Turno del Jugador "+turno;
+
+                    tablero.setPosition(movf,movc,color);
+                    Redibujar();
+                    let resultado= tablero.isGanador(tablero.getLastMove().fila,tablero.getLastMove().columna);
+                    resultadoJuego(resultado);
                     }
                 }else{
-                    lastClickedFigure.setPosX(lastpositionx);
-                    lastClickedFigure.setPosY(lastpositiony);
-                    clearCanvas(colorCanvas,anchocanvas,altocanvas);
-                    drawTablero();
-                    drawFichas();
+                    noMover();
                 } 
             }else{
-                    lastClickedFigure.setPosX(lastpositionx);
-                    lastClickedFigure.setPosY(lastpositiony);
-                    clearCanvas(colorCanvas,anchocanvas,altocanvas);
-                    drawTablero();
-                    drawFichas();
+                noMover();
             } 
         }
-    }
     arrastrar = false;
     lastClickedFigure=null;
   }
 
-  function ReiniciarJuego(){
-      cambiarTablero();
-  }
+  
+
+function iniciarjuego(){
+    clearCanvas(colorCanvas,anchocanvas,altocanvas);
+    drawTablero();
+    generarfichas();
+    drawFichas();
+    canvas.removeEventListener("onload",iniciarjuego,false);
+}
+
 
 window.onload = iniciarjuego;
 canvas.addEventListener('mousedown',function(e){handleMouseDown(e);},false);
