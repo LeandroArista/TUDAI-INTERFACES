@@ -1,6 +1,6 @@
 
 class Tablero{
-    constructor (filas,columnas,lineas=4,cantFichas,context){
+    constructor (filas,columnas,lineas=4,cantFichas,context,fichaamarilla,ficharoja){
         this.filas=filas;
         this.columnas=columnas;
         this.cantFichas = cantFichas;
@@ -16,6 +16,8 @@ class Tablero{
         this.posinicy=0;
         this.lastMovefila=-1;
         this.lastMovecolumna=-1;
+        this.fichaamarilla=fichaamarilla;
+        this.ficharoja=ficharoja;
 
         this.lugareslibres=filas*columnas;
 
@@ -205,15 +207,21 @@ class Tablero{
         // genero las casillas
         let posX =x;
         let posY =y;
+      
         for (let i =0; i < this.filas;i++){
             posX=x;
             for ( let j=0; j < this.columnas;j++){
+                let ficha=null;
                 color="white";
-                if(this.arreglo[i][j] == 1)
+                if(this.arreglo[i][j] == 1){
                     color="red";
-                if(this.arreglo[i][j] == 2 )
+                    ficha=ficharoja;
+                }
+                if(this.arreglo[i][j] == 2 ){
                     color="yellow";
-                let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context);
+                    ficha=fichaamarilla;
+                }
+                let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context,ficha);
                 this.figuras.push(circulo);
                 let rec=new Rectangulo(posX,posY,casillaancho,casillaalto,color,this.context);
                 this.casillas.push(rec);
