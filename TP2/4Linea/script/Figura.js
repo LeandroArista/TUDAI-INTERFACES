@@ -5,7 +5,6 @@ class Figure {
         this.fill = fill;
         this.context = context;
         this.highlighted = false;
-        this.highlightedStyle = 'red';
     }
 
     setFill(fill){
@@ -47,4 +46,5 @@ class Figure {
     isPointInside(x,y){
 
     }
+
 }
