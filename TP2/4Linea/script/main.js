@@ -52,6 +52,7 @@ function cambiarTablero(){
     tablero = new Tablero(cantfilas,cantcolumnas,nfichasgana,nfichasTablero,context,fichaamarilla,ficharoja);
     clearCanvas(colorCanvas,anchocanvas,altocanvas);
     drawTablero();
+    cargarImagenes();
     generarfichas();
     drawFichas();
     texto.innerHTML = "Turno del Jugador "+turno;

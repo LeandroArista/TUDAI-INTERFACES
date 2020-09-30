@@ -10,17 +10,16 @@ class Circle extends Figure{
         this.context.fill();
         if(this.img!=null)
             this.context.drawImage(this.img, this.posX-this.radius, this.posY-this.radius, this.img.width, this.img.height);
+        else
+            this.context.stroke();
+
         if (this.hifhtlighted === true){
             this.context.strokeStyle = this.highlightedStyle;
             this.context.lineWidth = 10;
             this.context.strokeStyle="#9c9c9c";    
             this.context.stroke();
         }
-
         this.context.closePath();
-        this.context.stroke();
-            
-
     }
     getRadius(){
         return this.radius;
