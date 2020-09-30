@@ -64,10 +64,12 @@ function CambiarNombre(jugador){
   if (turno == j1 && jugador == "j1"){
       j1=document.querySelector("#j1").value;
       turno=j1;
-  }else{
+  }if(turno == j2 && jugador == "j2"){
       j2=document.querySelector("#j2").value;
       turno=j2;
   }
+  j1=document.querySelector("#j1").value;
+  j2=document.querySelector("#j2").value;
   texto.innerHTML = "Turno del Jugador "+turno;
 }
 
