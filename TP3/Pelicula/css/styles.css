@@ -1,32 +1,3 @@
-@keyframes rotate {from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}}
-@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);}}
-.esferas{
-   width: 12%;
-   height: 12%;
-    -webkit-animation: 10s rotate linear infinite;
-    animation: 10s rotate linear infinite;
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-}
-/* @keyframes animated {
-    /* casa, nube chica , nube grande
-    0%   {background-position: 0 0, 0 0, 10% 0;}
-    25%  {background-position: 0 0, 10% 0 15% 2%;}
-    50%  {background-position: 0 0, 20% 0%, 20% 4%;}
-    75%  {background-position: 0 0, 35% 0%, 25% 6%;}
-    100% {background-position: 0 0, 50% 0%, 50% 10%;}
-}
-
-@-webkit-keyframes animated {
-    0%   {background-position: 0 0, 0 0, 10% 0;}
-    25%  {background-position: 0 0, 20% 0 15% 2%;}
-    50%  {background-position: 0 0, 50% 0%, 20% 4%;}
-    75%  {background-position: 0 0, 65% 0%, 55% 2%;}
-    100% {background-position: 0 0, 100% 0%, 100% 0%;}
-} */
-
 @keyframes animated {
      /* casa, nube grande , nube media, nube chica*/
     0%   {background-position: 0 0, left 0%, 30% 40%, 70% 60%;}
@@ -34,7 +5,6 @@
     100% {background-position: 0 0, right 0%, right 40%, right 60%;}
 
 }
-
 @-webkit-keyframes animated {
     0%   {background-position: 0 0, left 0%, 30% 40%, 70% 60%;}
     50%  {background-position: 0 0, 55% 0%, 70% 40%, 80% 60% ;}
@@ -50,7 +20,13 @@
 }
 
 header{
+    width: 100%;
     text-align: center;
+}
+#logo{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
 }
  
 body {
@@ -127,6 +103,10 @@ article h2, article p, article hr {
 
 
 /* elementos caja musica*/
+.flex{
+    display: flex;
+}
+
 #cajamusica{
     background: rgb(0, 0, 0) transparent;
     position: fixed;
@@ -135,7 +115,9 @@ article h2, article p, article hr {
     height: 50px;
     
 }
+
 #botonera{
+    justify-content: flex-end;
     margin: 10px;
     padding: 2px;
     background: rgb(0, 0, 0) transparent;
