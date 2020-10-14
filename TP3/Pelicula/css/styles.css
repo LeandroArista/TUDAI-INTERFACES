@@ -1,0 +1,99 @@
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+.esferas{
+   width: 12%;
+   height: 12%;
+    -webkit-animation: 10s rotate linear infinite;
+    animation: 10s rotate linear infinite;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+@keyframes animated {
+    
+    0%   {background-position: 0 0,0 0;}
+    50%  {background-position: 0 0,50% 0;}
+    100% {background-position: 0 0,100% 0;}
+}
+
+@-webkit-keyframes animated {
+    0%   {background-position: 0 0,0 0;}
+    50%  {background-position: 0 0,50% 0;}
+    100% {background-position: 0 0,100% 0;}
+}
+
+* {
+	padding:0;
+	margin:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+header{
+    text-align: center;
+}
+ 
+body {
+  
+    background-color:cornflowerblue;
+    background-image: url("../img/KAME HOUSE.png") ,url("../img/nubes.png");
+    background-repeat: no-repeat, repeat;
+    background-size: cover, 300px 300px;
+    background-attachment: fixed;
+    
+
+    /* background-image: url("../img/KAME HOUSE.png"); Nuestra imagen de fondo */
+/* 	background-repeat:no-repeat; /* Indicamos que no se repetira 
+	background-size:cover; /* Encajamos la imagen al 100% del ancho 
+	background-attachment: fixed; /* Establecemos una posicion fija para la imagen */ 
+    
+	font-family:helvetica, arial, sans-serif;
+    line-height:20px;
+
+    animation-name: animated;
+    animation-duration:20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+ 
+.contenedor {
+	width: 90%;
+	max-width:900px;
+	margin:auto;
+}
+ 
+article {
+	background:rgba(24,8,33,.9);
+	padding:20px;
+	margin:20px 0;
+	color:#fff;
+	box-shadow:0 5px 5px 3px rgba(0, 0, 0, 0.25);
+}
+ 
+article h2 {
+	color:#fff;
+}
+ 
+article hr {
+	background:#F64740;
+	height:5px;
+	border:none;
+}
+ 
+article p {
+	line-height: 25px;
+}
+ 
+article h2, article p, article hr {
+	margin-bottom: 20px;
+}
+
+.personaje{
+    text-align: center;
+}
+.contenedorimg img{
+    width:25%;
+    height:300px;
+}
