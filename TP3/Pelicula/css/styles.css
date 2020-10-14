@@ -10,17 +10,32 @@
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
 }
-@keyframes animated {
-    
-    0%   {background-position: 0 0,0 0;}
-    50%  {background-position: 0 0,50% 0;}
-    100% {background-position: 0 0,100% 0;}
+/* @keyframes animated {
+    /* casa, nube chica , nube grande
+    0%   {background-position: 0 0, 0 0, 10% 0;}
+    25%  {background-position: 0 0, 10% 0 15% 2%;}
+    50%  {background-position: 0 0, 20% 0%, 20% 4%;}
+    75%  {background-position: 0 0, 35% 0%, 25% 6%;}
+    100% {background-position: 0 0, 50% 0%, 50% 10%;}
 }
 
 @-webkit-keyframes animated {
-    0%   {background-position: 0 0,0 0;}
-    50%  {background-position: 0 0,50% 0;}
-    100% {background-position: 0 0,100% 0;}
+    0%   {background-position: 0 0, 0 0, 10% 0;}
+    25%  {background-position: 0 0, 20% 0 15% 2%;}
+    50%  {background-position: 0 0, 50% 0%, 20% 4%;}
+    75%  {background-position: 0 0, 65% 0%, 55% 2%;}
+    100% {background-position: 0 0, 100% 0%, 100% 0%;}
+} */
+
+@keyframes animated {
+    /* casa, nube chica , nube grande*/
+    0%   {background-position: 0 0, left center, left 100%;}
+    100% {background-position: 0 0, right center, right 100%;}
+}
+
+@-webkit-keyframes animated {
+    0%   {background-position: 0 0, left center, left 100%;}
+    100% {background-position: 0 0, right center, right 100%;}
 }
 
 * {
@@ -38,22 +53,17 @@ header{
 body {
   
     background-color:cornflowerblue;
-    background-image: url("../img/KAME HOUSE.png") ,url("../img/nubes.png");
-    background-repeat: no-repeat, repeat;
-    background-size: cover, 300px 300px;
+    /* casa, nube chica , nube grande*/
+    background-image: url("../img/KAME HOUSE.png") ,url("../img/nubes.png"),url("../img/nubes3.png");
+    background-repeat: no-repeat, repeat-x, repeat-x;
+    background-size: cover, 300px 300px, 800px 800px;
     background-attachment: fixed;
-    
-
-    /* background-image: url("../img/KAME HOUSE.png"); Nuestra imagen de fondo */
-/* 	background-repeat:no-repeat; /* Indicamos que no se repetira 
-	background-size:cover; /* Encajamos la imagen al 100% del ancho 
-	background-attachment: fixed; /* Establecemos una posicion fija para la imagen */ 
     
 	font-family:helvetica, arial, sans-serif;
     line-height:20px;
 
     animation-name: animated;
-    animation-duration:20s;
+    animation-duration:30s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
