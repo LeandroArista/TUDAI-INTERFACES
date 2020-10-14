@@ -28,14 +28,17 @@
 } */
 
 @keyframes animated {
-    /* casa, nube chica , nube grande*/
-    0%   {background-position: 0 0, left center, left 100%;}
-    100% {background-position: 0 0, right center, right 100%;}
+     /* casa, nube grande , nube media, nube chica*/
+    0%   {background-position: 0 0, left 0%, 30% 40%, 70% 60%;}
+    50%  {background-position: 0 0, 55% 0%, 70% 40%, 80% 60% ;}
+    100% {background-position: 0 0, right 0%, right 40%, right 60%;}
+
 }
 
 @-webkit-keyframes animated {
-    0%   {background-position: 0 0, left center, left 100%;}
-    100% {background-position: 0 0, right center, right 100%;}
+    0%   {background-position: 0 0, left 0%, 30% 40%, 70% 60%;}
+    50%  {background-position: 0 0, 55% 0%, 70% 40%, 80% 60% ;}
+    100% {background-position: 0 0, right 0%, right 40%, right 60%;}
 }
 
 * {
@@ -53,17 +56,17 @@ header{
 body {
   
     background-color:cornflowerblue;
-    /* casa, nube chica , nube grande*/
-    background-image: url("../img/KAME HOUSE.png") ,url("../img/nubes.png"),url("../img/nubes3.png");
-    background-repeat: no-repeat, repeat-x, repeat-x;
-    background-size: cover, 300px 300px, 800px 800px;
+    /* casa, nube grande , nube media, nube chica*/
+    background-image: url("../img/KAME HOUSE.png") ,url("../img/nubes/cloud04.png"),url("../img/nubes/cloud03.png"), url("../img/nubes/cloud08.png") ;
+    background-repeat: no-repeat, repeat-x, repeat-x, repeat-x;
+    background-size: cover, 500px 250px, 300px 250px , 150px 150px;
     background-attachment: fixed;
     
 	font-family:helvetica, arial, sans-serif;
     line-height:20px;
 
     animation-name: animated;
-    animation-duration:30s;
+    animation-duration:50s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
@@ -83,7 +86,8 @@ article {
 }
  
 article h2 {
-	color:#fff;
+    color:#fff;
+    text-align: center;
 }
  
 article hr {
@@ -100,10 +104,21 @@ article h2, article p, article hr {
 	margin-bottom: 20px;
 }
 
+.primero{
+    margin-top: 35%;
+}
+
+#poster{
+    width: 100%;
+}
 .personaje{
     text-align: center;
 }
 .contenedorimg img{
     width:25%;
     height:300px;
+}
+.contenedorimg img:hover{
+    transform: scale(1.2); /* Igual que: scaleX(0.7) scaleY(0.7) */
+  
 }
