@@ -116,6 +116,7 @@ article h2, article p, article hr {
     
 }
 
+
 #botonera{
     justify-content: flex-end;
     margin: 10px;
@@ -133,8 +134,19 @@ article h2, article p, article hr {
     color:black;
 	border-radius:20px;
 }
-iframe{display:none;}
 
+#musica{
+    width: 92%;
+    visibility: hidden;
+}
+
+.video{
+    width:100%;
+    text-align: center;
+}
+video{
+    width: auto;
+}
 .music:hover{
     background-color: white;
     color: green;

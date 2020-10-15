@@ -22,6 +22,20 @@
         </div>
         </article>
     </div>
+
+    <div class="contenedor">
+        <article>
+			<h2>Trailer</h2>
+            <hr>
+            <div class="video">
+                <video id="trailer" controls poster="./img/DB001.jpg">
+                    <source src="./media/trailer.mp4" type="video/mp4">
+                    Tu navegador no implementa el elemento <code>video</code>.
+                  </video>
+            </div>
+            
+    </div>
+
     <div class="contenedor">
 		<article>
 			<h2>Reseña</h2>
@@ -58,6 +72,8 @@
                 </p>
 		</article>
     </div>
+
+    
     
     <div class="contenedor">
 		<article>
@@ -95,9 +111,10 @@
     
     <div id="cajamusica">
         <div class="flex">
+            <audio src="./media/soundtrack.mp3" id="musica" type="audio/mp3" controls preload loop></audio>
             <div id="botonera">
-                <button id="play" class="music"><i class="fa fa-play-circle-o fa-lg" aria-hidden="true"></i></button>
-                <button id="stop" class="music"><i class="fa fa-stop fa-lg" aria-hidden="true"></i></button>
+                <button id="play" class="music" onclick="sonarCancion()"><i class="fa fa-play-circle-o fa-lg" aria-hidden="true"></i></button>
+                <button id="stop" class="music" onclick="pararCancion()"><i class="fa fa-stop fa-lg" aria-hidden="true"></i></button>
             </div>
         </div>
     </div>

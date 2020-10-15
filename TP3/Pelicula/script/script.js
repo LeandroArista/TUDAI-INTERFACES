@@ -1,21 +1,34 @@
 //agrego musica
-window.addEventListener("load",function(){
-	document.getElementById("play").addEventListener("click",sonarCancion);
-	document.getElementById("stop").addEventListener("click",pararCancion);			
-});
-//commienzo la reproduccion de soundtrack
-function sonarCancion(){
-	let sonido = document.createElement("iframe");
-	sonido.setAttribute("src","./media/soundtrack.mp3");
-	document.body.appendChild(sonido);
-	document.getElementById("play").removeEventListener("click",sonarCancion);
-}
-//paro la reproduccion de soundtrack
-function pararCancion(){
-	let iframe = document.getElementsByTagName("iframe");
 
-	if (iframe.length > 0){
-		iframe[0].parentNode.removeChild(iframe[0]);
-		document.getElementById("play").addEventListener("click",pararCancion);
+//commienzo la reproduccion de soundtrack
+let sonando=false;
+let reproduccion=false;
+let video=document.querySelector("#trailer");
+let audio=document.querySelector("#musica");
+
+video.addEventListener('playing',function(){
+	if(!audio.paused){
+		audio.pause();
+		sonando=true;
+		reproduccion=true;
+	}
+});
+video.addEventListener('pause',function(){
+	if(sonando){
+		audio.play();
+		reproduccion=false;
+	}
+});
+
+function sonarCancion(){
+	if(!sonando && !reproduccion){
+		audio.play();
+		sonando=true;
+	}
+}
+function pararCancion(){
+	if(sonando ){
+		audio.pause();
+		sonando=false;
 	}
 }
