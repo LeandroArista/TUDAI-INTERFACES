@@ -38,6 +38,13 @@ function sonarCancion(){
 function pararCancion(){
 	if(sonando ){
 		audio.pause();
-		sonando=false;
+		sonando=false;	
 	}
+	sonando=false;
+}
+document.querySelector(".Personajes").addEventListener("wheel", myFunction);
+
+function myFunction() {
+	let animacion=document.querySelector("#animacion");
+	
 }
