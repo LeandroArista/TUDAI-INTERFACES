@@ -1,10 +1,14 @@
 //agrego musica
-
-//commienzo la reproduccion de soundtrack
 let sonando=false;
 let reproduccion=false;
 let video=document.querySelector("#trailer");
 let audio=document.querySelector("#musica");
+document.addEventListener("onload",function(){
+	video.load();
+	audio.load();
+});
+//commienzo la reproduccion de soundtrack
+
 
 video.addEventListener('playing',function(){
 	if(!audio.paused){
@@ -18,6 +22,11 @@ video.addEventListener('pause',function(){
 		audio.play();
 		reproduccion=false;
 	}
+});
+
+video.addEventListener('ended',function(){
+	video.currentTime=0;
+	video.poster="./img/DB001.jpg";
 });
 
 function sonarCancion(){
