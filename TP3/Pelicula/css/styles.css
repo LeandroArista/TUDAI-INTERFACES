@@ -66,6 +66,10 @@ article h2 {
     color:#fff;
     text-align: center;
 }
+article h3 {
+    color:#fff;
+    text-align: center;
+}
  
 article hr {
 	background:#F64740;
@@ -87,6 +91,7 @@ article h2, article p, article hr {
 
 #poster{
     width: 100%;
+    height: 450px;
 }
 
 /* caja de presonajes */
@@ -185,10 +190,11 @@ video{
     color:black;
     transform: scale(1.05); 
 }
-.contimggalery{
+
+/*imagen gallery*/
+/* .contimggalery{
     margin:10%;
     width: 100%;
-    
 }
 
 .imggalery{
@@ -199,4 +205,161 @@ video{
 .imggalery:hover{
     transition:all .5s ease-in-out;
     transform: scale(2.5);
+} */
+
+.contenedorcarousel{
+    align-items: center;
+    width: 90%;
+    overflow: hidden;
 }
+
+#carousel{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d; /*simulo efecto 3d */
+    animation: rotation 50s infinite linear;
+   
+    
+}
+#carousel figure img{
+    width:45%;
+    height:30%;
+}
+#carousel:hover{ /* pauso la animacio*/
+    animation-play-state: paused;
+}
+#carousel figure{
+    display: inline-block;
+    position: absolute; 
+}
+#carousel figure:nth-child(1){transform: rotateY(0deg) translateZ(50px);} /*rotateY roto sobe el eje y y me muevo del centro 10 px*/
+#carousel figure:nth-child(2){ transform: rotateY(40deg) translateZ(50px);}
+#carousel figure:nth-child(3){ transform: rotateY(80deg) translateZ(50px);}
+#carousel figure:nth-child(4){ transform: rotateY(120deg) translateZ(50px);}
+#carousel figure:nth-child(5){ transform: rotateY(160deg) translateZ(50px);}
+#carousel figure:nth-child(6){ transform: rotateY(200deg) translateZ(50px);}
+#carousel figure:nth-child(7){ transform: rotateY(240deg) translateZ(50px);}
+#carousel figure:nth-child(8){ transform: rotateY(280deg) translateZ(50px);}
+#carousel figure:nth-child(9){ transform: rotateY(320deg) translateZ(50px);}
+#carousel figure:nth-child(10){ transform: rotateY(360deg) translateZ(50px);}
+#carousel img{
+    cursor: pointer;
+    transition: all 1s ease;
+    width: 50%;
+    backface-visibility: hidden;
+    
+}
+#carousel img:hover{
+    transition: all 1s ease-out;
+    transform: scale(3);
+    filter: none;
+    z-index: 200;
+}
+@keyframes rotation{
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+/*  .contenedorcubo{
+    align-items: center;
+    width: 100%;
+ }
+
+ .cubo, .cubo .cara {
+    width: 200px;
+    height: 200px;
+}
+.cubo .cara {
+    position: absolute;
+}
+.cubo {
+    margin: 100px auto;
+}
+.cubo {
+    transform-style: preserve-3d;
+    transform: perspective(700px) rotateX(-30deg) rotateY(-30deg);
+}
+.cubo .cara#superior {
+    
+    transform: rotateX(90deg) translateZ(100px);
+}
+.cubo .cara#frente {
+   
+    transform: translateZ(100px);
+}
+.cubo .cara#atras {
+   
+    transform: translateZ(-100px);
+}
+.cubo .cara#derecha {
+    
+    transform: rotateY(90deg) translateZ(100px);
+}
+.cubo .cara#izquierda {
+    
+    transform: rotateY(-90deg) translateZ(100px);
+}
+.cubo .cara#inferior {
+    
+    transform: rotateX(-90deg) translateZ(100px);
+}
+.cubo {
+    animation: rotate 40s infinite linear;
+  }
+  @keyframes rotate {
+      0% { transform: rotateX(   0deg ) rotateY(   0deg ); }
+    100% { transform: rotateX( 360deg ) rotateY( 360deg ); }
+  } */
+
+
+/*cuenta atras*/
+#contador {
+	display: flex;
+	justify-content: center;
+    margin: 5px;
+    color: black;
+}
+#contador div{
+    width: 100px;
+}
+#contador div:hover{
+    background-color: rgb(140, 0, 145);
+    color: white;
+    border-radius: 25px;
+    transition: all .5s ease-in;
+
+}
+
+.simply-section {
+	background: #fff;
+	width: 100px;
+	height: 100px;
+	margin: 0 5px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.simply-amount {
+    align-self: center;
+	display: block;
+	font-size: 50px;
+    font-weight: 700;
+    margin: 25%;
+}
+
+.simply-word {
+    align-self: center;
+    display: block;
+    font-size: 15px;
+    margin-left: 15%;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
