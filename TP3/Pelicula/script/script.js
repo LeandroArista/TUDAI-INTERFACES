@@ -3,13 +3,50 @@ let sonando=false;
 let reproduccion=false;
 let video=document.querySelector("#trailer");
 let audio=document.querySelector("#musica");
+
+/* loading*/
+/* let Loading=(loadingDelayHidden=0)=>{
+	let loading=null;
+	const myLoadingDelayHidden=loadingDelayHidden;
+	let interval=null;
+	function hideLoading(){
+		if(loading!==null){
+			loading.classList.remove('show');
+			setTimeout(function(){
+				loading.remove()
+			},myLoadingDelayHidden)
+		}
+	}
+	function decrement(){
+		if(loadingDelayHidden>0)
+			loadingDelayHidden--;
+	
+	}
+	function init(){
+		document.addEventListener('DOMContentLoaded',function(){
+			loading=document.querySelector('.loading');
+			
+		
+			interval=setInterval(decrement, 100);
+			
+			
+			if(loadingDelayHidden===0){
+				hideLoading();
+				clearInterval(interval);
+			}else{
+				loadingDelayHidden--;
+			}
+		})
+	}return{'init':init}}
+
+Loading(3).init(); */	
+
+/*carga de elementos en la pagina */
 document.addEventListener("onload",function(){
 	video.load();
 	audio.load();
 });
-//commienzo la reproduccion de soundtrack
-
-
+/* seccion reproduccion musica y video*/
 video.addEventListener('playing',function(){
 	if(!audio.paused){
 		audio.pause();
@@ -23,7 +60,6 @@ video.addEventListener('pause',function(){
 		reproduccion=false;
 	}
 });
-
 video.addEventListener('ended',function(){
 	video.currentTime=0;
 	video.poster="./img/DB001.jpg";
@@ -46,11 +82,10 @@ function pararCancion(){
 
 function myFunction() {
 	let animacion=document.querySelector("#animacion");
-	
 }
  */
 
- /*Contador */
+ /*Cuenta regresiva*/
 const DATE_TARGET = new Date('11/09/2020 08:00 PM');
 
 const SPAN_DAYS = document.querySelector('span#days');
@@ -64,9 +99,8 @@ const MILLISECONDS_OF_A_HOUR = MILLISECONDS_OF_A_MINUTE * 60;
 const MILLISECONDS_OF_A_DAY = MILLISECONDS_OF_A_HOUR * 24;
 
 function updateText(valor){
-	if(valor>=0 && valor<10){
+	if(valor>=0 && valor<10)
 		valor="0"+valor;
-	}
 	return valor;
 }
 
@@ -85,5 +119,3 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, MILLISECONDS_OF_A_SECOND);
-/*end contador */
-
