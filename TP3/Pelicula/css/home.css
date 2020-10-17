@@ -151,8 +151,7 @@ video{
 }
 
 .content-carrousel img:hover{
-    transform: none;
-    transform: scale(1.3);
+    transform:  scale(1.3);
     transition: all 300ms;
 
 }
