@@ -1,0 +1,45 @@
+/* contenerdor de secciones*/
+.contenedor {
+	width: 90%;
+	max-width:900px;
+	margin:auto;
+}
+ 
+article {
+	background:rgba(24,8,33,.9);
+	padding:20px;
+	margin:20px 0;
+	color:#fff;
+	box-shadow:0 5px 5px 3px rgba(0, 0, 0, 0.25);
+}
+ 
+article h2 {
+    color:#fff;
+    text-align: center;
+}
+article h3 {
+    margin: 10px;
+    color:#fff;
+    text-align: center;
+}
+ 
+article hr {
+	background:#F64740;
+	height:5px;
+	border:none;
+}
+ 
+article p {
+	line-height: 25px;
+}
+ 
+article h1, article p, article hr {
+	margin-bottom: 20px;
+}
+
+.primero{
+    margin-top: 40%;
+}
+.flex{
+    display: flex;
+}

@@ -1,0 +1,49 @@
+@keyframes animated {
+    /* casa, nube grande , nube media, nube chica*/
+   0%   {background-position: 0 0, left 0%, 30% 30%, 70% 55%;}
+   50%  {background-position: 0 0, 55% 0%, 70% 30%, 80% 55% ;}
+   100% {background-position: 0 0, right 0%, right 30%, right 55%;}
+
+}
+@-webkit-keyframes animated {
+   0%   {background-position: 0 0, left 0%, 30% 30%, 70% 55%;}
+   50%  {background-position: 0 0, 55% 0%, 70% 30%, 80% 55% ;}
+   100% {background-position: 0 0, right 0%, right 30%, right 55%;}
+}
+
+* {
+   padding:0;
+   margin:0;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+header{
+   width: 100%;
+   text-align: center;
+}
+#logo{
+   width: 100%;
+   max-width: 400px;
+   height: auto;
+}
+
+body {
+ 
+   background-color:cornflowerblue;
+   /* casa, nube grande , nube media, nube chica*/
+   background-image: url("../img/KAME HOUSE.png") ,url("../img/nubes/cloud04.png"),url("../img/nubes/cloud03.png"), url("../img/nubes/cloud08.png") ;
+   background-repeat: no-repeat, repeat-x, repeat-x, repeat-x ;
+   background-size: cover, 500px 250px, 300px 250px , 150px 150px;
+   
+   background-attachment: fixed;
+   
+   font-family:helvetica, arial, sans-serif;
+   line-height:20px;
+
+   animation-name: animated;
+   animation-duration:50s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+}
