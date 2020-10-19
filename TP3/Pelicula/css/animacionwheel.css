@@ -1,0 +1,30 @@
+/* animacion */
+@keyframes goku {
+    0%   {background-size: 100%, 95%, 100%;}
+   50%  {background-size: 99%, 95%, 98%; ;}
+   100% {background-size: 98%, 95% , 96%;}
+}
+@-webkit-keyframes goku {
+    0%   {background-size: 100%, 95%, 100%;}
+    50%  {background-size: 98%, 95%, 98%; ;}
+    100% {background-size: 96%, 95% , 96%;}
+}
+.animacion{
+    position: fixed;
+    bottom: 10vh;
+    left: 15vh;
+    width: 7vw;
+    height: 40vh;
+    background: url("../img/gokuparado.png");
+    background-size:95%
+}
+
+.animacion-activa{
+    position: fixed;
+    bottom: 10vh;
+    left: 15vh;
+    width: 7vw;
+    height: 40vh;
+    background: url("../img//rayos.png"),url("../img/gokuparado.png"),url("../img/ki.png") ;
+    animation: goku linear .5s infinite;
+}

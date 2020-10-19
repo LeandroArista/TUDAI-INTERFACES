@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dragon Ball Z - Saludos</title>
     <link rel="stylesheet" href="../css/backgroundanimated.css">
+    <link rel="stylesheet" href="../css/animacionwheel.css">
     <link rel="stylesheet" href="../css/seccions.css">
     <link rel="stylesheet" href="../css/musica.css">
+    <link rel="stylesheet" href="../css/stylesform.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../img/Musett-Dragon-Ballz-Dragon-Ball.ico" />
 </head>
@@ -14,13 +16,42 @@
     <header>
         <h1><img src="../img/DBZ.png" alt="logo"></h1>
     </header>
-    <section class="contenedor primero">
+    <section id="animacion" class="animacion">
+       
+    </section>
+    <section class="contenedor">
         <article>
 
             <h2>Comentarios</h2>
             <hr>
-            <form action="">
-
+            <form action="" id="form-commnets">
+                <div class="section">
+                    <label class="field" for="names"> <i class="fa fa-user"></i> Nombre: (*)</label>
+                    <input type="text" name="names" id="names"  placeholder="Ingrese Nombre...">
+                   
+                </div>
+                <div class="section">
+                    <label class="field ">
+                        <label class="field" for="email"><i class="fa fa-envelope"></i> Email: </label>
+                        <input type="email" name="email" id="email" placeholder="Ingrese Email...">
+                </div>
+                <div class="section">
+                <label for="selectpersonaje"><i class="fa fa-user"></i> Destinatario: (*)</label>
+                    <select name="personaje" id="selectpersonaje">
+                        <option value="goku"actived>Goku</option>
+                        <option value="vegeta">Vegeta</option>
+                        <option value="freezer">Freezer</option>
+                    </select>
+                </div>
+                <div class="section">
+                       
+                        <textarea rows="8" id="comment" name="comment" placeholder="Ingrese Mensaje..."></textarea>
+                        <label class="field" for="comment">(*) <i class="fa fa-comments"></i> </label>
+                </div>
+                <span id="obligatorios">(*) campos obligatorios</span>
+                <div class="form-footer">
+                    <button type="submit" class="button btn-blue">Subir Comentario</button>
+                </div>
             </form>
         </article>
     </section>
@@ -34,5 +65,6 @@
         </div>
     </section>
     <script src="../script/musicascript.js"></script>
+    <script src="../script/animacion.js"></script>
 </body>
 </html>
