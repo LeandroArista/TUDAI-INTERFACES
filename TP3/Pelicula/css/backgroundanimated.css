@@ -24,11 +24,11 @@ header{
    text-align: center;
 }
 @keyframes entrada{
-   0%{transform: translateY(-200px);}
-   25%{transform: translateY(25%);}
-   50%{transform: translateY(-10%);}
-   75%{transform: translateY(15%);}
-   100%{transform: translateY(25%);}
+   0%{transform: translateY(-200px) skewX(15deg);}
+   25%{transform: translateY(25%) skewX(-15deg);}
+   50%{transform: translateY(-10%) skewX(10deg);}
+   75%{transform: translateY(15%) skewX(-10deg);}
+   100%{transform: translateY(2%);}
 }
 @-webkit-keyframes entrada {
    0%{transform: translateY(-200px);}
