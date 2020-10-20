@@ -1,6 +1,6 @@
 
 
-let form=document.querySelector("#dataForm");
+/* let form=document.querySelector("#dataForm");
 form.addEventListener('submit',function(e){
     e.preventDefault();
     
@@ -11,7 +11,7 @@ form.addEventListener('submit',function(e){
         let comentario = inputs[3].value;
         
       let div=form.appendChild(div);
-});
+}); */
 
 window.addEventListener("load",function(){
     // despueés de cargar le devolvemos el scroll
