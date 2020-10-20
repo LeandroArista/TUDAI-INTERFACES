@@ -189,37 +189,31 @@ video{
     min-height: 100vh;
     display: flex;
 }
-
+@keyframes rotaresfera{
+0%{background-position: 0;}
+100%{background-position: -200px 0;}
+}
 .preloader {
     margin: auto;
     
-    width: 350px;
-    height: 30px;
-    background: rgba(255,255,255,0.1);
-    
+    width: 100px;
+    height: 100px;
+    background: url("../img/esferafondo.png");
+    border-radius: 50%;
     position: relative;
+    animation: rotaresfera 2s infinite;
+    box-shadow: 0px 5px 10px rgb(92, 88, 83);
 }
 
-.preloader:before {
-    content: "";
+.sombra3d{
+    background: url("../img/eferatransparente.png");
+    width: 100px;
+    height: 100px;
     position: absolute;
-    background: green;
-    width: 0;
-    height: 30px;
-    
-    animation: preloader 3s forwards;
 }
 
-.preloader p {
-    margin: 0;
-    line-height: 30px;
-    font-size: 25px;
-    font-weight: bold;
-    
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
+
+
 
 .cerrar {
     transform: translateY(100%);
