@@ -19,17 +19,6 @@
     background-size:95%;
     z-index:-1;
 }
-/*
-.animacion-activa{
-    position: fixed;
-    bottom: 10vh;
-    left: 15vh;
-    width: 7vw;
-    height: 40vh;
-    background: url("../img/rayos.png") no-repeat ,url("../img/gokuparado.png") no-repeat,url("../img/ki.png") no-repeat ;
-    animation: goku linear .5s infinite;
-    z-index:-1;
-}*/
 
 .animacion-activa{
     position: fixed;

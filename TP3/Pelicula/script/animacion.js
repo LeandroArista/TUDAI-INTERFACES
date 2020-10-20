@@ -7,7 +7,7 @@ function myFunction() {
 	let clientHeight = document.documentElement.clientHeight;
 	let windowHeight = scrollHeight - clientHeight;
 	let porcentaje = scrollTop / windowHeight *100;
-console.log(porcentaje);
+
 	//cuando carga la pagina
 	if (animacion.classList.contains('animacion-in')){
 		animacion.classList.toggle('animacion-in');
