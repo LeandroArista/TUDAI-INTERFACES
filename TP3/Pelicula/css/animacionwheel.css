@@ -1,13 +1,13 @@
 /* animacion */
 @keyframes goku {
-    0%   {background-size: 100%, 95%, 100%;}
-   50%  {background-size: 99%, 95%, 98%; ;}
-   100% {background-size: 98%, 95% , 96%;}
+    0%   {background-size: 100%, 95%, 123% 108%; background-position: 0,0,-15px 0;}
+   50%  {background-size: 99%, 95%, 120% 110%;  background-position: 0,0,-15px 0;}
+   100% {background-size: 98%, 95% , 123% 112%;  background-position: 0,0,-15px 0;}
 }
 @-webkit-keyframes goku {
-    0%   {background-size: 100%, 95%, 100%;}
-    50%  {background-size: 98%, 95%, 98%; ;}
-    100% {background-size: 96%, 95% , 96%;}
+    0%   {background-size: 100%, 95%, 123% 108%; background-position: 0,0,-15px 0;}
+   50%  {background-size: 99%, 95%, 120% 110%;  background-position: 0,0,-15px 0;}
+   100% {background-size: 98%, 95% , 123% 112%;  background-position: 0,0,-15px 0;}
 }
 .animacion{
     position: fixed;
@@ -19,6 +19,17 @@
     background-size:95%;
     z-index:-1;
 }
+/*
+.animacion-activa{
+    position: fixed;
+    bottom: 10vh;
+    left: 15vh;
+    width: 7vw;
+    height: 40vh;
+    background: url("../img/rayos.png") no-repeat ,url("../img/gokuparado.png") no-repeat,url("../img/ki.png") no-repeat ;
+    animation: goku linear .5s infinite;
+    z-index:-1;
+}*/
 
 .animacion-activa{
     position: fixed;
@@ -26,10 +37,24 @@
     left: 15vh;
     width: 7vw;
     height: 40vh;
-    background: url("../img//rayos.png") no-repeat ,url("../img/gokuparado.png") no-repeat,url("../img/ki.png") no-repeat ;
+    background: url("../img/rayos.png") no-repeat ,url("../img/gokuparado.png") no-repeat,url("../img/kigrande.png") no-repeat ;
+    
     animation: goku linear .5s infinite;
     z-index:-1;
 }
+.animacion-super{
+    position: fixed;
+    bottom: 10vh;
+    left: 15vh;
+    width: 7vw;
+    height: 40vh;
+    background: url("../img/rayos.png") no-repeat ,url("../img/gokusuperparado.png") no-repeat,url("../img/kigrande.png") no-repeat ;
+    
+    animation: goku linear .5s infinite;
+    z-index:-1;
+}
+
+
 
 .animacion-in{
     position: fixed;
@@ -41,4 +66,4 @@
     background-size:95%;
     animation: all  2s ease-in forwards;
     z-index:-1;
-}
+} 
