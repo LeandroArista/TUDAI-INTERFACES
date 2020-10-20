@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/stylesform.css">
     <link rel="stylesheet" href="../css/menustyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://file.myfontastic.com/tc26fJHv8scB3d4vHQRRsV/icons.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../img/Musett-Dragon-Ballz-Dragon-Ball.ico" />
 </head>
 <body>
@@ -35,61 +36,73 @@
     <section id="animacion" class="animacion">
        
     </section>
+    <section class="comentarios">
+        <h2>Comentarios </h2>
+        <hr>
+    <div class="container-comments">
+        <div class="comments">
+            <div class="photo-perfil">
+                <img src="../img/goku.jpg" alt="">
+            </div>
+            <div class="info-comments">
+                <div class="header">
+                    <h3>Juan</h3>
+                    <h4>25/09/2017</h4>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum voluptas reiciendis, hic voluptatibus maxime, delectus fugiat, aspernatur nisi saepe, temporibus nemo sequi sint pariatur ratione! Repellat tempora doloremque illo necessitatibus.</p>
+                <div class="footer">
+                    <h5 class="request">Responder</h5>
+                    <label class="icon-heart"></label>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </section>
+
+    <!-- <section class="comentarios">
+        <div id="1" class="row">
+
+
+            <span >Juan</span>
+            <span >juan@gmail.com</span>
+            <span>Goku</span>
+            <span>no puedo esperar a ver la peli</span>
+        </div>
+        <div id="2" class="row">
+            <span >Lea</span>
+            <span >patata@gmail.com</span>
+            <span>Freezer</span>
+            <span>cuanto cobras por ser aire acondicionado </span>
+        </div>
+    </section> -->
     <section class="contenedor">
         
-            <form action="" class="formulario">
-                <h3 class="formulario__titulo">Nuevo Comentario</h3>
+            <form action="" class="formulario" id="dataForm">
+                <h2 class="formulario__titulo">Nuevo Comentario</h2>
                 <hr>
                 <div class="row">
                     <label for="name" class="formulario__label"><i class="fa fa-user"></i> Nombre</label>
-                    <input type="text" class="formulario__input" id="name">
+                    <input type="text" class="formulario__input" id="name" required>
                 </div>
                 <div class="row">
                     <label for="email" class="formulario__label"><i class="fa fa-envelope"></i> Email</label>
                     <input type="text" class="formulario__input" id="email">
                 </div>  
                 <div class="row">
-                 <!--    <label for="selectpersonaje" class="formulario__label"><i class="fa fa-user"></i> Destinatario: (*)</label> -->
-                        <select name="personaje" class="formulario__input" id="selectpersonaje">
-                            <option value="goku"actived>Goku</option>
+                        <select name="personaje" class="formulario__input" id="selectpersonaje" required>
+                            <option actived disabled><i class="fa fa-user"></i> Destinatario: (*)</option>
+                            <option value="goku">Goku</option>
                             <option value="vegeta">Vegeta</option>
                             <option value="freezer">Freezer</option>
                         </select>  
                 </div>
                 <div class="row">
                     <label for="comment" class="formulario__label"></label>></label>
-                    <textarea rows="8" id="comment" name="comment" class="lbl-text" placeholder="Ingrese Mensaje..."></textarea>
+                    <textarea rows="8" id="comment" name="comment" class="lbl-text" placeholder="Ingrese Mensaje..." required></textarea>
                 </div>
                 <input type="submit" class="formulario__submit" id="submit">
             </form>
-            <!-- <form action="" id="form-commnets">
-                <div class="section">
-                    <label class="lbl-text" for="names"><span class="text-span"><i class="fa fa-user"></i> Nombre: (*)</span> </label>
-                    <input type="text" name="names" id="names"  placeholder="Ingrese Nombre...">
-                   
-                </div>
-                <div class="section">
-                    <label class="field ">
-                        <label class="lbl-text" for="email"><span class="text-span"><i class="fa fa-envelope"></i> Email:</span> </label>
-                        <input type="email" name="email" id="email" placeholder="Ingrese Email...">
-                </div>
-                <div class="section">
-                <label for="selectpersonaje"><i class="fa fa-user"></i> Destinatario: (*)</label>
-                    <select name="personaje" id="selectpersonaje">
-                        <option value="goku"actived>Goku</option>
-                        <option value="vegeta">Vegeta</option>
-                        <option value="freezer">Freezer</option>
-                    </select>
-                </div>
-                <div class="section">
-                        <textarea rows="8" id="comment" name="comment" class="lbl-text" placeholder="Ingrese Mensaje..."></textarea>
-                        <label class="field" for="comment">(*)<span class="text-span"><i class="fa fa-comments"></i></span>  </label>
-                </div>
-                <span id="obligatorios">(*) campos obligatorios</span>
-                <div class="form-footer">
-                    <button type="submit" class="button btn-blue">Subir Comentario</button>
-                </div>
-            </form> -->
         
     </section>
     <section id="cajamusica">
@@ -103,5 +116,6 @@
     </section>
     <script src="../script/musicascript.js"></script>
     <script src="../script/animacion.js"></script>
+    <script src="../script/form.js"></script>
 </body>
 </html>

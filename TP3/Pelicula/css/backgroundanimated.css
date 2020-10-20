@@ -48,7 +48,8 @@ h1 #logo{
 }
 
 body {
- 
+   margin: 0;
+   overflow-Y: hidden;
    background-color:cornflowerblue;
    /* casa, nube grande , nube media, nube chica*/
    background-image: url("../img/KAME HOUSE.png") ,url("../img/nubes/cloud04.png"),url("../img/nubes/cloud03.png"), url("../img/nubes/cloud08.png") ;

@@ -19,11 +19,16 @@
     <!-- <section class="loading show">
         <div class="spin"></div>
         </section> -->
-    <header>
+        <div class="loading" id="loading">
+            <div class="preloader">
+                <p>Cargando</p>
+            </div>
+        </div>
+    <header class="hidden">
         <h1><img src="./img/DBZ.png" alt="logo" id="logo"></h1>
     </header>
     <section id="menu">
-          <nav class="menu">
+          <nav class="menu hidden">
             <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
             <label class="menu-open-button" for="menu-open">
              <span class="lines line-1"></span>
@@ -37,7 +42,7 @@
            
          </nav>
     </section>
-    <section id="animacion" class="animacion">
+    <section id="animacion " class="animacion hidden">
        
     </section>
 
@@ -174,7 +179,7 @@
         </article>
     </section>
 
-    <section id="cajamusica">
+    <section id="cajamusica" class="hidden">
         <div class="flex">
             <audio src="./media/soundtrack.mp3" id="musica" type="audio/mp3" controls preload loop></audio>
             <div id="botonera">

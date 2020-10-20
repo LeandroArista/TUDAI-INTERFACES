@@ -5,6 +5,16 @@ let video=document.querySelector("#trailer");
 let audio=document.querySelector("#musica");
 
 /* loading*/
+
+let hiddens=document.querySelectorAll(".hidden");
+
+function clearHidden() {
+	hiddens.forEach(function(item) {
+		if (item.classList.contains('hidden')  ){
+			item.classList.toggle('hidden');
+		}
+	  }, this);
+}
 /* let Loading=(loadingDelayHidden=0)=>{
 	let loading=null;
 	const myLoadingDelayHidden=loadingDelayHidden;
@@ -42,9 +52,19 @@ let audio=document.querySelector("#musica");
 Loading(3).init(); */	
 
 /*carga de elementos en la pagina */
+
 document.addEventListener("onload",function(){
 	video.load();
 	audio.load();
+});
+window.addEventListener("load",function(){
+	let container = document.getElementById('loading');
+	console.log(container);
+	setTimeout(function() {
+	container.classList.add('cerrar');	
+  	document.body.style.overflowY= "visible";// despueés de cargar le devolvemos el scroll
+	clearHidden();
+	}, 3000);
 });
 /* seccion reproduccion musica y video*/
 video.addEventListener('playing',function(){
