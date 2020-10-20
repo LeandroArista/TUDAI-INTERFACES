@@ -12,44 +12,14 @@ function clearHidden() {
 	hiddens.forEach(function(item) {
 		if (item.classList.contains('hidden')  ){
 			item.classList.toggle('hidden');
+			if(item.classList.contains('animacion-in')){
+				item.classList.toggle('animacion-in');
+				item.classList.add('animacion');
+			}
 		}
 	  }, this);
 }
-/* let Loading=(loadingDelayHidden=0)=>{
-	let loading=null;
-	const myLoadingDelayHidden=loadingDelayHidden;
-	let interval=null;
-	function hideLoading(){
-		if(loading!==null){
-			loading.classList.remove('show');
-			setTimeout(function(){
-				loading.remove()
-			},myLoadingDelayHidden)
-		}
-	}
-	function decrement(){
-		if(loadingDelayHidden>0)
-			loadingDelayHidden--;
-	
-	}
-	function init(){
-		document.addEventListener('DOMContentLoaded',function(){
-			loading=document.querySelector('.loading');
-			
-		
-			interval=setInterval(decrement, 100);
-			
-			
-			if(loadingDelayHidden===0){
-				hideLoading();
-				clearInterval(interval);
-			}else{
-				loadingDelayHidden--;
-			}
-		})
-	}return{'init':init}}
 
-Loading(3).init(); */	
 
 /*carga de elementos en la pagina */
 
@@ -61,10 +31,14 @@ window.addEventListener("load",function(){
 	let container = document.getElementById('loading');
 	console.log(container);
 	setTimeout(function() {
-	container.classList.add('cerrar');	
+	container.classList.add('cerrar');
+	container.classList.add('hidden');		
   	document.body.style.overflowY= "visible";// despueés de cargar le devolvemos el scroll
-	clearHidden();
+	  setTimeout(function(){
+		clearHidden();
+		},1000);
 	}, 3000);
+	
 });
 /* seccion reproduccion musica y video*/
 video.addEventListener('playing',function(){
