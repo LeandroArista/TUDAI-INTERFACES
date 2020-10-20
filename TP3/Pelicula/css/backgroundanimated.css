@@ -23,9 +23,27 @@ header{
    width: 100%;
    text-align: center;
 }
+@keyframes entrada{
+   0%{transform: translateY(-200px);}
+   25%{transform: translateY(25%);}
+   50%{transform: translateY(-10%);}
+   75%{transform: translateY(15%);}
+   100%{transform: translateY(25%);}
+}
+@-webkit-keyframes entrada {
+   0%{transform: translateY(-200px);}
+   25%{transform: translateY(25%);}
+   50%{transform: translateY(-10%);}
+   75%{transform: translateY(15%);}
+   100%{transform: translateY(25%);}
+}
+h1 #logo{
+   top:-200px;
+   animation: entrada 5s linear forwards;
+}
 #logo{
-   width: 100%;
-   max-width: 400px;
+  
+   width: 40%;
    height: auto;
 }
 

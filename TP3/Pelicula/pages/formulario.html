@@ -36,19 +36,41 @@
        
     </section>
     <section class="contenedor">
-        <article>
-
-            <h2>Comentarios</h2>
-            <hr>
-            <form action="" id="form-commnets">
+        
+            <form action="" class="formulario">
+                <h3 class="formulario__titulo">Nuevo Comentario</h3>
+                <hr>
+                <div class="row">
+                    <label for="name" class="formulario__label"><i class="fa fa-user"></i> Nombre</label>
+                    <input type="text" class="formulario__input" id="name">
+                </div>
+                <div class="row">
+                    <label for="email" class="formulario__label"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="text" class="formulario__input" id="email">
+                </div>  
+                <div class="row">
+                 <!--    <label for="selectpersonaje" class="formulario__label"><i class="fa fa-user"></i> Destinatario: (*)</label> -->
+                        <select name="personaje" class="formulario__input" id="selectpersonaje">
+                            <option value="goku"actived>Goku</option>
+                            <option value="vegeta">Vegeta</option>
+                            <option value="freezer">Freezer</option>
+                        </select>  
+                </div>
+                <div class="row">
+                    <label for="comment" class="formulario__label"></label>></label>
+                    <textarea rows="8" id="comment" name="comment" class="lbl-text" placeholder="Ingrese Mensaje..."></textarea>
+                </div>
+                <input type="submit" class="formulario__submit" id="submit">
+            </form>
+            <!-- <form action="" id="form-commnets">
                 <div class="section">
-                    <label class="lbl-text" for="names"><span><i class="fa fa-user"></i> Nombre: (*)</span> </label>
+                    <label class="lbl-text" for="names"><span class="text-span"><i class="fa fa-user"></i> Nombre: (*)</span> </label>
                     <input type="text" name="names" id="names"  placeholder="Ingrese Nombre...">
                    
                 </div>
                 <div class="section">
                     <label class="field ">
-                        <label class="field" for="email"><i class="fa fa-envelope"></i> Email: </label>
+                        <label class="lbl-text" for="email"><span class="text-span"><i class="fa fa-envelope"></i> Email:</span> </label>
                         <input type="email" name="email" id="email" placeholder="Ingrese Email...">
                 </div>
                 <div class="section">
@@ -60,16 +82,15 @@
                     </select>
                 </div>
                 <div class="section">
-                       
-                        <textarea rows="8" id="comment" name="comment" placeholder="Ingrese Mensaje..."></textarea>
-                        <label class="field" for="comment">(*) <i class="fa fa-comments"></i> </label>
+                        <textarea rows="8" id="comment" name="comment" class="lbl-text" placeholder="Ingrese Mensaje..."></textarea>
+                        <label class="field" for="comment">(*)<span class="text-span"><i class="fa fa-comments"></i></span>  </label>
                 </div>
                 <span id="obligatorios">(*) campos obligatorios</span>
                 <div class="form-footer">
                     <button type="submit" class="button btn-blue">Subir Comentario</button>
                 </div>
-            </form>
-        </article>
+            </form> -->
+        
     </section>
     <section id="cajamusica">
         <div class="flex">
