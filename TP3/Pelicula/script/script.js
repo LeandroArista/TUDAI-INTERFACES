@@ -74,8 +74,6 @@ function pararCancion(){
 	sonando=false;
 }
 
-
-
  /*Cuenta regresiva*/
 const DATE_TARGET = new Date('11/09/2020 08:00 PM');
 
