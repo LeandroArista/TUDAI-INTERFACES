@@ -35,67 +35,69 @@
     <section id="animacion" class="animacion">
        
     </section>
+
     <section class="contenedor">
         <article>
-
-            <h2>Calendario</h2>
+            <h2>Eventos</h2>
             <hr>
-            <section class="ac-container">
-                <div>
-                    <input id="ac-1" name="accordion-1" type="radio" checked="">
-                    <label for="ac-1">Creador: Akira Toriyama</label>
-                    <article class="ac-medium">
-                        <div class="float">
+            <div class="acordeon primer">
+                <div class="acordeon__item">
+                    <input type="radio" name="acordeon" id="item1"></input>
+                    <label for="item1" class="acordeon__titulo">Entrevista autor del Manga : Akira Toriyama</label>
+                        <div class="expandable">
                             <img src="../img/expositores/Akira_Toriyama.jpg">
-                            <p>鳥山 明 Toriyama Akira?, Nagoya, 5 de abril de 1955) es un mangaka y diseñador de personajes japonés. Es conocido por sus obras de Dr. Slump y Dragon Ball, y actuando como diseñador de personajes para varios videojuegos populares como la franquicia de Dragon Quest, Chrono Trigger y Blue Dragon. Toriyama es considerado como uno de los artistas que cambió la historia del manga, ya que sus obras son muy influyentes y populares, particularmente Dragon Ball y la saga Dragon Quest, que muchos artistas de manga citan como fuente de inspiración. </p>
+                            <p class="acordeon__contenido ">Toriyama Akira?, Nagoya, 5 de abril de 1955) es un mangaka y diseñador de personajes 
+                                japonés. Es conocido por sus obras de Dr. Slump y Dragon Ball, y actuando como diseñador de personajes para 
+                                varios videojuegos populares como la franquicia de Dragon Quest, Chrono Trigger y Blue Dragon. Toriyama es 
+                                considerado como uno de los artistas que cambió la historia del manga, ya que sus obras son muy influyentes 
+                                y populares, particularmente Dragon Ball y la saga Dragon Quest, que muchos artistas de manga citan como 
+                                fuente de inspiración. </p>
                         </div>
-                    </article>
                 </div>
-                <div>
-                    <input id="ac-2" name="accordion-1" type="radio">
-                    <label for="ac-2">Diseño personajes: Tadayoshi Yamamuro</label>
-                    <article class="ac-medium">
-                        <div class="float">
-                            <img src="../img/expositores/YamamuroTadayoshi.jpg">
-                            <p>Trabaja como el diseñador de personajes de Dragon Ball Super y su trabajo empezó tener un rol importante en la producción de la serie desde el Arco de Majin-Boo, trabajando como un animador clave en varios episodios de esta. Dibuja con un estilo recto, opuesto al estilo redondo de Minoru Maeda y es reconocido como uno de los animadores e ilustradores más influyentes y conocidos de la franquicia de Dragon Ball. </p>
-                        </div>
-                    </article>
+                <div class="acordeon__item">
+                    <input type="radio" name="acordeon" id="item2"></input>
+                    <label for="item2" class="acordeon__titulo">Entrevista Diseñador de personajes: Tadayoshi Yamamuro</label>
+                    <div class="expandable">
+                        <img src="../img/expositores/YamamuroTadayoshi.jpg">
+                        <p class="acordeon__contenido">Trabaja como el diseñador de personajes de Dragon Ball Super y su trabajo empezó tener un rol importante en la producción de la serie desde el Arco de Majin-Boo, trabajando como un animador clave en varios episodios de esta. Dibuja con un estilo recto, opuesto al estilo redondo de Minoru Maeda y es reconocido como uno de los animadores e ilustradores más influyentes y conocidos de la franquicia de Dragon Ball. </p>
+                    </div>
                 </div>
-                <div>
-                    <input id="ac-3" name="accordion-1" type="radio">
-                    <label for="ac-3">Avant Premier</label>
-                    <article class="ac-large">
-                        <p>¿Cómo conseguir una invitación para una avant premiere?
+                <div class="acordeon__item">
+                    <input type="radio" name="acordeon" id="item3"></input>
+                    <label for="item3" class="acordeon__titulo">Avant Premier: Como Obtener tu entrada</label>
+                    <div class="expandable">
+                        <img src="../img/expositores/premier.jpg">
+                        <p class="acordeon__contenido">¿Cómo conseguir una invitación para una avant premiere?
                             Dependerá de cada función y quien lo organiza. Pero en nuestro caso lo habitual es que habilitemos un formulario para que ustedes se anoten, nos dejan sus datos (Nombre, Apellido, DNI, Mail) y luego según la cantidad de entradas que regalemos hacemos la lista de invitados definitiva que se publica el día de la función.</p>    
-                         <p>   El formulario se habilita un par de días antes de la función en micartelera.com.ar</p>   
-                         <p>   ¿Se hace un sorteo?
+                         <p class="acordeon__contenido">   El formulario se habilita un par de días antes de la función en micartelera.com.ar</p>   
+                         <p class="acordeon__contenido">   ¿Se hace un sorteo?
                             Si, entre todos los que completaron correctamente el formulario.</p>   
-                         <p>   ¿Cómo me entero si estoy invitado?
+                         <p class="acordeon__contenido">   ¿Cómo me entero si estoy invitado?
                             La lista final de invitados se publica en la web en el mismo link donde se publicó el formulario.</p>
-                        <p>   
+                        <p class="acordeon__contenido">   
                             ¿Qué hago si estoy invitado?
                             Ir al cine, 15 minutos antes de la función anunciada, para el ingreso a la sala.
                         </p>    
-                         <p>   ¿Es una sola entrada por persona?
+                         <p class="acordeon__contenido">   ¿Es una sola entrada por persona?
                             Eso se avisa cuando se publica la lista de invitados, pero lo más común es que nuestros invitados puedan llevar 1 acompañante.
                         </p>
-                            <p>    
+                        <p class="acordeon__contenido">    
                             ¿Va haber una avant premiere de ……….. película?
                             Dependemos de la distribuidora y del cine, podemos recibir sugerencias de que película quieren ver.
                         </p>    
-                    </article>
+                    </div>
                 </div>
-                <div>
-                    <input id="ac-4" name="accordion-1" type="radio">
-                    <label for="ac-4">Contacto</label>
-                    <article class="ac-small ultimo">
-                        <p>Para mas informacion dirigirse a nuetro email dbz@lasesferasdeldragon.com</p>
-                    </article>
+                <div class="acordeon__item">
+                    <input type="radio" name="acordeon" id="item4"></input>
+                    <label for="item4" class="acordeon__titulo">Concurso de dibujos</label>
+                    <div class="expandable">
+                        <img src="../img/expositores/dibujo.jpg">
+                        <p class="acordeon__contenido">Para participar del concurso subi tu imagen , con una foto de los ultimos tres numero de tu dni para participar del sorteo de una entrada </p>
+                    </div>
                 </div>
-            </section>
+            </div>
         </article>
-    </section>       
-    
+    </section>
 
 
     <section id="cajamusica">
@@ -109,5 +111,6 @@
     </section>
     <script src="../script/musicascript.js"></script>
     <script src="../script/animacion.js"></script>
+    <script src="../script/calendar.js"></script>
 </body>
 </html>

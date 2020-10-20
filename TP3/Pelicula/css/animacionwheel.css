@@ -16,7 +16,8 @@
     width: 7vw;
     height: 40vh;
     background: url("../img/gokuparado.png") no-repeat;
-    background-size:95%
+    background-size:95%;
+    z-index:-1;
 }
 
 .animacion-activa{
@@ -27,6 +28,7 @@
     height: 40vh;
     background: url("../img//rayos.png") no-repeat ,url("../img/gokuparado.png") no-repeat,url("../img/ki.png") no-repeat ;
     animation: goku linear .5s infinite;
+    z-index:-1;
 }
 
 .animacion-in{
@@ -38,4 +40,5 @@
     background: url("../img/gokuparado.png") no-repeat;
     background-size:95%;
     animation: all  2s ease-in forwards;
+    z-index:-1;
 }
