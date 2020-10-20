@@ -32,11 +32,12 @@ window.addEventListener("load",function(){
 	console.log(container);
 	setTimeout(function() {
 	container.classList.add('cerrar');
-	container.classList.add('hidden');		
+		
   	document.body.style.overflowY= "visible";// despueés de cargar le devolvemos el scroll
 	  setTimeout(function(){
 		clearHidden();
-		},1000);
+		container.classList.add('hidden');	
+		},2000);
 	}, 3000);
 	
 });

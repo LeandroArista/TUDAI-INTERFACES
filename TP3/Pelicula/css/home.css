@@ -217,7 +217,8 @@ video{
 
 .cerrar {
     transform: translateY(100%);
-    transition: all 2s;
+    transition: all 2s ease-out;
+    animation: preloader 2s ;
 }
 
 @keyframes preloader {
