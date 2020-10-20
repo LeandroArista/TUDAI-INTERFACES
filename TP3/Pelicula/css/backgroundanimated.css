@@ -1,3 +1,11 @@
+* {
+   padding:0;
+   margin:0;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+/*animaciones*/
 @keyframes animated {
     /* casa, nube grande , nube media, nube chica*/
    0%   {background-position: 0 0, left 0%, 30% 30%, 70% 55%;}
@@ -11,19 +19,7 @@
    100% {background-position: 0 0, right 0%, right 30%, right 55%;}
 }
 
-* {
-   padding:0;
-   margin:0;
-   -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
-}
-
-header{
-   width: 100%;
-   text-align: center;
-}
-@keyframes entrada{
+@keyframes entrada{/*animacion logo*/
    0%{transform: translateY(-200px) skewX(15deg);}
    25%{transform: translateY(25%) skewX(-15deg);}
    50%{transform: translateY(-10%) skewX(10deg);}
@@ -31,20 +27,34 @@ header{
    100%{transform: translateY(2%);}
 }
 @-webkit-keyframes entrada {
-   0%{transform: translateY(-200px);}
-   25%{transform: translateY(25%);}
-   50%{transform: translateY(-10%);}
-   75%{transform: translateY(15%);}
-   100%{transform: translateY(25%);}
+   0%{transform: translateY(-200px) skewX(15deg);}
+   25%{transform: translateY(25%) skewX(-15deg);}
+   50%{transform: translateY(-10%) skewX(10deg);}
+   75%{transform: translateY(15%) skewX(-10deg);}
+   100%{transform: translateY(2%);}
+}
+@keyframes movimiento{/*animacion logo movimiento*/
+   0%{transform: translateY(0px) skewX(15deg);}
+   100%{transform: translatey(-200px) skewX(-15deg);}
+}
+@-webkit-keyframes movimiento {
+   0%{transform: translateY(-50px) skewX(15deg);}
+   100%{transform: translatey(-200px) skewX(-15deg);}
+}
+header{
+   width: 100%;
+   text-align: center;
 }
 h1 #logo{
    top:-200px;
    animation: entrada 5s linear forwards;
 }
 #logo{
-  
    width: 40%;
    height: auto;
+}
+#logo:hover{
+   animation: movimiento .5s ease-in-out forwards;
 }
 
 body {

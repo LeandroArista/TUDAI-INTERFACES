@@ -16,7 +16,7 @@
 </head>
 <body>
     <header>
-        <h1><img src="../img/DBZ.png" alt="logo"></h1>
+        <h1><img src="../img/DBZ.png" alt="logo" id="logo"></h1>
     </header>
     <section id="menu">
         <nav class="menu">
@@ -59,47 +59,33 @@
         </div>
     </div>
     </section>
-
-    <!-- <section class="comentarios">
-        <div id="1" class="row">
-
-
-            <span >Juan</span>
-            <span >juan@gmail.com</span>
-            <span>Goku</span>
-            <span>no puedo esperar a ver la peli</span>
-        </div>
-        <div id="2" class="row">
-            <span >Lea</span>
-            <span >patata@gmail.com</span>
-            <span>Freezer</span>
-            <span>cuanto cobras por ser aire acondicionado </span>
-        </div>
-    </section> -->
     <section class="contenedor">
-        
             <form action="" class="formulario" id="dataForm">
                 <h2 class="formulario__titulo">Nuevo Comentario</h2>
                 <hr>
                 <div class="row">
-                    <label for="name" class="formulario__label"><i class="fa fa-user"></i> Nombre</label>
                     <input type="text" class="formulario__input" id="name" required>
+                    <label for="name" class="formulario__label"><i class="fa fa-user"></i> Nombre</label>
                 </div>
                 <div class="row">
-                    <label for="email" class="formulario__label"><i class="fa fa-envelope"></i> Email</label>
+                   
                     <input type="text" class="formulario__input" id="email">
+                    <label for="email" class="formulario__label"><i class="fa fa-envelope"></i> Email</label>
                 </div>  
                 <div class="row">
-                        <select name="personaje" class="formulario__input" id="selectpersonaje" required>
-                            <option actived disabled><i class="fa fa-user"></i> Destinatario: (*)</option>
+                    <div class="content-select">
+                        <select name="personaje" class="" id="selectpersonaje" required>
+                            <option value=""  actived></option>
                             <option value="goku">Goku</option>
                             <option value="vegeta">Vegeta</option>
                             <option value="freezer">Freezer</option>
-                        </select>  
+                        </select>
+                        <label for="selectpersonaje" class="formulario__label"><i class="fa fa-user"></i> Destinatario</label>  
+                    </div>
                 </div>
                 <div class="row">
-                    <label for="comment" class="formulario__label"></label>></label>
                     <textarea rows="8" id="comment" name="comment" class="lbl-text" placeholder="Ingrese Mensaje..." required></textarea>
+                    <label for="comment" class="formulario__label"></label>
                 </div>
                 <input type="submit" class="formulario__submit" id="submit">
             </form>

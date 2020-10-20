@@ -29,14 +29,14 @@ document.addEventListener("onload",function(){
 });
 window.addEventListener("load",function(){
 	let container = document.getElementById('loading');
-	console.log(container);
 	setTimeout(function() {
 	container.classList.add('cerrar');
 		
-  	document.body.style.overflowY= "visible";// despueés de cargar le devolvemos el scroll
+  	// despueés de cargar le devolvemos el scroll
 	  setTimeout(function(){
 		clearHidden();
-		container.classList.add('hidden');	
+		document.body.style.overflowY= "visible";
+		container.classList.add('hidden');
 		},2000);
 	}, 3000);
 	

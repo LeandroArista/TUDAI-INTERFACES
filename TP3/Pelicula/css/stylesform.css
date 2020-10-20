@@ -1,14 +1,12 @@
-
-
+/*form*/
 .formulario {
     width: 90%;
-    max-width: 100%;
-    margin: 20PX;
-    margin-top: 30px;
-    padding: 20px;
+    max-width:900px;
+    margin:5%;
+    padding: 2%;
     background: rgba(24,8,33,.8);
     box-shadow: 0 0 20px 1px rgba(111, 4, 133, 0.3);
-    position: relative;
+    color: white;
   }
   .formulario__titulo {
     width: 100%;
@@ -17,58 +15,101 @@
     color: rgba(255,255,255 ,0.7);
   }
   
-
   .formulario .row{
       width: 95%;
   }
+    /*form input*/
   .formulario__input, .formulario__label, .formulario__submit {
     display: block;
     width: 100%;
     font-size: 1.3em;
   }
   .formulario__input {
-    width: 100%;
-    padding: 10px;
+    padding: 1%;
+    margin-top: 5%;
+    margin-bottom: 2%;
     background: rgba(255,255,255,0.1);
     border-radius: 2%;
-    border: none;
+    border: 0px 0px 2px 0px;
     color: white;
     z-index: 3;
-    margin: 20px;
-  }
-  .formulario__input:focus {
-    width: 100%;
-    outline: 1px solid rgba(0,0,0);
-    border:1px  white ;
-    cursor: pointer;
-  }
-  .formulario__input:focus + .formulario__label{
-    border:1px  white ;
-    z-index: 1;
     
   }
-  hr{
-      z-index: -1;
+  .formulario__input:focus {
+    background-color: rgba(46, 31, 54, 0.1);
+    outline: 2px solid rgb(170, 78, 175);
+    border-radius: 2%;
+    cursor: pointer;
   }
+  /*label input*/
 
+  @keyframes mover_der{
+    100%{transform: translateY(1%);}
+  }
+  .formulario__input:focus + .formulario__label{
+    margin-top: -85px;
+    
+  }
+  
   .formulario__label {
-    padding-left: 40px;
+    margin-top: -45px;
+    z-index: 2;
+    padding-left: 20px;
     position: absolute;
-    margin-top: 10px;
-    width: 80%;
-    z-index: -1;
+    border:1px  white ;
     color: white;
-    transition: all 0.2s;
+    transition: all 1s;
   }
-  .formulario select{
-
+  .formulario__label:hover {
+    /*position: relative;*/
+    transition: all 1s ease-in-out;
+     animation: mover_der 0.1s forwards ; 
+  }
+ 
+  /*select*/
+  .content-select{
+    width: 100%;
+  
+  }
+  
+  .content-select select{
+    width: 100%;
+    padding: 1%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    height: auto;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    outline: 0; 
+    border: 0;
+    border-radius: 0;
+    background-color:rgba(255,255,255,0.1);
     color: rgba(255,255,255,0.5);
+    font-size: 1em;
+    font-family: 'Quicksand', sans-serif;
+    border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    transition: all 0.25s ease;
   }
-  .formulario select:focus{
-      background-color: rgba(24,8,33,.9);
-    color: rgba(255,255,255,0.5);
+   
+  .content-select select:focus + .formulario__label{
+    margin-top: -85px;
   }
-
+  .content-select select:hover{
+    color: white;
+    border-radius: 12px; 
+    background: #7c457c;
+  }
+   
+  .content-select:hover i{
+    margin-top: 3px;
+  }
+  .fijar{
+    margin-top: -85px;
+  }
+  /*submit*/
   .formulario__submit {
     background: rgba(111,4,133);
     color: white;
@@ -76,28 +117,33 @@
     cursor: pointer;
     border: none;
   }
-  .fijar {
-    margin-top: -100px;
+  .formulario__submit:hover {
+    background:white;
+    color: rgba(111,4,133);
+    transition: all .5 ease-in-out ;
   }
 
+  .formulario__submit:active{
+      cursor: wait;
+  }
+
+  /*text area*/
   .formulario textarea{
-      margin:10px;
+      margin-left:5%;
+      margin-bottom: 1%;
       width: 95%;
       font-size: 18px;
       background-color: rgba(24,8,33,.3);
       color:  rgba(255,255,255,0.9);
       border:none;
   }
-
+  /*seccion comentarios*/
   .comentarios{
     width: 60%;
-
-	max-width:900px;
     margin-left:20%;
     max-width: 100%;
     margin-top: 30px;
     padding: 20px;
-      display: relative;
     background: rgba(24,8,33,.8);
     box-shadow: 0 0 20px 1px rgba(111, 4, 133, 0.3);
     color: white;
@@ -165,7 +211,7 @@
 
 .info-comments .header,
 .info-comments-request .header{
-    display: flex;
+    display: inline-flexbox;
     justify-content: space-between;
     padding: 10px;
     background: #019CDE;
@@ -210,7 +256,7 @@
 .comentarios .comments .info-comments p{
     color: black;
 }
-.comentarios hr {
+.comentarios hr, .contenedor hr {
 	background:#F64740;
 	height:5px;
 	border:none;
