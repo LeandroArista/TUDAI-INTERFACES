@@ -1,0 +1,59 @@
+paleta colores divertidos
+fresh 
+#4abdac
+vermillion
+#fc4a1a
+sunshine
+#f78733
+clean
+#dfdce3
+
+oscuro neon fuerte 
+void
+#0e0b16
+fuschia
+#a239ca
+jewel
+#4717f6
+stark
+#e7dfdd
+
+oscuro llamativo
+black
+#000000
+ink
+#062f4f
+posy
+#813722
+embers
+#b82601
+
+verde que te quiero verde
+electric
+#3cc47c
+forest
+#1e392a
+light
+#e9c893
+tin
+#828081
+
+colores fuertes
+papaya
+#e24e42
+mustard
+#e98000
+blush
+#eb6e80
+aqua
+#008f95
+
+toque de color
+cerulean
+#4484ce
+aluminium
+#d9d9d9
+light
+#f9cf00
+tangerine
+#f19f4d
