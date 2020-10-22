@@ -1,7 +1,6 @@
-body{
+.{
     margin:0;
     padding: 0;
-
 }
 #canvas{
     width: 1200px;
@@ -18,13 +17,4 @@ header{
     background-color: black;
     margin: 0;
     padding: 10px;
-}
-label{
-    color:white;}
-.contenedor{
-    margin: 4px;
-    text-align: center;
-}
-.hide{
-    display: none;
 }

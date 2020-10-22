@@ -1,6 +1,6 @@
 
 class Tablero{
-    constructor (filas,columnas,lineas=4,cantFichas,context,fichaamarilla,ficharoja){
+    constructor (filas,columnas,lineas=4,cantFichas,context){
         this.filas=filas;
         this.columnas=columnas;
         this.cantFichas = cantFichas;
@@ -12,12 +12,9 @@ class Tablero{
         this.radio= 0;
         this.ancho=0;
         this.alto=0;
-        this.posinicx=0;
-        this.posinicy=0;
-        this.lastMovefila=-1;
-        this.lastMovecolumna=-1;
-        this.fichaamarilla=fichaamarilla;
-        this.ficharoja=ficharoja;
+        this.posinic=0;
+        this.lastMovex=-1;
+        this.lastMovey=-1;
 
         this.lugareslibres=filas*columnas;
 
@@ -38,37 +35,41 @@ class Tablero{
     getColumnas(){
         return this.columnas;
     }
-    getPosicionTablero(posx,posy){
-        let fila = -1;
-        let columna = -1;
+    getCanvasposicion(posx,posy){
+        let x = -1;
+        let y = -1;
         if(this.figuras[0].isPointInside(posx,posy)){//esta dentro del tablero
             for (let i=0;i<this.casillas.length;i++){
                 if (this.casillas[i].isPointInside(posx,posy)){
-                    fila = Math.floor(i / this.columnas);
-                    columna =Math.floor( i % this.columnas); 
-                    return {fila:fila,columna:columna};
+                    x = Math.floor(i / this.columnas);
+                    y =Math.floor( i % this.columnas); 
                 }
             }
         }
-        return {fila:fila,columna:columna};
+        return {x:x,y:y};
     }
-   
 
-    agregarFicha(posx,posy){
-        let pos=this.getPosicionTablero(posx,posy);
+    agregarFicha(posx,posy,valor){
+        let pos=this.getCanvasposicion(posx,posy);
         for (let f=this.filas-1;f>=0;f--){
-            if(this.arreglo[f][pos.columna]==0){
+            if(this.arreglo[f][pos.y]==0){
+                let color=0;
+                if (valor == "red")
+                    color = 1;
+                else
+                    color = 2;
+                this.arreglo[f][pos.y] = color;
                 this.lugareslibres--;
-                this.lastMovefila=f;
-                this.lastMovecolumna=pos.columna;
+                this.lastMovex=f;
+                this.lastMovey=pos.y;
                 return true;
             }
         }
         return false;
-    }
 
+    }
     getLastMove(){
-        return {fila:this.lastMovefila,columna:this.lastMovecolumna};
+        return {x:this.lastMovex,y:this.lastMovey};
     }
 
     getPosicion(x,y){
@@ -76,12 +77,6 @@ class Tablero{
     }
 
     setPosition(x,y,value){
-        if(value=="red")
-            value=1;
-        else if(value=="yellow")
-                value=2;
-            else 
-                value=0;
         this.arreglo[x][y] = value;
     }
     getCantFichas(){
@@ -91,13 +86,13 @@ class Tablero{
         return this.radio;
     }
 
-    isGanador(fila,columna){//x col, y fila
-        let centro = this.arreglo[fila][columna];
+    isGanador(x,y){
+        let centro = this.arreglo[x][y];
         let count=0;
         //izquierda
-        let c = columna; 
+        let c = y; 
         while ( c >= 0 ){
-            if (this.arreglo[fila][c] == centro ){
+            if (this.arreglo[x][c] == centro ){
                 count++;
             }else
             break;
@@ -107,9 +102,9 @@ class Tablero{
             return true;
         //derecha
         let count2 = 0;
-        c = columna;
+        c = y;
         while ( c < this.columnas){
-            if (this.arreglo[fila][c] == centro){
+            if (this.arreglo[x][c] == centro){
                 count2++;
             }else
             break;
@@ -119,9 +114,9 @@ class Tablero{
             return true;
         //abajo
         count=0;
-        let f = fila;
+        let f = x;
         while (f < this.filas){
-            if (this.arreglo[f][columna] == centro){
+            if (this.arreglo[f][y] == centro){
                 count++;
             }else
                 break;
@@ -132,8 +127,8 @@ class Tablero{
         //diagonal sup izq (-x,-y)
         count=0;
         let i = 0;
-        while ( columna-i>=0 && fila-i>=0){
-            if (this.arreglo[fila-i][columna-i] == centro){
+        while ( x-i>=0 && y-1>=0){
+            if (this.arreglo[x-i][y-i] == centro){
                 count++;
             }else
                 break;
@@ -144,8 +139,8 @@ class Tablero{
         //diagonal inf der (+x,+y)
         count2=0;
         i = 0;
-        while ( i+fila<this.filas && i+columna<this.columnas){
-            if (this.arreglo[fila+i][columna+i] == centro){
+        while ( i+x<this.filas && y+i<this.columnas){
+            if (this.arreglo[x+i][y+i] == centro){
                 count2++;
             }else
                 break;
@@ -157,8 +152,8 @@ class Tablero{
         //diagonal inf izq (+x,-y)
         count=0;
         i=0;
-        while ( i+fila<this.filas && columna-i>=0){
-            if (this.arreglo[fila+i][columna-i] == centro){
+        while ( x+i<this.filas && y-i>=0){
+            if (this.arreglo[x+i][y-i] == centro){
                 count++;
             }
             else 
@@ -170,8 +165,8 @@ class Tablero{
         //diagonal sup der (-x,+y)
         count2=0;
         i = 0;
-        while ( fila-i >=0 && columna+i<this.columnas){
-            if (this.arreglo[fila-i][columna+i] == centro){
+        while ( x-i >=0 && y+i<this.columnas){
+            if (this.arreglo[x-i][y+i] == centro){
                 count2++;
             }else
                 break;
@@ -184,8 +179,7 @@ class Tablero{
     }
 
     dibujarTablero(x,y,ancho,alto){
-        this.posinicx=x;
-        this.posinicy=y;
+        this.posinic=x;
         this.figuras = [];
         this.casillas= [];
         //genero fondo todo
@@ -207,21 +201,15 @@ class Tablero{
         // genero las casillas
         let posX =x;
         let posY =y;
-      
         for (let i =0; i < this.filas;i++){
             posX=x;
             for ( let j=0; j < this.columnas;j++){
-                let ficha=null;
                 color="white";
-                if(this.arreglo[i][j] == 1){
+                if(this.arreglo[i][j] == 1)
                     color="red";
-                    ficha=ficharoja;
-                }
-                if(this.arreglo[i][j] == 2 ){
+                if(this.arreglo[i][j] == 2 )
                     color="yellow";
-                    ficha=fichaamarilla;
-                }
-                let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context,ficha);
+                let circulo = new Circle(posX+centroX,posY+centroY,radio,color,this.context);
                 this.figuras.push(circulo);
                 let rec=new Rectangulo(posX,posY,casillaancho,casillaalto,color,this.context);
                 this.casillas.push(rec);

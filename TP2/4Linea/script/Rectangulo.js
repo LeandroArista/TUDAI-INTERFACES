@@ -23,5 +23,4 @@ class Rectangulo extends Figure{
     isPointInside(x,y){
         return !(x < this.posX || x > this.posX + this.width || y < this.posY || y > this.posY + this.height);
     }
-
 }

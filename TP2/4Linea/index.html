@@ -9,49 +9,28 @@
 <body>
     <header>
         <h1>Entregable 2: 4 en linea</h1>
-        <div class="contenedor">
-            <label for="jugador1" >Ingrese nombre de jugador Rojo</label>
-            <input type="text" name="jugador1" id="j1" value="Rojo">
-            <label id="pj1">Puntos: 0</label>
-            <button onclick="CambiarNombre('j1')">Renombrar</button>
-        </div>
-        <div class="contenedor">
-            <label for="jugador2" >Ingrese nombre de jugador Amarillo</label>
-            <input type="text" name="jugador2" id="j2" value="Amarillo">
-            <label id="pj2">Puntos: 0</label>
-            <button onclick="CambiarNombre('j2')">Renombrar</button>
-        </div>
-        <div class="contenedor">
-            <select name="filas" id="filas">
-                <option value=6 selected>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-            </select>
-            <select name="columnas" id="columnas">
-                <option value=6>6</option>
-                <option value=7 selected>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-            </select>
-            <button onclick="cambiarTablero()">cambiar tablero</button>
-            <button onclick="ReiniciarJuego()">Comenzar juego nuevo</button>
-            <button onclick="ReiniciarPuntos()">Reset Puntos</button>
-        </div>
-        
+        <label for="cars">Choose a car:</label>
+
+        <select name="filas" id="filas">
+            <option value=6 selected>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+        </select>
+        <select name="columnas" id="columnas">
+            <option value=6>6</option>
+            <option value=7 selected>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+        </select>
+        <button onclick="cambiarTablero()">cambiar tablero</button>
     </header>
-    <div class="contenedor">
-        <h2 id="turno">Turno del jugador Rojo</h2> 
-        
-        <canvas id="canvas"></canvas>
-        
-    </div>
-    
+    <canvas id="canvas"></canvas>
+    <label id="resultado"></label>
     <script src="./script/Figura.js"></script>
     <script src="./script/Rectangulo.js"></script>
     <script src="./script/Circulo.js"></script>
     <script src="./script/Tablero.js"></script>
     <script src="./script/main.js"></script>
 </body>
-
 </html>
