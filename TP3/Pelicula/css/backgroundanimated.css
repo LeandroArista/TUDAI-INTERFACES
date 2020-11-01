@@ -37,10 +37,7 @@
    0%{transform: translateY(0px) skewX(15deg);}
    100%{transform: translatey(-200px) skewX(-15deg);}
 }
-@-webkit-keyframes movimiento {
-   0%{transform: translateY(-50px) skewX(15deg);}
-   100%{transform: translatey(-200px) skewX(-15deg);}
-}
+
 header{
    width: 100%;
    text-align: center;
@@ -53,9 +50,7 @@ h1 #logo{
    width: 40%;
    height: auto;
 }
-#logo:hover{
-   animation: movimiento .5s ease-in-out forwards;
-}
+
 
 body {
    margin: 0;

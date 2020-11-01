@@ -4,6 +4,12 @@ let reproduccion=false;
 let video=document.querySelector("#trailer");
 let audio=document.querySelector("#musica");
 
+let cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+	card.addEventListener( 'click', function() {
+		card.classList.toggle('is-flipped');
+	  });
+});
 
 
 /*carga de elementos en la pagina */

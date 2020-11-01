@@ -85,3 +85,60 @@ article h1, article hr {
     height: auto;
     transition: all .25s ease-in;
   }
+
+  .picture {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 3px;
+    background-position: top center;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+    
+  }
+  .picture:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    border-radius: 50%;
+    left: 0;
+    bottom: 0px;
+    box-shadow: 0 30px 20px rgba(0, 0, 0, .3);
+  }
+  
+  #picture1{
+
+    background: url("../img/expositores/Akira_Toriyama.jpg");
+    background-size: 100% 100%;  
+}
+
+    #picture2{
+        background: url("../img/expositores/YamamuroTadayoshi.jpg");
+        background-size: 100% 100%;  
+    }
+    #picture3{
+       
+        background: url( "../img/expositores/premier.jpg");
+        background-size: 100% 100%; 
+     }
+     #picture4{
+       
+        background: url( "../img/expositores/dibujo.jpg");
+        background-size: 100% 100%; 
+     }
+
+  .picture-content {
+    transform-style: preserve-3d;
+    text-align: center;
+  }
+    .picture-content h1 {
+      color: rgb(190, 17, 147);
+      font-size: 150%;
+      transform: translateZ(60px);
+    }
+    

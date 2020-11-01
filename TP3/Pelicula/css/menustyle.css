@@ -2,7 +2,7 @@
 .menu-open-button {
     left: 10px;
     top: 15px;
-   background: #EEEEEE;
+
    border-radius: 100%;
    width: 40px;
    height: 40px;
@@ -17,57 +17,19 @@
    transition: transform ease-out 200ms;
    transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
 }
+.menu-open-button{
+   background: url("../img/esferamenu.png");
+}
+.menu-open-button:hover{
+   transform: scale(1.1);
+}
 
 .menu-open {
     
    display: none;
 }
 
-.lines {
-   width: 25px;
-   height: 3px;
-   background: #596778;
-   display: block;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   margin-left: -12px;
-   margin-top: -1px;
-   -webkit-transition: -webkit-transform 200ms;
-   transition: -webkit-transform 200ms;
-   transition: transform 200ms;
-   transition: transform 200ms, -webkit-transform 200ms;
-}
 
-.line-1 {
-   -webkit-transform: translate3d(0, -8px, 0);
-   transform: translate3d(0, -8px, 0);
-}
-
-.line-2 {
-   -webkit-transform: translate3d(0, 0, 0);
-   transform: translate3d(0, 0, 0);
-}
-
-.line-3 {
-   -webkit-transform: translate3d(0, 8px, 0);
-   transform: translate3d(0, 8px, 0);
-}
-
-.menu-open:checked + .menu-open-button .line-1 {
-   -webkit-transform: translate3d(0, 0, 0) rotate(45deg);
-   transform: translate3d(0, 0, 0) rotate(45deg);
-}
-
-.menu-open:checked + .menu-open-button .line-2 {
-   -webkit-transform: translate3d(0, 0, 0) scale(0.1, 1);
-   transform: translate3d(0, 0, 0) scale(0.1, 1);
-}
-
-.menu-open:checked + .menu-open-button .line-3 {
-   -webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
-   transform: translate3d(0, 0, 0) rotate(-45deg);
-}
 
 .menu {
    margin: auto;
@@ -83,10 +45,7 @@
    font-size: 13px;
 }
 
-.menu-item:hover {
-   background: #EEEEEE;
-   color: #3290B1;
-}
+
 
 .menu-item:nth-child(3) {
    -webkit-transition-duration: 180ms;
@@ -153,35 +112,16 @@
     transform: translate3d(0px, 60px, 0);
  }
 
- .red {
-    background-color: #FE4365;
-    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
- }
- 
- .red:hover {
-    color: #FE4365;
-    text-shadow: none;
- }
- 
- .purple {
-    background-color: #C49CDE;
-    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
- }
- 
- .purple:hover {
-    color: #C49CDE;
-    text-shadow: none;
- }
- 
+
  .orange {
-    background-color: #FC913A;
+    background-color: #f5a666;
+    color: red;
     box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
  }
  
  .orange:hover {
-    color: #FC913A;
+    color: #f5a666;
+    background-color: red;
     text-shadow: none;
  }
