@@ -86,3 +86,23 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, MILLISECONDS_OF_A_SECOND);
+
+document.querySelector("body").addEventListener("wheel", movimiento);
+function movimiento(){
+    let contenedores=document.querySelectorAll(".animado");
+	let scrollTop=document.documentElement.scrollTop;
+	for (let i=0;i< contenedores.length;i++){
+		if (contenedores[i].offsetTop -500  < scrollTop){
+			if(contenedores[i].classList.contains("desaparecer")){
+				contenedores[i].classList.remove("desaparecer");
+				contenedores[i].classList.add("entrada");
+			}
+		}else{
+			if(contenedores[i].classList.contains("entrada")){
+				contenedores[i].classList.remove("entrada");
+				contenedores[i].classList.add("desaparecer");
+			}
+		}
+	}
+    
+}

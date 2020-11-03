@@ -20,4 +20,20 @@ for(let i=0; i<inputs.length;i++){
     })
 }
 
+document.querySelector("body").addEventListener("wheel", movimiento);
+function movimiento(){
+    let formulario=document.querySelectorAll(".contenerdor");
+    let scrollTop=document.documentElement.scrollTop;
+    if (formulario.offsetTop -500  < scrollTop){
+        if(formulario.classList.contains("desaparecer")){
+            formulario.classList.remove("desaparecer");
+            formulario.classList.add("entrada");
+        }
+    }else{
+        if(formulario.classList.contains("entrada")){
+            formulario.classList.remove("entrada");
+            formulario.classList.add("desaparecer");
+        }
+    }
+}
 

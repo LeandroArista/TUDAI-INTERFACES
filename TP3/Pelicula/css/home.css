@@ -16,9 +16,11 @@
 
 
 /* caja de presonajes */
-
+.personajes{
+    margin-left:10% ;
+}
 .personaje{
-    width: 32%;
+    width: 28%;
     display: inline-block;
     text-align: center;
     overflow: hidden;
@@ -208,4 +210,38 @@ video{
     margin-left: 15%;
     margin-bottom: 5%;
     margin-top: 0px;
+}
+
+@keyframes apareceizquierda
+{
+    from { 
+         transform: translateX(-100%); 
+         opacity: 0;
+            }
+    to { 
+         transform: translateX(0%); 
+         opacity: 1;
+            }
+}
+ 
+.entrada
+{
+     animation: apareceizquierda ease-in 3s forwards; 
+}
+
+@keyframes desaparece
+{
+    from { 
+         transform: translateX(0%); 
+         opacity: 1;
+            }
+    to { 
+         transform: translateX(-100%); 
+         opacity: 0;
+            }
+}
+ 
+.desaparecer
+{
+     animation: desaparece ease-out 3s forwards; 
 }

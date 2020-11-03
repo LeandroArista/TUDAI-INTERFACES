@@ -262,3 +262,37 @@
 .comentarios h2 {
 	text-align: center;
 }
+
+@keyframes apareceizquierda
+{
+    from { 
+         transform: translateX(-100%); 
+         opacity: 0;
+            }
+    to { 
+         transform: translateX(0%); 
+         opacity: 1;
+            }
+}
+ 
+.entrada
+{
+     animation: apareceizquierda ease-in 3s forwards; 
+}
+
+@keyframes desaparece
+{
+    from { 
+         transform: translateX(0%); 
+         opacity: 1;
+            }
+    to { 
+         transform: translateX(-100%); 
+         opacity: 0;
+            }
+}
+ 
+.desaparecer
+{
+     animation: desaparece ease-out 3s forwards; 
+}
